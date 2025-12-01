@@ -3661,292 +3661,1454 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </div>
 
-  <script>// api.js - Frontend API untuk berkomunikasi dengan backend
-const API_BASE_URL = 'http://localhost:3000/api'; // Ganti dengan URL backend Anda
+  <script>// main.js
+import * as API from './api.js';
 
-class API {
-    static async request(endpoint, options = {}) {
-        const url = `${API_BASE_URL}${endpoint}`;
-        const token = localStorage.getItem('token');
-        
-        const defaultHeaders = {
-            'Content-Type': 'application/json',
-            ...(token && { 'Authorization': `Bearer ${token}` })
-        };
-        
-        const config = {
-            headers: defaultHeaders,
-            ...options
-        };
-        
-        try {
-            const response = await fetch(url, config);
-            
-            if (!response.ok) {
-                if (response.status === 401) {
-                    // Token expired, redirect to login
-                    localStorage.removeItem('token');
-                    window.location.href = 'login.html';
-                    throw new Error('Session expired');
-                }
-                throw new Error(`HTTP ${response.status}: ${await response.text()}`);
-            }
-            
-            return await response.json();
-        } catch (error) {
-            console.error('API request failed:', error);
-            throw error;
+// --- 1. DOM ELEMENTS ---
+const headerUserName = document.getElementById('header-user-name');
+const profileName = document.getElementById('profile-name');
+const profileEmail = document.getElementById('profile-email');
+const profileImage = document.getElementById('profile-image');
+const userInfoHeader = document.getElementById('user-info-header');
+const guestHeader = document.getElementById('guest-header');
+const headerProfileImage = document.getElementById('header-profile-image');
+const bottomNavProfile = document.getElementById('bottom-nav-profile');
+const menuButton = document.getElementById('menu-button');
+const menuDropdown = document.getElementById('menu-dropdown');
+const dynamicNavContainer = document.getElementById('dynamic-nav-container');
+const ticketListContainer = document.getElementById('ticket-list');
+const historyCarouselTrack = document.getElementById('history-carousel-track');
+const yourLinkModal = document.getElementById('your-link-modal');
+const closeYourLinkModal = document.getElementById('close-your-link-modal');
+const savedLinksList = document.getElementById('saved-links-list');
+const newLinkInput = document.getElementById('new-link-input');
+const addLinkButton = document.getElementById('add-link-button');
+const deleteModal = document.getElementById('delete-confirmation-modal');
+const passwordInput = document.getElementById('password-confirmation');
+const errorMessage = document.getElementById('delete-error-message');
+const cancelButton = document.getElementById('cancel-delete-button');
+const confirmButton = document.getElementById('confirm-delete-button');
+const sortButton = document.getElementById('sort-button');
+const sortMenu = document.getElementById('sort-menu');
+const currentSortText = document.getElementById('current-sort');
+const commentsModal = document.getElementById('comments-modal');
+const closeCommentsModal = document.getElementById('close-comments-modal');
+const commentsSection = document.getElementById('comments-section');
+const commentModalTitle = document.getElementById('comment-modal-title');
+const newCommentInput = document.getElementById('new-comment-input');
+const submitCommentButton = document.getElementById('submit-comment-button');
+const favoriteSection = document.getElementById('favorite-section');
+const favoriteGrid = document.getElementById('favorite-grid');
+const searchInput = document.getElementById('search-input');
+const searchSuggestions = document.getElementById('search-suggestions');
+const categoryDropdownButton = document.getElementById('category-dropdown-button');
+const categoryDropdown = document.getElementById('category-dropdown');
+const categoryList = document.getElementById('category-list');
+const filterStatus = document.getElementById('filter-status');
+const userAdsTrack = document.getElementById('user-ads-carousel-track');
+const userAdsIndicators = document.getElementById('user-ads-carousel-indicators');
+const userAdsPrevButton = document.getElementById('user-ads-carousel-prev');
+const userAdsNextButton = document.getElementById('user-ads-carousel-next');
+const adCreationModal = document.getElementById('ad-creation-modal');
+const adCreationClose = document.getElementById('ad-creation-close');
+const adCreationForm = document.getElementById('ad-creation-form');
+const adTitle = document.getElementById('ad-title');
+const adDescription = document.getElementById('ad-description');
+const adImageUrl = document.getElementById('ad-image-url');
+const adImagePreview = document.getElementById('ad-image-preview');
+const adTargetUrl = document.getElementById('ad-target-url');
+const adDuration = document.getElementById('ad-duration');
+const adCancelBtn = document.getElementById('ad-cancel-btn');
+const adSubmitBtn = document.getElementById('ad-submit-btn');
+const createAdBtn = document.getElementById('create-ad-btn');
+const adsNavItem = document.getElementById('ads-nav-item');
+const myAdsSection = document.getElementById('my-ads-section');
+const myAdsGrid = document.getElementById('my-ads-grid');
+const adsDrawer = document.getElementById('ads-drawer');
+const adsDrawerOverlay = document.getElementById('ads-drawer-overlay');
+const adsDrawerClose = document.getElementById('ads-drawer-close');
+const activeAdsList = document.getElementById('active-ads-list');
+const expiredAdsList = document.getElementById('expired-ads-list');
+
+// --- 2. STATE VARIABLES ---
+let savedLinks = [];
+let allMarketplaceTickets = [];
+let allCategories = new Set(['Musik', 'Olahraga', 'Workshop', 'Travel', 'Lainnya']);
+let currentSearchQuery = '';
+let currentCategoryFilter = 'Semua';
+let currentSortMethod = 'newest';
+let currentUser = null;
+let activeTicketComments = null;
+let favoriteTickets = [];
+let userAdsCurrentIndex = 0;
+let userAdsAutoSlideInterval;
+let myAds = [];
+
+// --- 3. AUTH & INITIALIZATION ---
+API.observeAuth((user) => {
+    currentUser = user;
+    loadLinksFromStorage();
+    loadFavoriteTickets();
+    renderDynamicNav();
+    loadAllMarketplaceTickets();
+    loadUserAds();
+    loadMyAds();
+
+    if (user) {
+        guestHeader.classList.add('hidden');
+        userInfoHeader.classList.remove('hidden');
+        loadProfileImageFromStorage(user.uid);
+        loadUserProfile(user.uid);
+        setupUserMenu(user);
+        loadAllMyBookings(user.uid);
+        profileEmail.textContent = user.email;
+        profileName.textContent = 'Memuat...';
+    } else {
+        guestHeader.classList.remove('hidden');
+        userInfoHeader.classList.add('hidden');
+        headerUserName.textContent = 'Selamat datang, Tamu!';
+        headerProfileImage.src = 'https://placehold.co/40x40/e2e8f0/adb5bd?text=G';
+        bottomNavProfile.src = 'https://placehold.co/50x50/e2e8f0/adb5bd?text=G';
+        profileImage.src = 'https://placehold.co/80x80/e2e8f0/adb5bd?text=G';
+        profileName.textContent = 'Tamu';
+        profileEmail.textContent = 'guest@example.com';
+        setupGuestMenu();
+        myAdsSection.style.display = 'none';
+    }
+});
+
+// --- 4. USER MENU & PROFILE LOGIC ---
+function setupGuestMenu() {
+    menuDropdown.innerHTML = `<div class="py-1"><a href="login.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Login</a><a href="home.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Marketplace</a></div>`;
+}
+
+async function setupUserMenu(user) {
+    try {
+        const snapshot = await API.getUserProfile(user.uid);
+        let userName = 'Pengguna';
+        if (snapshot.exists()) {
+            userName = snapshot.val().name || 'Profil Belum Lengkap';
         }
-    }
-
-    // Auth
-    static async login(email, password) {
-        const response = await this.request('/auth/login', {
-            method: 'POST',
-            body: JSON.stringify({ email, password })
+        menuDropdown.innerHTML = `<div class="px-4 py-3 border-b border-gray-200"><p class="text-sm font-semibold text-gray-900 truncate">${userName}</p><p class="text-sm text-gray-500 truncate">${user.email}</p></div><div class="py-1"><a href="home.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Marketplace</a><a href="riwayatpemesanan.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Semua Riwayat</a><a href="profil.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Edit Profil</a><a href="inputtiket.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Manajemen Tiket</a><div class="border-t border-gray-100 my-1"></div><a id="logout-button-menu" href="#" class="block px-4 py-2 text-sm text-red-700 hover:bg-red-50">Keluar</a></div>`;
+        document.getElementById('logout-button-menu').addEventListener('click', (e) => {
+            e.preventDefault();
+            API.logoutUser();
         });
-        
-        if (response.token) {
-            localStorage.setItem('token', response.token);
-            localStorage.setItem('user', JSON.stringify(response.user));
-        }
-        
-        return response;
-    }
-
-    static async register(userData) {
-        const response = await this.request('/auth/register', {
-            method: 'POST',
-            body: JSON.stringify(userData)
-        });
-        
-        if (response.token) {
-            localStorage.setItem('token', response.token);
-            localStorage.setItem('user', JSON.stringify(response.user));
-        }
-        
-        return response;
-    }
-
-    static async logout() {
-        await this.request('/auth/logout');
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-    }
-
-    static async getCurrentUser() {
-        try {
-            const user = await this.request('/auth/me');
-            localStorage.setItem('user', JSON.stringify(user));
-            return user;
-        } catch (error) {
-            return null;
-        }
-    }
-
-    // Users
-    static async updateProfile(userId, data) {
-        return await this.request(`/users/${userId}`, {
-            method: 'PUT',
-            body: JSON.stringify(data)
-        });
-    }
-
-    static async getUserProfile(userId) {
-        return await this.request(`/users/${userId}`);
-    }
-
-    // Tickets
-    static async getAllTickets() {
-        return await this.request('/tickets');
-    }
-
-    static async getTicket(ticketId) {
-        return await this.request(`/tickets/${ticketId}`);
-    }
-
-    static async createTicket(ticketData) {
-        return await this.request('/tickets', {
-            method: 'POST',
-            body: JSON.stringify(ticketData)
-        });
-    }
-
-    static async updateTicket(ticketId, ticketData) {
-        return await this.request(`/tickets/${ticketId}`, {
-            method: 'PUT',
-            body: JSON.stringify(ticketData)
-        });
-    }
-
-    static async deleteTicket(ticketId) {
-        return await this.request(`/tickets/${ticketId}`, {
-            method: 'DELETE'
-        });
-    }
-
-    static async likeTicket(ticketId) {
-        return await this.request(`/tickets/${ticketId}/like`, {
-            method: 'POST'
-        });
-    }
-
-    static async dislikeTicket(ticketId) {
-        return await this.request(`/tickets/${ticketId}/dislike`, {
-            method: 'POST'
-        });
-    }
-
-    // Comments
-    static async getComments(ticketId) {
-        return await this.request(`/tickets/${ticketId}/comments`);
-    }
-
-    static async addComment(ticketId, comment) {
-        return await this.request(`/tickets/${ticketId}/comments`, {
-            method: 'POST',
-            body: JSON.stringify({ text: comment })
-        });
-    }
-
-    static async deleteComment(ticketId, commentId) {
-        return await this.request(`/tickets/${ticketId}/comments/${commentId}`, {
-            method: 'DELETE'
-        });
-    }
-
-    // Bookings
-    static async createBooking(bookingData) {
-        return await this.request('/bookings', {
-            method: 'POST',
-            body: JSON.stringify(bookingData)
-        });
-    }
-
-    static async getUserBookings() {
-        return await this.request('/bookings/my');
-    }
-
-    static async getAllBookings() {
-        return await this.request('/bookings');
-    }
-
-    static async updateBookingStatus(bookingId, status) {
-        return await this.request(`/bookings/${bookingId}/status`, {
-            method: 'PUT',
-            body: JSON.stringify({ status })
-        });
-    }
-
-    static async deleteBooking(bookingId) {
-        return await this.request(`/bookings/${bookingId}`, {
-            method: 'DELETE'
-        });
-    }
-
-    // Ads
-    static async createAd(adData) {
-        return await this.request('/ads', {
-            method: 'POST',
-            body: JSON.stringify(adData)
-        });
-    }
-
-    static async getActiveAds() {
-        return await this.request('/ads/active');
-    }
-
-    static async getUserAds() {
-        return await this.request('/ads/my');
-    }
-
-    static async updateAd(adId, adData) {
-        return await this.request(`/ads/${adId}`, {
-            method: 'PUT',
-            body: JSON.stringify(adData)
-        });
-    }
-
-    static async deleteAd(adId) {
-        return await this.request(`/ads/${adId}`, {
-            method: 'DELETE'
-        });
-    }
-
-    // Categories
-    static async getCategories() {
-        return await this.request('/categories');
-    }
-
-    // Analytics
-    static async incrementViewCount(ticketId) {
-        return await this.request(`/tickets/${ticketId}/view`, {
-            method: 'POST'
-        });
-    }
-
-    // File Upload (untuk gambar profil dan iklan)
-    static async uploadFile(file, type = 'image') {
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('type', type);
-
-        const response = await fetch(`${API_BASE_URL}/upload`, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            },
-            body: formData
-        });
-
-        if (!response.ok) {
-            throw new Error('Upload failed');
-        }
-
-        return await response.json();
+    } catch (e) {
+        console.error("Error setupUserMenu", e);
     }
 }
 
-// Simpan ke window untuk akses global
-window.API = API;
-
-// Helper function untuk check auth state
-window.checkAuth = async function() {
-    const token = localStorage.getItem('token');
-    if (token) {
-        try {
-            const user = await API.getCurrentUser();
-            return { isAuthenticated: true, user };
-        } catch (error) {
-            return { isAuthenticated: false, user: null };
-        }
-    }
-    return { isAuthenticated: false, user: null };
-};
-
-// Inisialisasi
-document.addEventListener('DOMContentLoaded', function() {
-    // Check auth state saat halaman load
-    checkAuth().then(authState => {
-        if (authState.isAuthenticated) {
-            // User sudah login
-            console.log('User authenticated:', authState.user);
-            
-            // Tambahkan event listener untuk logout
-            const logoutButtons = document.querySelectorAll('[data-logout]');
-            logoutButtons.forEach(button => {
-                button.addEventListener('click', async function(e) {
-                    e.preventDefault();
-                    await API.logout();
-                    window.location.href = 'login.html';
-                });
-            });
+async function loadUserProfile(userId) {
+    try {
+        const snapshot = await API.getUserProfile(userId);
+        if (snapshot.exists()) {
+            const data = snapshot.val();
+            headerUserName.textContent = `Halo, ${data.name || 'Pengguna'}!`;
+            profileName.textContent = data.name || 'Pengguna';
+            if (data.profileImageUrl) {
+                headerProfileImage.src = data.profileImageUrl;
+                bottomNavProfile.src = data.profileImageUrl;
+                profileImage.src = data.profileImageUrl;
+                localStorage.setItem(`profileImage_${userId}`, data.profileImageUrl);
+            }
         } else {
-            // User belum login
-            console.log('User not authenticated');
+            headerUserName.textContent = 'Selamat Datang!';
+            profileName.textContent = 'Pengguna';
+        }
+    } catch (e) {
+        console.error("Gagal memuat profil:", e);
+        headerUserName.textContent = 'Gagal memuat profil';
+        profileName.textContent = 'Gagal memuat profil';
+    }
+}
+
+function loadProfileImageFromStorage(userId) {
+    const savedImage = localStorage.getItem(`profileImage_${userId}`);
+    if (savedImage) {
+        headerProfileImage.src = savedImage;
+        bottomNavProfile.src = savedImage;
+        profileImage.src = savedImage;
+    }
+}
+
+// --- 5. FAVORITE TICKETS LOGIC ---
+function loadFavoriteTickets() {
+    const favorites = localStorage.getItem('favoriteTickets');
+    if (favorites) {
+        favoriteTickets = JSON.parse(favorites);
+        renderFavoriteTickets();
+    }
+}
+
+function saveFavoriteTickets() {
+    localStorage.setItem('favoriteTickets', JSON.stringify(favoriteTickets));
+}
+
+function toggleFavorite(ticketId) {
+    if (!currentUser) {
+        alert('Silakan login untuk menambahkan tiket ke favorit.');
+        return;
+    }
+    const index = favoriteTickets.findIndex(t => t.id === ticketId);
+    if (index === -1) {
+        const ticket = allMarketplaceTickets.find(t => t.id === ticketId);
+        if (ticket) {
+            favoriteTickets.push({
+                id: ticketId,
+                userId: ticket.userId,
+                name: ticket.name,
+                price: ticket.price,
+                imageUrl: ticket.imageUrl,
+                route: ticket.route,
+                sellerInfo: ticket.sellerInfo
+            });
+        }
+    } else {
+        favoriteTickets.splice(index, 1);
+    }
+    saveFavoriteTickets();
+    renderFavoriteTickets();
+    renderFilteredTickets();
+}
+
+function renderFavoriteTickets() {
+    favoriteGrid.innerHTML = '';
+    if (favoriteTickets.length === 0) {
+        favoriteGrid.innerHTML = `
+            <div class="favorite-empty">
+                <i class="fas fa-star"></i>
+                <p>Belum ada tiket favorit</p>
+                <p class="text-xs mt-2">Klik tombol bintang pada tiket untuk menambahkannya ke favorit</p>
+            </div>
+        `;
+        return;
+    }
+    favoriteTickets.forEach(ticket => {
+        const price = ticket.price || {};
+        let displayPriceHtml = `<p class="price-promo font-bold text-lg text-indigo-600">Rp. ${price.original ? price.original.toLocaleString('id-ID') : '0'}</p>`;
+        if (price.promo) {
+            displayPriceHtml = `<p class="price-promo font-bold text-lg text-indigo-600">Rp. ${price.promo.toLocaleString('id-ID')}</p>
+                               <p class="price-original text-xs ml-2 text-red-500 line-through">Rp. ${price.original.toLocaleString('id-ID')}</p>`;
+        }
+        const favoriteCard = document.createElement('div');
+        favoriteCard.className = 'favorite-ticket';
+        const shortDescription = 'Deskripsi'; // Simplified for favorite view
+        
+        favoriteCard.innerHTML = `
+            <div class="flex items-center gap-3">
+                <div class="w-16 h-16 bg-gray-200 rounded-lg overflow-hidden">
+                    <img src="${ticket.imageUrl || 'https://placehold.co/100x100/e2e8f0/adb5bd?text=Gambar'}"
+                          alt="${ticket.name}" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-grow">
+                    <h3 class="font-bold text-sm text-gray-800 leading-snug truncate">${ticket.name || 'Tanpa Judul'}</h3>
+                    <p class="text-xs text-gray-500 mt-1 truncate">${ticket.route?.from || ''} &rarr; ${ticket.route?.to || ''}</p>
+                    <div class="mt-1 flex items-baseline">
+                        ${displayPriceHtml}
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-between items-center mt-2">
+                <button class="save-button" data-ticket-id="${ticket.id}">
+                    <i class="fas fa-star text-yellow-500"></i>
+                </button>
+                <a href="home.html?id=${ticket.id}" class="bg-indigo-600 text-white text-xs px-3 py-1 rounded-lg hover:bg-indigo-700">
+                    Lihat Tiket
+                </a>
+            </div>
+        `;
+        const saveButton = favoriteCard.querySelector('.save-button');
+        saveButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleFavorite(ticket.id);
+        });
+        favoriteGrid.appendChild(favoriteCard);
+    });
+    favoriteSection.style.display = 'block';
+}
+
+// --- 6. MARKETPLACE TICKETS LOGIC ---
+function loadAllMarketplaceTickets() {
+    API.subscribeToTickets((snapshot) => {
+        allMarketplaceTickets = [];
+        allCategories = new Set(['Musik', 'Olahraga', 'Workshop', 'Travel', 'Lainnya']);
+        if (snapshot.exists()) {
+            const data = snapshot.val();
+            for (const userId in data) {
+                for (const ticketId in data[userId]) {
+                    const ticket = data[userId][ticketId];
+                    const ticketWithId = {
+                        id: ticketId,
+                        userId: userId,
+                        ...ticket,
+                        likes: ticket.likes || {},
+                        dislikes: ticket.dislikes || {},
+                        comments: ticket.comments || {},
+                        viewCount: ticket.viewCount || 0,
+                        ticketClass: ticket.ticketClass || 'Ekonomi'
+                    };
+                    allMarketplaceTickets.push(ticketWithId);
+                    if (ticket.category && ticket.category.trim() !== '') {
+                        allCategories.add(ticket.category);
+                    }
+                }
+            }
+            sortTickets();
+        }
+        updateCategoryDropdown();
+        renderFilteredTickets();
+        if (favoriteTickets.length > 0) {
+            renderFavoriteTickets();
         }
     });
-});</script>
+}
+
+function updateCategoryDropdown() {
+    const activeCategory = currentCategoryFilter;
+    categoryList.innerHTML = `
+        <a href="#" class="category-filter-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+           role="menuitem" data-category="Semua">Semua Kategori</a>
+    `;
+    Array.from(allCategories).sort().forEach(category => {
+        const item = document.createElement('a');
+        item.href = '#';
+        item.className = 'category-filter-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100';
+        item.setAttribute('role', 'menuitem');
+        item.setAttribute('data-category', category);
+        item.textContent = category;
+        categoryList.appendChild(item);
+    });
+    document.querySelectorAll('.category-filter-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentCategoryFilter = e.target.dataset.category;
+            renderFilteredTickets();
+            categoryDropdown.classList.remove('show');
+        });
+    });
+    // Category Cards Logic
+    document.querySelectorAll('.category-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+            const category = card.dataset.category;
+            const type = card.dataset.type;
+            if (type === 'class') {
+                currentCategoryFilter = 'Semua';
+                filterStatus.textContent = `Kelas: ${category}`;
+                const filteredTickets = allMarketplaceTickets.filter(ticket => ticket.ticketClass && ticket.ticketClass.toLowerCase() === category.toLowerCase());
+                renderTickets(filteredTickets);
+            } else if (type === 'price') {
+                currentCategoryFilter = 'Semua';
+                filterStatus.textContent = `Harga: ${category}`;
+                const filteredTickets = allMarketplaceTickets.filter(ticket => {
+                    const price = ticket.price?.promo || ticket.price?.original || 0;
+                    if (category === 'Rendah') return price < 200000;
+                    if (category === 'Sedang') return price >= 200000 && price <= 500000;
+                    if (category === 'Tinggi') return price > 500000;
+                    return true;
+                });
+                renderTickets(filteredTickets);
+            }
+        });
+    });
+    currentCategoryFilter = activeCategory;
+}
+
+function sortTickets() {
+    switch (currentSortMethod) {
+        case 'newest':
+            allMarketplaceTickets.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+            break;
+        case 'popular':
+            allMarketplaceTickets.sort((a, b) => (b.viewCount || 0) - (a.viewCount || 0));
+            break;
+        case 'likes':
+            allMarketplaceTickets.sort((a, b) => {
+                const aLikes = a.likes ? Object.keys(a.likes).length : 0;
+                const bLikes = b.likes ? Object.keys(b.likes).length : 0;
+                return bLikes - aLikes;
+            });
+            break;
+        case 'comments':
+            allMarketplaceTickets.sort((a, b) => {
+                const aComments = a.comments ? Object.keys(a.comments).length : 0;
+                const bComments = b.comments ? Object.keys(b.comments).length : 0;
+                return bComments - aComments;
+            });
+            break;
+    }
+}
+
+function renderFilteredTickets() {
+    ticketListContainer.innerHTML = '';
+    const searchQuery = currentSearchQuery.toLowerCase();
+    let filteredTickets = allMarketplaceTickets.filter(ticket => {
+        const matchesCategory = currentCategoryFilter === 'Semua' || (ticket.category && ticket.category.toLowerCase() === currentCategoryFilter.toLowerCase());
+        const matchesSearch = ticket.name && ticket.name.toLowerCase().includes(searchQuery);
+        return matchesCategory && matchesSearch;
+    });
+    
+    if (currentCategoryFilter !== 'Semua') {
+        filterStatus.textContent = `Kategori: ${currentCategoryFilter}`;
+    } else {
+        filterStatus.textContent = '';
+    }
+
+    if (filteredTickets.length > 0) {
+        renderTickets(filteredTickets);
+    } else {
+        noMarketplaceTickets('Tiket tidak ditemukan. Coba kata kunci atau kategori lain.');
+    }
+}
+
+function renderTickets(tickets) {
+    ticketListContainer.innerHTML = '';
+    if (tickets.length === 0) {
+        noMarketplaceTickets('Tiket tidak ditemukan.');
+        return;
+    }
+    tickets.forEach(ticket => {
+        const ticketCard = createMarketplaceCard(ticket);
+        ticketListContainer.appendChild(ticketCard);
+    });
+}
+
+function showSearchSuggestions(query) {
+    searchSuggestions.innerHTML = '';
+    if (query.length === 0) {
+        searchSuggestions.classList.remove('show');
+        return;
+    }
+    const suggestions = allMarketplaceTickets.filter(ticket => ticket.name && ticket.name.toLowerCase().includes(query)).slice(0, 5);
+    if (suggestions.length > 0) {
+        suggestions.forEach(ticket => {
+            const suggestionItem = document.createElement('div');
+            suggestionItem.className = 'px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm';
+            suggestionItem.textContent = ticket.name;
+            suggestionItem.addEventListener('click', () => {
+                searchInput.value = ticket.name;
+                currentSearchQuery = ticket.name.toLowerCase();
+                searchSuggestions.classList.remove('show');
+                renderFilteredTickets();
+            });
+            searchSuggestions.appendChild(suggestionItem);
+        });
+        searchSuggestions.classList.add('show');
+    } else {
+        searchSuggestions.classList.remove('show');
+    }
+}
+
+function noMarketplaceTickets(message = 'Belum ada tiket di marketplace.') {
+    ticketListContainer.innerHTML = `<p class="text-center text-gray-500 col-span-full py-8">${message}</p>`;
+}
+
+function createMarketplaceCard(ticketData) {
+    const cardDiv = document.createElement('div');
+    cardDiv.className = 'bg-white rounded-xl shadow-md overflow-hidden flex flex-col hover:shadow-xl transition-all duration-300';
+    cardDiv.setAttribute('data-ticket-id', ticketData.id);
+
+    const price = ticketData.price || {};
+    let displayPriceHtml = `<p class="price-promo font-bold text-lg text-indigo-600">Rp. ${price.original ? price.original.toLocaleString('id-ID') : '0'}</p>`;
+    if (price.promo) {
+        displayPriceHtml = `<p class="price-promo font-bold text-lg text-indigo-600">Rp. ${price.promo.toLocaleString('id-ID')}</p>
+                           <p class="price-original text-xs ml-2 text-red-500 line-through">Rp. ${price.original.toLocaleString('id-ID')}</p>`;
+    }
+
+    const sellerName = ticketData.sellerInfo?.name || 'Penjual';
+    const likeCount = ticketData.likes ? Object.keys(ticketData.likes).length : 0;
+    const dislikeCount = ticketData.dislikes ? Object.keys(ticketData.dislikes).length : 0;
+    const commentCount = ticketData.comments ? Object.keys(ticketData.comments).length : 0;
+    const hasLiked = currentUser && ticketData.likes && ticketData.likes[currentUser.uid];
+    const hasDisliked = currentUser && ticketData.dislikes && ticketData.dislikes[currentUser.uid];
+    const isFavorite = favoriteTickets.some(t => t.id === ticketData.id);
+    
+    const popularBadge = ticketData.viewCount > 10 ? 
+        `<span class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full badge-popular">
+            <i class="fas fa-fire-alt mr-1"></i>Populer
+        </span>` : '';
+    
+    const classBadge = ticketData.ticketClass ? 
+        `<span class="absolute top-2 left-2 bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded-full">
+            ${ticketData.ticketClass}
+        </span>` : '';
+
+    cardDiv.innerHTML = `
+        <div class="h-32 bg-gray-200 relative">
+            <img src="${ticketData.imageUrl || 'https://placehold.co/400x300/e2e8f0/adb5bd?text=Gambar'}"
+                  alt="${ticketData.name}" class="w-full h-full object-cover">
+            ${popularBadge}
+            ${classBadge}
+            <button class="save-button absolute top-2 right-2 bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md hover:bg-gray-100"
+                     data-ticket-id="${ticketData.id}" title="${isFavorite ? 'Hapus dari favorit' : 'Tambahkan ke favorit'}">
+                <i class="fas fa-star ${isFavorite ? 'text-yellow-500' : 'text-gray-400'}"></i>
+            </button>
+        </div>
+        <div class="p-4 flex flex-col flex-grow">
+            <h3 class="font-bold text-base text-gray-800 leading-snug truncate">${ticketData.name || 'Tanpa Judul'}</h3>
+            <p class="text-xs text-gray-500 mt-1 truncate">${ticketData.route?.from || ''} &rarr; ${ticketData.route?.to || ''}</p>
+            <p class="text-xs text-gray-600 mt-2 truncate"><i class="fas fa-user-tag text-gray-400 mr-1"></i>${sellerName}</p>
+            <div class="mt-2 flex items-baseline">
+                ${displayPriceHtml}
+            </div>
+            <div class="mt-3 flex justify-between items-center text-sm text-gray-600">
+                <div class="flex items-center gap-3">
+                    <button class="like-button flex items-center ${hasLiked ? 'text-blue-600 font-semibold' : ''}" data-ticket-id="${ticketData.id}">
+                        <i class="fas fa-thumbs-up mr-1"></i>
+                        <span class="like-count">${likeCount}</span>
+                    </button>
+                    <button class="dislike-button flex items-center ${hasDisliked ? 'text-red-600 font-semibold' : ''}" data-ticket-id="${ticketData.id}">
+                        <i class="fas fa-thumbs-down mr-1"></i>
+                        <span class="dislike-count">${dislikeCount}</span>
+                    </button>
+                </div>
+                <button class="comment-button flex items-center" data-ticket-id="${ticketData.id}" data-ticket-name="${ticketData.name || 'Tiket'}">
+                    <i class="fas fa-comment mr-1"></i>
+                    <span class="comment-count">${commentCount}</span>
+                </button>
+            </div>
+            <div class="mt-auto pt-4 border-t border-gray-100">
+                <a href="home.html?id=${ticketData.id}" class="block w-full bg-indigo-600 text-white font-semibold py-2 rounded-lg text-center text-sm hover:bg-indigo-700">Detail</a>
+            </div>
+        </div>
+    `;
+
+    const likeButton = cardDiv.querySelector('.like-button');
+    const dislikeButton = cardDiv.querySelector('.dislike-button');
+    const commentButton = cardDiv.querySelector('.comment-button');
+    const saveButton = cardDiv.querySelector('.save-button');
+
+    likeButton.addEventListener('click', (e) => {
+        e.preventDefault(); e.stopPropagation();
+        toggleLike(ticketData.id);
+    });
+    dislikeButton.addEventListener('click', (e) => {
+        e.preventDefault(); e.stopPropagation();
+        toggleDislike(ticketData.id);
+    });
+    commentButton.addEventListener('click', (e) => {
+        e.preventDefault(); e.stopPropagation();
+        openCommentsModal(ticketData.id, ticketData.name || 'Tiket');
+    });
+    saveButton.addEventListener('click', (e) => {
+        e.preventDefault(); e.stopPropagation();
+        toggleFavorite(ticketData.id);
+    });
+    cardDiv.addEventListener('click', (e) => {
+        if (!e.target.closest('button')) {
+            API.incrementTicketView(ticketData);
+        }
+    });
+
+    return cardDiv;
+}
+
+// --- 7. ACTIONS (LIKE, DISLIKE, COMMENT) USING API ---
+async function toggleLike(ticketId) {
+    if (!currentUser) { alert('Silakan login untuk menyukai tiket.'); return; }
+    const ticket = allMarketplaceTickets.find(t => t.id === ticketId);
+    if (ticket) await API.toggleTicketLike(ticket, currentUser.uid);
+}
+
+async function toggleDislike(ticketId) {
+    if (!currentUser) { alert('Silakan login untuk tidak menyukai tiket.'); return; }
+    const ticket = allMarketplaceTickets.find(t => t.id === ticketId);
+    if (ticket) await API.toggleTicketDislike(ticket, currentUser.uid);
+}
+
+function openCommentsModal(ticketId, ticketName) {
+    if (!ticketId) return;
+    activeTicketComments = ticketId;
+    commentModalTitle.textContent = `Komentar untuk ${ticketName}`;
+    loadComments(ticketId);
+    commentsModal.classList.remove('hidden');
+}
+
+function loadComments(ticketId) {
+    const ticket = allMarketplaceTickets.find(t => t.id === ticketId);
+    if (!ticket) return;
+
+    API.subscribeToComments(ticketId, ticket.userId, (snapshot) => {
+        commentsSection.innerHTML = '';
+        if (!snapshot.exists()) {
+            commentsSection.innerHTML = '<p class="text-center text-gray-500 py-4">Belum ada komentar.</p>';
+            return;
+        }
+        const comments = [];
+        snapshot.forEach((childSnapshot) => {
+            comments.push({ id: childSnapshot.key, ...childSnapshot.val() });
+        });
+        comments.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+
+        comments.forEach(comment => {
+            const commentEl = document.createElement('div');
+            commentEl.className = 'bg-gray-50 p-3 rounded-lg';
+            const date = comment.timestamp ? new Date(comment.timestamp) : new Date();
+            const formattedDate = date.toLocaleString('id-ID', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+            
+            commentEl.innerHTML = `
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 mr-3">
+                        <div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-500">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="flex-grow">
+                        <p class="font-medium text-gray-900">${comment.userName || 'Pengguna'}</p>
+                        <p class="text-sm text-gray-600 whitespace-pre-line">${comment.text}</p>
+                        <p class="text-xs text-gray-400 mt-1">${formattedDate}</p>
+                    </div>
+                </div>
+            `;
+            commentsSection.appendChild(commentEl);
+        });
+    });
+}
+
+async function submitComment() {
+    if (!currentUser) { alert('Silakan login untuk menambahkan komentar.'); return; }
+    if (!activeTicketComments) { alert('Terjadi kesalahan. Silakan coba lagi.'); return; }
+    const commentText = newCommentInput.value.trim();
+    if (!commentText) { alert('Komentar tidak boleh kosong.'); return; }
+
+    const ticket = allMarketplaceTickets.find(t => t.id === activeTicketComments);
+    if (!ticket) return;
+
+    try {
+        const userSnapshot = await API.getUserProfile(currentUser.uid);
+        const userName = userSnapshot.exists() ? userSnapshot.val().name : 'Pengguna';
+        
+        await API.postComment(activeTicketComments, ticket.userId, currentUser.uid, userName, commentText);
+        newCommentInput.value = '';
+    } catch (e) {
+        console.error("Failed to comment", e);
+    }
+}
+
+// --- 8. GLOBAL EVENT LISTENERS (Menu, Search, Sort) ---
+menuButton.addEventListener('click', (e) => { e.stopPropagation(); menuDropdown.classList.toggle('hidden'); });
+window.addEventListener('click', (e) => {
+    if (!menuDropdown.contains(e.target) && !menuButton.contains(e.target)) {
+        if (!menuDropdown.classList.contains('hidden')) menuDropdown.classList.add('hidden');
+    }
+    if (!categoryDropdown.contains(e.target) && !categoryDropdownButton.contains(e.target)) {
+        if (categoryDropdown.classList.contains('show')) categoryDropdown.classList.remove('show');
+    }
+    if (!searchInput.contains(e.target) && !searchSuggestions.contains(e.target)) {
+        searchSuggestions.classList.remove('show');
+    }
+    if (!sortMenu.contains(e.target) && !sortButton.contains(e.target)) {
+        sortMenu.classList.remove('show');
+    }
+});
+searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase();
+    showSearchSuggestions(query);
+    currentSearchQuery = query;
+    renderFilteredTickets();
+});
+categoryDropdownButton.addEventListener('click', (e) => { e.stopPropagation(); categoryDropdown.classList.toggle('show'); });
+sortButton.addEventListener('click', (e) => { e.stopPropagation(); sortMenu.classList.toggle('show'); });
+document.querySelectorAll('.sort-option').forEach(option => {
+    option.addEventListener('click', (e) => {
+        const sortMethod = e.target.dataset.sort;
+        currentSortMethod = sortMethod;
+        switch (sortMethod) {
+            case 'newest': currentSortText.textContent = 'Terbaru'; break;
+            case 'popular': currentSortText.textContent = 'Terpopuler'; break;
+            case 'likes': currentSortText.textContent = 'Like Terbanyak'; break;
+            case 'comments': currentSortText.textContent = 'Komentar Terbanyak'; break;
+        }
+        sortMenu.classList.remove('show');
+        sortTickets();
+        renderFilteredTickets();
+    });
+});
+closeCommentsModal.addEventListener('click', () => { commentsModal.classList.add('hidden'); activeTicketComments = null; });
+submitCommentButton.addEventListener('click', submitComment);
+newCommentInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submitComment(); }
+});
+
+// --- 9. DYNAMIC NAV & LINKS ---
+const staticNavItems = [
+    { id: 'profil', label: 'Profil', href: 'profil.html', iconClass: "fas fa-user", bg: 'bg-blue-100', text: 'text-blue-500' },
+    { id: 'beli-tiket', label: 'Beli Tiket', href: 'home.html', iconClass: "fas fa-ticket-alt", bg: 'bg-green-100', text: 'text-green-600' },
+    { id: 'riwayat', label: 'Riwayat', href: 'riwayatpemesanan.html', iconClass: "fas fa-history", bg: 'bg-orange-100', text: 'text-orange-500' },
+    { id: 'tiket', label: 'Jualan Tiket', href: 'inputtiket.html', iconClass: "fas fa-store", bg: 'bg-red-100', text: 'text-red-500' },
+    { id: 'chat', label: 'Chat Global', href: 'https://globalchatmessage.vercel.app/', iconClass: "fas fa-comments", bg: 'bg-purple-100', text: 'text-purple-600' },
+    { id: 'install', label: 'Instal Aplikasi', href: 'https://median.co/share/qakxyn#apk', iconClass: "fas fa-download", bg: 'bg-indigo-100', text: 'text-indigo-600' }
+];
+
+function renderDynamicNav() {
+    dynamicNavContainer.innerHTML = '';
+    staticNavItems.forEach(item => {
+        const navElement = document.createElement('a');
+        navElement.href = item.href;
+        if (item.href.startsWith('http')) { navElement.target = '_blank'; navElement.rel = 'noopener noreferrer'; }
+        navElement.className = 'flex flex-col items-center p-2 rounded-lg hover:bg-gray-100 transition-colors w-20';
+        navElement.innerHTML = `<div class="w-14 h-14 ${item.bg} ${item.text} rounded-2xl flex items-center justify-center mb-1"><i class="${item.iconClass} text-xl"></i></div><span class="text-xs">${item.label}</span>`;
+        dynamicNavContainer.appendChild(navElement);
+    });
+    savedLinks.forEach(link => {
+        const navElement = document.createElement('a');
+        navElement.href = link.url;
+        navElement.target = '_blank';
+        navElement.rel = 'noopener noreferrer';
+        navElement.title = link.url;
+        navElement.className = 'flex flex-col items-center p-2 rounded-lg hover:bg-gray-100 transition-colors w-20';
+        navElement.innerHTML = `<div class="w-14 h-14 rounded-2xl flex items-center justify-center bg-white border"><img src="${link.favicon}" alt="Logo" class="w-3/4 h-3/4 object-contain"></div><span class="text-xs truncate w-full">${new URL(link.url).hostname.replace('www.', '')}</span>`;
+        dynamicNavContainer.appendChild(navElement);
+    });
+    const addLinkButtonNav = document.createElement('button');
+    addLinkButtonNav.id = 'add-link-nav-trigger';
+    addLinkButtonNav.className = 'flex flex-col items-center p-2 rounded-lg hover:bg-gray-100 transition-colors w-20';
+    addLinkButtonNav.innerHTML = `<div class="w-14 h-14 bg-gray-200 text-gray-600 rounded-2xl flex items-center justify-center mb-1"><i class="fas fa-plus text-xl"></i></div><span class="text-xs">Tambah</span>`;
+    dynamicNavContainer.appendChild(addLinkButtonNav);
+    addLinkButtonNav.addEventListener('click', () => { renderModalLinkList(); yourLinkModal.classList.remove('hidden'); });
+}
+
+function renderModalLinkList() {
+    savedLinksList.innerHTML = '';
+    if (savedLinks.length === 0) { savedLinksList.innerHTML = `<p class="text-center text-gray-500 py-4">Belum ada tautan.</p>`; return; }
+    savedLinks.forEach((link, index) => {
+        const linkElement = document.createElement('div');
+        linkElement.className = 'flex items-center justify-between bg-gray-50 p-3 rounded-lg';
+        linkElement.innerHTML = `<a href="${link.url}" target="_blank" class="flex items-center gap-3 truncate min-w-0"><img src="${link.favicon}" class="w-6 h-6 object-contain flex-shrink-0"><span class="text-sm font-medium text-indigo-700 hover:underline truncate">${link.url}</span></a><button data-index="${index}" class="delete-link-button text-red-500 hover:text-red-700 p-1"><i class="fas fa-trash-alt"></i></button>`;
+        savedLinksList.appendChild(linkElement);
+    });
+}
+
+function saveLinksToStorage() { localStorage.setItem('userCustomLinksV2', JSON.stringify(savedLinks)); }
+function loadLinksFromStorage() { const linksFromStorage = localStorage.getItem('userCustomLinksV2'); savedLinks = linksFromStorage ? JSON.parse(linksFromStorage) : []; }
+
+function addNewLink() {
+    let url = newLinkInput.value.trim();
+    if (!url) return;
+    if (!url.startsWith('http')) { url = 'https://' + url; }
+    const faviconUrl = `https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${encodeURIComponent(url)}&size=128`;
+    if (savedLinks.some(link => link.url === url)) { alert('Tautan ini sudah ada.'); return; }
+    savedLinks.push({ url: url, favicon: faviconUrl });
+    saveLinksToStorage();
+    renderDynamicNav();
+    newLinkInput.value = '';
+    yourLinkModal.classList.add('hidden');
+}
+function deleteLink(index) { savedLinks.splice(index, 1); saveLinksToStorage(); renderModalLinkList(); renderDynamicNav(); }
+
+dynamicNavContainer.addEventListener('click', (e) => { const triggerButton = e.target.closest('#add-link-nav-trigger'); if (triggerButton) { renderModalLinkList(); yourLinkModal.classList.remove('hidden'); } });
+closeYourLinkModal.addEventListener('click', () => { yourLinkModal.classList.add('hidden'); });
+addLinkButton.addEventListener('click', addNewLink);
+newLinkInput.addEventListener('keypress', (e) => e.key === 'Enter' && addNewLink());
+savedLinksList.addEventListener('click', (e) => { const deleteButton = e.target.closest('.delete-link-button'); if (deleteButton) deleteLink(deleteButton.getAttribute('data-index')); });
+
+// --- 10. BOOKING HISTORY LOGIC ---
+function loadAllMyBookings(userId) {
+    API.subscribeToMyBookings(userId, (snapshot) => {
+        historyCarouselTrack.innerHTML = '';
+        historyCarouselTrack.classList.remove('is-animating', 'justify-center');
+        historyCarouselTrack.style.animationDuration = '';
+        
+        if (snapshot.exists()) {
+            const bookings = snapshot.val();
+            const bookingCards = Object.keys(bookings)
+                .sort((a, b) => bookings[b].bookingTimestamp - bookings[a].bookingTimestamp)
+                .map(bookingId => createBookingCard(bookingId, bookings[bookingId]));
+
+            if (bookingCards.length > 1) {
+                const allCards = [...bookingCards, ...bookingCards];
+                allCards.forEach(card => historyCarouselTrack.appendChild(card));
+                const duration = bookingCards.length * 5;
+                historyCarouselTrack.style.animationDuration = `${duration}s`;
+                historyCarouselTrack.classList.add('is-animating');
+            } else if (bookingCards.length === 1) {
+                historyCarouselTrack.appendChild(bookingCards[0]);
+                historyCarouselTrack.classList.add('justify-center');
+            }
+        } else {
+            displayLoginPromptForHistory('Anda belum memiliki riwayat pesanan.');
+        }
+    });
+}
+
+function displayLoginPromptForHistory(message = 'Login untuk melihat riwayat pesanan Anda.') {
+    document.getElementById('history-section').innerHTML = `<h2 class="text-2xl font-bold text-gray-800 mb-4">Riwayat Pesanan Anda</h2><div class="bg-white rounded-xl shadow-sm p-8 text-center"><p class="text-gray-600">${message}</p><a href="login.html" class="mt-4 inline-block bg-indigo-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-indigo-700 text-sm">Login</a></div>`;
+}
+
+function createBookingCard(bookingId, bookingData) {
+    const itemWrapper = document.createElement('div');
+    itemWrapper.className = 'carousel-item';
+    const card = document.createElement('div');
+    card.className = 'w-full h-full bg-white rounded-xl shadow-lg overflow-hidden flex flex-col min-h-[380px]';
+    const ticketInfo = bookingData.ticketInfo || {};
+    const sellerName = ticketInfo.sellerInfo?.name || 'Tidak Diketahui';
+    
+    card.innerHTML = `
+        <div class="p-4 bg-indigo-100 border-b border-indigo-200">
+            <p class="font-bold text-indigo-800">${ticketInfo.name || 'Data Pesanan'}</p>
+            <p class="text-xs font-mono text-indigo-600">${bookingId}</p>
+        </div>
+        <div class="p-4 space-y-2 text-sm flex-grow">
+            <p><span class="font-semibold text-gray-600">Status:</span> <span class="font-bold">${bookingData.status || 'N/A'}</span></p>
+            <p><span class="font-semibold text-gray-600">Rute:</span> ${ticketInfo.route?.from || ''} &rarr; ${ticketInfo.route?.to || ''}</p>
+            <p><span class="font-semibold text-gray-600">Penjual:</span> ${sellerName}</p>
+            <p class="text-xs text-gray-500 leading-relaxed">${ticketInfo.description || 'Tidak ada deskripsi.'}</p>
+        </div>
+        <div class="p-4 border-t border-gray-100 flex justify-between">
+             <button class="text-red-500 hover:text-red-700 text-xs" onclick="showDeleteModal('${bookingId}')">Hapus</button>
+        </div>
+    `;
+    // We attach the onclick handler globally or via event delegation, 
+    // but for simplicity in this structure, we use a helper bridge below.
+    itemWrapper.appendChild(card);
+    
+    // Attach click listener manually to avoid global scope pollution issues
+    const deleteBtn = card.querySelector('button');
+    deleteBtn.onclick = () => showDeleteModal(bookingId);
+    
+    return itemWrapper;
+}
+
+function showDeleteModal(bookingId) {
+    deleteModal.dataset.bookingId = bookingId;
+    passwordInput.value = '';
+    errorMessage.classList.add('hidden');
+    confirmButton.disabled = false;
+    confirmButton.textContent = 'Konfirmasi & Hapus';
+    deleteModal.classList.remove('hidden');
+}
+
+cancelButton.addEventListener('click', () => { deleteModal.classList.add('hidden'); });
+
+confirmButton.addEventListener('click', async () => {
+    const bookingId = deleteModal.dataset.bookingId;
+    const password = passwordInput.value;
+    
+    if (!password) {
+        errorMessage.textContent = 'Kata sandi tidak boleh kosong.';
+        errorMessage.classList.remove('hidden');
+        return;
+    }
+
+    confirmButton.disabled = true;
+    confirmButton.textContent = 'Memverifikasi...';
+    errorMessage.classList.add('hidden');
+
+    try {
+        // API Call
+        await API.reauthenticateUser(password);
+        await API.deleteBooking(bookingId);
+        
+        alert('Tiket berhasil dihapus.');
+        deleteModal.classList.add('hidden');
+    } catch (error) {
+        if (error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
+            errorMessage.textContent = 'Kata sandi salah.';
+        } else {
+            errorMessage.textContent = 'Terjadi kesalahan.';
+        }
+        errorMessage.classList.remove('hidden');
+    } finally {
+        confirmButton.disabled = false;
+        confirmButton.textContent = 'Konfirmasi & Hapus';
+    }
+});
+
+// --- 11. TICKER & ANNOUNCEMENTS ---
+function initializeNewTicketTickerFeature() {
+    const tickerTrack = document.getElementById('ticker-track');
+    const tickerViewport = document.getElementById('ticker-viewport');
+    const tickerExpandBtn = document.getElementById('ticker-expand-btn');
+    const tickerDropdown = document.getElementById('ticker-dropdown');
+    const tickerFullList = document.getElementById('ticker-full-list');
+
+    if (!tickerTrack || !tickerViewport) return;
+
+    function renderNewTicketTicker(tickets) {
+        tickerTrack.innerHTML = '';
+        tickerFullList.innerHTML = '';
+        tickerTrack.classList.remove('is-animating');
+
+        if (!tickets || tickets.length === 0) {
+            tickerTrack.innerHTML = '<span class="text-gray-500">Belum ada tiket yang tersedia.</span>';
+            tickerExpandBtn.classList.add('hidden');
+            return;
+        }
+
+        const recentTickets = tickets.slice(0, 20);
+        recentTickets.forEach((ticket, index) => {
+            const ticketNameEl = document.createElement('a');
+            ticketNameEl.href = `pesantiket.html?id=${ticket.id || ''}`;
+            ticketNameEl.className = 'ticker-item font-semibold hover:underline';
+            ticketNameEl.textContent = ticket.name || 'Tiket Tanpa Nama';
+            tickerTrack.appendChild(ticketNameEl);
+
+            if (index < recentTickets.length - 1) {
+                const separator = document.createElement('span');
+                separator.className = 'ticker-separator';
+                separator.innerHTML = '&bull;';
+                tickerTrack.appendChild(separator);
+            }
+        });
+
+        tickets.forEach(ticket => {
+            const listItem = document.createElement('li');
+            listItem.className = 'p-2 border-b border-gray-100 last:border-b-0 hover:bg-gray-50';
+            const createdDate = ticket.createdAt ? new Date(ticket.createdAt).toLocaleString('id-ID', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'Baru';
+            listItem.innerHTML = `
+                <a href="pesantiket.html?id=${ticket.id || ''}" class="block">
+                    <p class="font-medium text-gray-800 truncate">${ticket.name}</p>
+                    <div class="flex justify-between items-center mt-1">
+                        <p class="text-xs text-gray-500">Dibuat: ${createdDate}</p>
+                        <p class="text-xs font-semibold text-indigo-600">
+                            Rp ${(ticket.price?.promo || ticket.price?.original || 0).toLocaleString('id-ID')}
+                        </p>
+                    </div>
+                </a>
+            `;
+            tickerFullList.appendChild(listItem);
+        });
+
+        setTimeout(() => {
+            const trackWidth = tickerTrack.scrollWidth;
+            const viewportWidth = tickerViewport.clientWidth;
+            if (trackWidth > viewportWidth) {
+                tickerExpandBtn.classList.remove('hidden');
+                const originalContent = tickerTrack.innerHTML;
+                tickerTrack.innerHTML += originalContent;
+                const duration = trackWidth / 50;
+                tickerTrack.style.animationDuration = `${duration}s`;
+                tickerTrack.classList.add('is-animating');
+            } else {
+                tickerExpandBtn.classList.add('hidden');
+            }
+        }, 150);
+    }
+
+    tickerExpandBtn.addEventListener('click', (e) => { e.stopPropagation(); tickerDropdown.classList.toggle('show'); });
+    window.addEventListener('click', (e) => { if (!tickerDropdown.contains(e.target) && !tickerExpandBtn.contains(e.target)) { tickerDropdown.classList.remove('show'); } });
+
+    setInterval(() => {
+        if (allMarketplaceTickets.length > 0) {
+            const sortedTickets = [...allMarketplaceTickets].sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+            renderNewTicketTicker(sortedTickets);
+        }
+    }, 2000);
+}
+initializeNewTicketTickerFeature();
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Basic Ad Carousel (Static or Placeholder)
+    const container = document.getElementById('ad-carousel-container');
+    const track = document.getElementById('ad-carousel-track');
+    const slides = document.querySelectorAll('.ad-slide');
+    const prevButton = document.getElementById('ad-carousel-prev');
+    const nextButton = document.getElementById('ad-carousel-next');
+    const indicatorsContainer = document.getElementById('ad-carousel-indicators');
+
+    if (slides.length === 0) { if (container) container.style.display = 'none'; return; }
+    if (slides.length <= 1) { if (prevButton) prevButton.style.display = 'none'; if (nextButton) nextButton.style.display = 'none'; if (indicatorsContainer) indicatorsContainer.style.display = 'none'; return; }
+
+    let currentIndex = 0;
+    let autoSlideInterval;
+
+    slides.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.classList.add('indicator-dot');
+        dot.addEventListener('click', () => { goToSlide(index); resetAutoSlideTimer(); });
+        indicatorsContainer.appendChild(dot);
+    });
+    const indicators = document.querySelectorAll('.indicator-dot');
+
+    function goToSlide(index) {
+        if (index < 0) { index = slides.length - 1; } else if (index >= slides.length) { index = 0; }
+        track.style.transform = `translateX(-${index * 100}%)`;
+        currentIndex = index;
+        updateIndicators();
+    }
+    function updateIndicators() { indicators.forEach((dot, index) => { if (index === currentIndex) { dot.classList.add('active'); } else { dot.classList.remove('active'); } }); }
+    function nextSlide() { goToSlide(currentIndex + 1); }
+    function prevSlide() { goToSlide(currentIndex - 1); }
+    function startAutoSlide() { clearInterval(autoSlideInterval); autoSlideInterval = setInterval(nextSlide, 3000); }
+    function stopAutoSlide() { clearInterval(autoSlideInterval); }
+    function resetAutoSlideTimer() { stopAutoSlide(); startAutoSlide(); }
+
+    nextButton.addEventListener('click', () => { nextSlide(); resetAutoSlideTimer(); });
+    prevButton.addEventListener('click', () => { prevSlide(); resetAutoSlideTimer(); });
+    container.addEventListener('mouseenter', stopAutoSlide);
+    container.addEventListener('mouseleave', startAutoSlide);
+    updateIndicators();
+    startAutoSlide();
+});
+
+// Announcements
+document.addEventListener('DOMContentLoaded', function() {
+    const announcements = ["Selamat Datang di Tiketku App!", "Developer by Arifan Alfahri", "Fitur Saldo Segera Kami Buat", "Update aplikasi Anda ke versi terbaru.", "Terimaksih Sudah Mengunjungi Tiket Kita."];
+    const track = document.getElementById('announcement-track');
+    if (!track) return;
+
+    track.innerHTML = '';
+    announcements.forEach((text, index) => {
+        const item = document.createElement('span');
+        item.className = 'announcement-item';
+        item.textContent = text;
+        track.appendChild(item);
+        if (index < announcements.length - 1) {
+            const separator = document.createElement('span');
+            separator.className = 'announcement-separator';
+            separator.innerHTML = '&diams;';
+            track.appendChild(separator);
+        }
+    });
+    setTimeout(() => {
+        const viewportWidth = track.parentElement.offsetWidth;
+        const trackWidth = track.scrollWidth;
+        if (trackWidth > viewportWidth) {
+            const originalContent = track.innerHTML;
+            track.innerHTML += ` <span class="announcement-separator" style="margin-left: 48px;">&diams;</span> ${originalContent} `;
+            const duration = (trackWidth + 48) / 80;
+            track.style.animationDuration = `${duration}s`;
+            track.classList.add('is-animating');
+        }
+    }, 100);
+});
+
+// --- 12. ADS LOGIC (API INTEGRATION) ---
+function loadUserAds() {
+    API.subscribeToAds((snapshot) => {
+        userAdsTrack.innerHTML = '';
+        userAdsIndicators.innerHTML = '';
+        
+        if (!snapshot.exists()) {
+            document.querySelector('.user-ads-carousel-container').parentElement.style.display = 'none';
+            return;
+        }
+
+        const ads = [];
+        const now = Date.now();
+        snapshot.forEach((childSnapshot) => {
+            const ad = childSnapshot.val();
+            ad.id = childSnapshot.key;
+            if (ad.status === 'active' && ad.expiresAt > now) {
+                ads.push(ad);
+            }
+        });
+
+        if (ads.length === 0) {
+            document.querySelector('.user-ads-carousel-container').parentElement.style.display = 'none';
+            return;
+        }
+
+        document.querySelector('.user-ads-carousel-container').parentElement.style.display = 'block';
+        ads.forEach((ad, index) => {
+            const slide = document.createElement('div');
+            slide.className = 'user-ad-slide';
+            const expiryDate = new Date(ad.expiresAt);
+            const formattedExpiry = expiryDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+            
+            slide.innerHTML = `
+                <div class="user-ad-content">
+                    <img src="${ad.imageUrl || 'https://placehold.co/120x120/e2e8f0/adb5bd?text=Ad'}" alt="${ad.title}" class="user-ad-image">
+                    <div class="user-ad-details">
+                        <h3 class="user-ad-title">${ad.title}</h3>
+                        <p class="user-ad-description">${ad.description || 'Promosi menarik untuk Anda'}</p>
+                        <div class="user-ad-meta">
+                            <span class="user-ad-author">Oleh: ${ad.userEmail}</span>
+                            <a href="${ad.targetUrl || '#'}" target="_blank" class="user-ad-cta">Lihat Detail</a>
+                        </div>
+                    </div>
+                    <span class="user-ad-badge">Berlaku hingga ${formattedExpiry}</span>
+                </div>
+            `;
+            userAdsTrack.appendChild(slide);
+
+            const indicator = document.createElement('button');
+            indicator.className = 'user-ad-indicator';
+            if (index === 0) indicator.classList.add('active');
+            indicator.addEventListener('click', () => { goToUserAdSlide(index); resetUserAdAutoSlideTimer(); });
+            userAdsIndicators.appendChild(indicator);
+        });
+        initializeUserAdsCarousel(ads.length);
+    });
+}
+
+function initializeUserAdsCarousel(slidesCount) {
+    if (slidesCount <= 1) {
+        userAdsPrevButton.style.display = 'none';
+        userAdsNextButton.style.display = 'none';
+        userAdsIndicators.style.display = 'none';
+        return;
+    }
+    userAdsPrevButton.addEventListener('click', () => { prevUserAdSlide(); resetUserAdAutoSlideTimer(); });
+    userAdsNextButton.addEventListener('click', () => { nextUserAdSlide(); resetUserAdAutoSlideTimer(); });
+    document.getElementById('user-ads-carousel-container').addEventListener('mouseenter', stopUserAdAutoSlide);
+    document.getElementById('user-ads-carousel-container').addEventListener('mouseleave', startUserAdAutoSlide);
+    startUserAdAutoSlide();
+}
+
+function goToUserAdSlide(index) {
+    const indicators = document.querySelectorAll('.user-ad-indicator');
+    const slidesCount = userAdsTrack.children.length;
+    if (index < 0) index = slidesCount - 1;
+    if (index >= slidesCount) index = 0;
+    userAdsTrack.style.transform = `translateX(-${index * 100}%)`;
+    userAdsCurrentIndex = index;
+    indicators.forEach((indicator, i) => { if (i === index) { indicator.classList.add('active'); } else { indicator.classList.remove('active'); } });
+}
+function nextUserAdSlide() { goToUserAdSlide(userAdsCurrentIndex + 1); }
+function prevUserAdSlide() { goToUserAdSlide(userAdsCurrentIndex - 1); }
+function startUserAdAutoSlide() { stopUserAdAutoSlide(); userAdsAutoSlideInterval = setInterval(nextUserAdSlide, 5000); }
+function stopUserAdAutoSlide() { clearInterval(userAdsAutoSlideInterval); }
+function resetUserAdAutoSlideTimer() { stopUserAdAutoSlide(); startUserAdAutoSlide(); }
+
+function loadMyAds() {
+    if (!currentUser) { myAdsSection.style.display = 'none'; return; }
+    myAdsSection.style.display = 'block';
+
+    API.subscribeToMyAds(currentUser.uid, (snapshot) => {
+        myAdsGrid.innerHTML = '';
+        if (!snapshot.exists()) {
+            myAdsGrid.innerHTML = `<div class="my-ads-empty"><i class="fas fa-ad"></i><p>Belum ada iklan</p><p class="text-xs mt-2">Klik tombol "Buat Iklan"</p></div>`;
+            return;
+        }
+
+        const ads = [];
+        const now = Date.now();
+        snapshot.forEach((childSnapshot) => {
+            const ad = childSnapshot.val();
+            ad.id = childSnapshot.key;
+            ads.push(ad);
+        });
+        ads.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+
+        ads.forEach(ad => {
+            const expiryDate = new Date(ad.expiresAt);
+            const formattedExpiry = expiryDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+            const isExpired = ad.expiresAt < now;
+            
+            const adCard = document.createElement('div');
+            adCard.className = 'my-ad-card';
+            adCard.innerHTML = `
+                <img src="${ad.imageUrl || 'https://placehold.co/280x160/e2e8f0/adb5bd?text=Ad'}" alt="${ad.title}" class="my-ad-image">
+                <div class="my-ad-content">
+                    <h3 class="my-ad-title">${ad.title}</h3>
+                    <p class="my-ad-description">${ad.description || 'Promosi'}</p>
+                    <div class="my-ad-meta">
+                        <span class="my-ad-status ${isExpired ? 'status-expired' : 'status-active'}">${isExpired ? 'Kadaluarsa' : 'Aktif'}</span>
+                        <span class="my-ad-date">Berakhir: ${formattedExpiry}</span>
+                    </div>
+                    <div class="my-ad-actions">
+                        <button class="btn-small btn-edit" data-ad-id="${ad.id}"><i class="fas fa-edit mr-1"></i> Edit</button>
+                        <button class="btn-small btn-delete" data-ad-id="${ad.id}"><i class="fas fa-trash-alt mr-1"></i> Hapus</button>
+                        ${isExpired ? `<button class="btn-small btn-activate" data-ad-id="${ad.id}"><i class="fas fa-redo mr-1"></i>Aktifkan</button>` : ''}
+                    </div>
+                </div>
+            `;
+            const editButton = adCard.querySelector('.btn-edit');
+            const deleteButton = adCard.querySelector('.btn-delete');
+            const activateButton = adCard.querySelector('.btn-activate');
+            
+            editButton.addEventListener('click', () => { editAd(ad.id); });
+            deleteButton.addEventListener('click', () => { deleteAd(ad.id); });
+            if (activateButton) activateButton.addEventListener('click', () => { activateAd(ad.id); });
+            
+            myAdsGrid.appendChild(adCard);
+        });
+    });
+}
+
+// Ad Creation & Editing
+createAdBtn.addEventListener('click', () => {
+    adCreationModal.classList.remove('hidden');
+    resetAdForm();
+    document.body.style.overflow = 'hidden';
+});
+adCreationClose.addEventListener('click', () => { adCreationModal.classList.add('hidden'); document.body.style.overflow = ''; });
+adCancelBtn.addEventListener('click', () => { adCreationModal.classList.add('hidden'); document.body.style.overflow = ''; });
+
+adImageUrl.addEventListener('input', (e) => {
+    const url = e.target.value.trim();
+    const imagePreview = document.getElementById('ad-image-preview');
+    const placeholder = document.getElementById('image-placeholder');
+    if (url) {
+        imagePreview.src = url;
+        imagePreview.classList.remove('hidden');
+        placeholder.classList.add('hidden');
+        imagePreview.onerror = function() {
+            this.classList.add('hidden');
+            placeholder.classList.remove('hidden');
+            placeholder.innerHTML = `<i class="fas fa-exclamation-circle text-red-500 text-3xl mb-2"></i><p class="text-red-500">Gagal memuat gambar.</p>`;
+        };
+    } else {
+        imagePreview.classList.add('hidden');
+        placeholder.classList.remove('hidden');
+    }
+});
+
+function resetAdForm() {
+    adCreationForm.reset();
+    const imagePreview = document.getElementById('ad-image-preview');
+    const placeholder = document.getElementById('image-placeholder');
+    imagePreview.classList.add('hidden');
+    placeholder.classList.remove('hidden');
+    // Restore default submit behavior if it was replaced
+    document.querySelector('.ad-creation-title').textContent = 'Buat Iklan Promosi';
+    adSubmitBtn.textContent = 'Buat Iklan';
+    // Remove old listeners by cloning
+    const newForm = adCreationForm.cloneNode(true);
+    adCreationForm.parentNode.replaceChild(newForm, adCreationForm);
+    // Re-attach standard submit listener
+    newForm.addEventListener('submit', handleAdSubmit);
+}
+
+// Initial Listener Attach
+adCreationForm.addEventListener('submit', handleAdSubmit);
+
+async function handleAdSubmit(e) {
+    e.preventDefault();
+    if (!currentUser) { alert('Silakan login.'); return; }
+    
+    // Get Elements again because of cloning
+    const btn = document.getElementById('ad-submit-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Memproses...';
+
+    try {
+        const title = document.getElementById('ad-title').value.trim();
+        const description = document.getElementById('ad-description').value.trim();
+        const imageUrl = document.getElementById('ad-image-url').value.trim();
+        const targetUrl = document.getElementById('ad-target-url').value.trim();
+        const duration = parseInt(document.getElementById('ad-duration').value);
+
+        if (!title || !description || !imageUrl || !targetUrl || !duration) {
+            alert('Semua field harus diisi.'); return;
+        }
+
+        const now = Date.now();
+        const expiresAt = now + (duration * 24 * 60 * 60 * 1000);
+        const userSnapshot = await API.getUserProfile(currentUser.uid);
+        const userName = userSnapshot.exists() ? userSnapshot.val().name : 'Pengguna';
+
+        const newAd = {
+            title, description, imageUrl, targetUrl,
+            userId: currentUser.uid,
+            userEmail: currentUser.email,
+            userName,
+            duration,
+            status: 'active',
+            createdAt: now,
+            expiresAt
+        };
+
+        await API.createAd(newAd);
+        alert('Iklan berhasil dibuat!');
+        adCreationModal.classList.add('hidden');
+        document.body.style.overflow = '';
+        resetAdForm();
+    } catch (error) {
+        console.error('Error creating ad:', error);
+        alert('Terjadi kesalahan.');
+    } finally {
+        const btnFinal = document.getElementById('ad-submit-btn');
+        btnFinal.disabled = false;
+        btnFinal.textContent = 'Buat Iklan';
+    }
+}
+
+async function editAd(adId) {
+    if (!currentUser) return;
+    try {
+        const snapshot = await API.getAdById(adId);
+        if (!snapshot.exists()) { alert('Data tidak ditemukan.'); return; }
+        const ad = snapshot.val();
+        if (ad.userId !== currentUser.uid) { alert('Akses ditolak.'); return; }
+
+        document.getElementById('ad-title').value = ad.title;
+        document.getElementById('ad-description').value = ad.description;
+        document.getElementById('ad-image-url').value = ad.imageUrl;
+        document.getElementById('ad-target-url').value = ad.targetUrl;
+        document.getElementById('ad-duration').value = ad.duration;
+        
+        const imgPreview = document.getElementById('ad-image-preview');
+        if (ad.imageUrl) { imgPreview.src = ad.imageUrl; imgPreview.classList.remove('hidden'); }
+
+        adCreationModal.classList.remove('hidden');
+        document.querySelector('.ad-creation-title').textContent = 'Edit Iklan Promosi';
+        const submitBtn = document.getElementById('ad-submit-btn');
+        submitBtn.textContent = 'Update Iklan';
+
+        // Replace form to handle UPDATE instead of CREATE
+        const form = document.getElementById('ad-creation-form');
+        const newForm = form.cloneNode(true);
+        form.parentNode.replaceChild(newForm, form);
+
+        newForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            try {
+                const title = document.getElementById('ad-title').value.trim();
+                const description = document.getElementById('ad-description').value.trim();
+                const imageUrl = document.getElementById('ad-image-url').value.trim();
+                const targetUrl = document.getElementById('ad-target-url').value.trim();
+                const duration = parseInt(document.getElementById('ad-duration').value);
+                const now = Date.now();
+                const expiresAt = now + (duration * 24 * 60 * 60 * 1000);
+
+                await API.updateAd(adId, { title, description, imageUrl, targetUrl, duration, expiresAt });
+                alert('Iklan diperbarui!');
+                adCreationModal.classList.add('hidden');
+                resetAdForm(); // Will reset event listener back to create
+            } catch (err) {
+                alert('Gagal update.');
+            } finally {
+                submitBtn.disabled = false;
+            }
+        });
+
+    } catch (e) { console.error(e); }
+}
+
+async function deleteAd(adId) {
+    if (!currentUser || !confirm('Hapus iklan?')) return;
+    try {
+        const snapshot = await API.getAdById(adId);
+        if (snapshot.exists() && snapshot.val().userId === currentUser.uid) {
+            await API.deleteAd(adId);
+            alert('Terhapus');
+        }
+    } catch (e) { console.error(e); }
+}
+
+async function activateAd(adId) {
+    if (!currentUser) return;
+    try {
+        const snapshot = await API.getAdById(adId);
+        if (snapshot.exists() && snapshot.val().userId === currentUser.uid) {
+            const now = Date.now();
+            const expiresAt = now + (7 * 24 * 60 * 60 * 1000); // Activate for 7 days
+            await API.updateAd(adId, { status: 'active', expiresAt });
+            alert('Diaktifkan kembali!');
+        }
+    } catch (e) { console.error(e); }
+}
+
+// Ads Drawer
+function setupAdsDrawer() {
+    adsNavItem.addEventListener('click', (e) => { e.preventDefault(); adsDrawer.classList.add('open'); adsDrawerOverlay.classList.add('show'); document.body.style.overflow = 'hidden'; loadAdsForDrawer(); });
+    adsDrawerClose.addEventListener('click', closeAdsDrawer);
+    adsDrawerOverlay.addEventListener('click', closeAdsDrawer);
+}
+function closeAdsDrawer() { adsDrawer.classList.remove('open'); adsDrawerOverlay.classList.remove('show'); document.body.style.overflow = ''; }
+
+function loadAdsForDrawer() {
+    if (!currentUser) {
+        activeAdsList.innerHTML = `<div class="ads-drawer-empty"><p>Login untuk melihat iklan</p></div>`;
+        return;
+    }
+    API.subscribeToMyAds(currentUser.uid, (snapshot) => {
+        const activeAds = [];
+        const expiredAds = [];
+        const now = Date.now();
+        if (snapshot.exists()) {
+            snapshot.forEach((child) => {
+                const ad = child.val(); ad.id = child.key;
+                if (ad.expiresAt > now) activeAds.push(ad); else expiredAds.push(ad);
+            });
+        }
+        // Helper to render items (Simplified for brevity)
+        const renderList = (list, container, emptyMsg) => {
+            container.innerHTML = '';
+            if (list.length === 0) { container.innerHTML = `<div class="ads-drawer-empty"><p>${emptyMsg}</p></div>`; return; }
+            list.forEach(ad => {
+                const el = document.createElement('div');
+                el.className = 'ads-drawer-item';
+                el.innerHTML = `
+                    <div class="ads-drawer-item-header"><h4 class="ads-drawer-item-title">${ad.title}</h4></div>
+                    <div class="ads-drawer-item-actions">
+                        <button class="btn-small btn-edit" data-id="${ad.id}">Edit</button>
+                    </div>
+                `;
+                el.querySelector('.btn-edit').onclick = () => { closeAdsDrawer(); editAd(ad.id); };
+                container.appendChild(el);
+            });
+        };
+        renderList(activeAds, activeAdsList, 'Belum ada iklan aktif');
+        renderList(expiredAds, expiredAdsList, 'Belum ada iklan kadaluarsa');
+    });
+}
+setupAdsDrawer();
+
+// --- 13. OPTIMIZATIONS (Service Worker, Prefetch, Analytics) ---
+window.OneSignalDeferred = window.OneSignalDeferred || [];
+OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({ appId: "c36f3870-c97e-4455-893a-390733110491", safari_web_id: "web.onesignal.auto.41aef4b6-51a4-4778-92bc-f3aa3e26acde", notifyButton: { enable: true, }, });
+});
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-S54YFF38FF');
+
+// Install Popup Logic
+document.addEventListener('DOMContentLoaded', function() {
+    const popup = document.getElementById('installPopup');
+    const closeBtn = document.getElementById('closePopup');
+    const installBtn = document.getElementById('installButton');
+    const dontShowAgain = document.getElementById('dontShowAgain');
+    const hasInstalledApp = localStorage.getItem('hasInstalledApp') === 'true';
+    const dontShowPopup = localStorage.getItem('dontShowPopup') === 'true';
+
+    function showPopup() {
+        if (!hasInstalledApp && !dontShowPopup && popup) {
+            popup.classList.add('active');
+            const autoHideTimer = setTimeout(() => { hidePopup(); }, 10000);
+            popup.dataset.timerId = autoHideTimer;
+        }
+    }
+    function hidePopup() {
+        if (popup) {
+            popup.classList.remove('active');
+            if (popup.dataset.timerId) { clearTimeout(parseInt(popup.dataset.timerId)); delete popup.dataset.timerId; }
+        }
+    }
+    if (popup) {
+        setTimeout(showPopup, 2000);
+        const popupInterval = setInterval(() => { showPopup(); }, 180000);
+        closeBtn.addEventListener('click', function() { hidePopup(); });
+        installBtn.addEventListener('click', function(e) { localStorage.setItem('hasInstalledApp', 'true'); hidePopup(); clearInterval(popupInterval); });
+        dontShowAgain.addEventListener('click', function() {
+            if (this.classList.contains('disabled')) { this.classList.remove('disabled'); localStorage.removeItem('dontShowPopup'); }
+            else { this.classList.add('disabled'); localStorage.setItem('dontShowPopup', 'true'); hidePopup(); }
+        });
+        popup.addEventListener('click', function(e) { if (e.target === popup) { hidePopup(); } });
+    }
+});
+
+// Service Worker Registration
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(registration => { console.log('Service Worker berhasil didaftarkan'); })
+            .catch(error => { console.log('Pendaftaran Service Worker gagal: ', error); });
+    });
+}
+
+// Navigation & Cache Logic (Preserved from original)
+const pageCache = new Map();
+const CACHE_DURATION = 5 * 60 * 1000;
+function cachePageContent(url, content) { pageCache.set(url, { content: content, timestamp: Date.now() }); }
+function getCachedContent(url) { const cached = pageCache.get(url); if (cached && (Date.now() - cached.timestamp) < CACHE_DURATION) { return cached.content; } return null; }
+
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', async function(e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        window.location.href = href; // Simple navigation for stability
+    });
+});
+
+console.log('=== 🚀 SYSTEM OPTIMIZED (API SEPARATED) ===');
+</script>
 </body>
 </html>
 <div class="developer-info py-3 text-center text-sm"></div>
