@@ -1,0 +1,3963 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+ <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+ <script>
+  const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+  observer.observe();
+</script>
+ <script>
+  partytown = {
+    forward: ['dataLayer.push'] // Contoh untuk Google Analytics
+  };
+</script>
+  
+<script src="https://cdn.jsdelivr.net/npm/@builder.io/partytown/lib/partytown.js"></script>
+ 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js"></script>
+
+<script>
+window.addEventListener('load', () => {
+  quicklink.listen();
+});
+</script>
+ <script type="module">
+  import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';
+</script>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.0/src/lite-yt-embed.css" />
+<script src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.0/src/lite-yt-embed.js"></script>
+ <script src="router.js" defer></script>
+ <script type="module">
+  import autoAnimate from 'https://formkit.io/npm/@formkit/auto-animate/index.min.js'
+  // Terapkan ke elemen pembungkus (misal ID "list-konten")
+  autoAnimate(document.getElementById('list-konten'))
+</script>
+ <script src="router.js" defer></script>
+<!-- PREFETCH SEMUA HALAMAN MENU -->
+<link rel="prefetch" href="home.html">
+<link rel="prefetch" href="riwayatpemesanan.html">
+<link rel="prefetch" href="sosial.html">
+<link rel="prefetch" href="inputtiket.html">
+<link rel="prefetch" href="profil.html">
+
+<!-- PRELOAD HALAMAN PALING PENTING -->
+<link rel="preload" href="home.html" as="document">
+<link rel="preload" href="riwayatpemesanan.html" as="document">
+<link rel="preload" href="sosial.html" as="document">
+<link rel="preload" href="inputtiket.html" as="document">
+<link rel="preload" href="profil.html" as="document">
+
+<!-- DNS PREFETCH & PRECONNECT (untuk resource eksternal) -->
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+
+<meta name="theme-color" content="#4F46E5">
+<meta name="google-site-verification" content="3ymKz6IFpn90XmVb_uiGS94xuMwG_aTeg6OaZQBYRSM">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="images/icons/icon-192x192.png">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7u1itGfLepjKNTGfnZlUSHGeXxXYSI8Imha2bn/sMqKhaRtxbMzuNE9jLQ==" crossorigin="anonymous" referrerpolicy="no-referrer" async></script>
+<script src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/luxon@3.4.0/build/global/luxon.min.js"></script>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.1/purify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.11.0/validator.min.js"></script>
+
+<script async src="https://www.googletagmanager/gtag/js?id=G-DEMO"></script>
+<script src="https://browser.sentry-cdn.com/7.89.0/bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/web-vitals@3.5.0/dist/web-vitals.umd.js"></script>
+      <meta name="theme-color" content="#4F46E5">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="images/icons/icon-192x192.png">
+      <meta name="google-site-verification" content="3ymKz6IFpn90XmVb_uiGS94xuMwG_aTeg6OaZQBYRSM">
+    
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N8R37X9Z');</script>
+<!-- End Google Tag Manager -->
+    <!-- BASIC META TAGS - SUPER BRUTAL -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    
+    <!-- TITLE & DESCRIPTION - TIDAK DIUBAH -->
+    <title>Tiket Kita | Jualan Dan Beli Tiket Apa Pun dalam Satu Platform | Platform Jual Beli Tiket Event & Transportasi #1 </title>
+    <meta name="description" content="🎫💰 TiketKu | Jual & Beli Tiket Mudah! 🏠 Bisnis dari rumah 🎪🎭🎵 Tiket event, transport, hiburan 📲 Satu platform untuk semua! ✨🚀 Pesan tiket konser, kereta, pesawat, dan wisata dengan harga terbaik.">
+    
+ 
+    <meta name="keywords" content="tiket kereta, tiket pesawat, tiket bus, tiket konser, tiket wisata, tiket event, tiket online, pesan tiket, jual tiket, beli tiket, TiketKu, booking transportasi, booking hiburan, bisnis tiket, event organizer, tiket murah, tiket festival, tiket bioskop, tiket teater, tiket konser musik, tiket olahraga, tiket pertandingan, tiket travel, tiket liburan, tiket promo, diskon tiket, cashback tiket, tiket aman, tiket terpercaya, platform tiket, marketplace tiket, jual beli tiket, reseller tiket, agen tiket, distributor tiket, tiket resmi, tiket original, tiket termurah, harga tiket, cek tiket, booking tiket, reservasi tiket, tiket cepat, tiket mudah, tiket praktis, aplikasi tiket, website tiket, portal tiket, situs tiket, layanan tiket, jasa tiket, pembelian tiket, penjualan tiket, transaksi tiket, pembayaran tiket, konfirmasi tiket, e-tiket, tiket elektronik, tiket digital, tiket mobile, tiket smartphone, scan tiket, barcode tiket, qr code tiket, verifikasi tiket, validasi tiket">
+    
+    <!-- AUTHOR & PUBLISHER -->
+    <meta name="author" content="TiketKu Official">
+    <meta name="publisher" content="TiketKu Official">
+    <meta name="copyright" content="© 2025 TiketKu. All Rights Reserved.">
+    <meta name="designer" content="TiketKu Design Team">
+    <meta name="owner" content="TiketKu Indonesia">
+    <meta name="reply-to" content="dukungan@tiketku.com">
+    <meta name="category" content="E-Commerce, Ticketing, Transportation, Entertainment, Events">
+    <meta name="coverage" content="Worldwide">
+    <meta name="distribution" content="Global">
+    <meta name="rating" content="General">
+    <meta name="revisit-after" content="1 days">
+    <meta name="language" content="Indonesian">
+    <meta name="geo.region" content="ID">
+    <meta name="geo.placename" content="Indonesia">
+    
+    <!-- ROBOTS - SUPER AGRESIF -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="yandex" content="index, follow">
+    <meta name="slurp" content="index, follow">
+    <meta name="msnbot" content="index, follow">
+    <meta name="duckduckbot" content="index, follow">
+    <meta name="baiduspider" content="index, follow">
+    <meta name="ia_archiver" content="index, follow">
+    
+    <!-- CANONICAL & ALTERNATE URLs - SEMUA HALAMAN -->
+    <link rel="canonical" href="https://www.tiketkita.biz.id/home.html">
+    <link rel="alternate" href="https://www.tiketkita.biz.id/home.html" hreflang="id">
+    <link rel="alternate" href="https://www.tiketkita.biz.id/home.html" hreflang="id-ID">
+    <link rel="alternate" href="https://www.tiketkita.biz.id/home.html" hreflang="x-default">
+    
+    <!-- INTERNAL NAVIGATION LINKS - BRUTAL -->
+    <link rel="home" href="https://www.tiketkita.biz.id/home.html">
+    <link rel="index" href="https://www.tiketkita.biz.id/home.html">
+    <link rel="start" href="https://www.tiketkita.biz.id/home.html">
+    <link rel="prev" href="https://www.tiketkita.biz.id/home.html">
+    <link rel="next" href="https://www.tiketkita.biz.id/riwayatpemesanan.html">
+    
+    <!-- SEMUA HALAMAN YANG HARUS DIINDEX GOOGLE -->
+    <link rel="alternate" href="https://www.tiketkita.biz.id/home.html" title="Beranda - TiketKu">
+    <link rel="alternate" href="https://www.tiketkita.biz.id/riwayatpemesanan.html" title="Riwayat Pemesanan - TiketKu">
+    <link rel="alternate" href="https://www.tiketkita.biz.id/sosial.html" title="Sosial Media - TiketKu">
+    <link rel="alternate" href="https://www.tiketkita.biz.id/dashboard.html" title="Dashboard - TiketKu">
+    <link rel="alternate" href="https://www.tiketkita.biz.id/inputtiket.html" title="Input Tiket - TiketKu">
+    <link rel="alternate" href="https://www.tiketkita.biz.id/profil.html" title="Profil - TiketKu">
+    
+    <!-- FAVICON - LENGKAP -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0770e3">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- MOBILE & PWA -->
+    <meta name="theme-color" content="#0770e3">
+    <meta name="msapplication-TileColor" content="#0770e3">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+    <meta name="apple-mobile-web-app-title" content="TiketKu">
+    <meta name="application-name" content="TiketKu">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="format-detection" content="address=yes">
+    <meta name="format-detection" content="email=yes">
+    
+    <!-- OPEN GRAPH - BRUTAL UNTUK SEMUA HALAMAN -->
+    <meta property="og:title" content="TiketKita | Jualan Dan Beli Tiket Apa Pun dalam Satu Platform | Platform Jual Beli Tiket Event & Transportasi #1">
+    <meta property="og:description" content="🏠 Bisnis dari rumah 🎪🎭🎵 Tiket event, transport, hiburan 📲 Satu platform untuk semua! ✨🚀">
+    <meta property="og:image" content="https://i.pinimg.com/1200x/e2/45/0b/e2450b2317cb9a071ecc1f33e4e126ee.jpg">
+    <meta property="og:image:secure_url" content="https://i.pinimg.com/1200x/e2/45/0b/e2450b2317cb9a071ecc1f33e4e126ee.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Platform Jual Beli Tiket Online TiketKu">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:url" content="https://www.tiketkita.biz.id/home.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:site_name" content="TiketKu">
+    <meta property="og:see_also" content="https://www.tiketkita.biz.id/riwayatpemesanan.html">
+    <meta property="og:see_also" content="https://www.tiketkita.biz.id/sosial.html">
+    <meta property="og:see_also" content="https://www.tiketkita.biz.id/dashboard.html">
+    <meta property="og:see_also" content="https://www.tiketkita.biz.id/inputtiket.html">
+    <meta property="og:see_also" content="https://www.tiketkita.biz.id/profil.html">
+    
+    <!-- TWITTER CARD - BRUTAL -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="🎫💰 TiketKu | Jual & Beli Tiket Mudah!">
+    <meta name="twitter:description" content="🏠 Bisnis dari rumah 🎪🎭🎵 Tiket event, transport, hiburan 📲 Satu platform untuk semua! ✨🚀">
+    <meta name="twitter:image" content="https://i.pinimg.com/1200x/e2/45/0b/e2450b2317cb9a071ecc1f33e4e126ee.jpg">
+    <meta name="twitter:image:alt" content="Platform Jual Beli Tiket Online TiketKu">
+    <meta name="twitter:site" content="@TiketKuOfficial">
+    <meta name="twitter:creator" content="@TiketKuOfficial">
+    <meta name="twitter:domain" content="tiketkita.biz.id">
+    <meta name="twitter:url" content="https://www.tiketkita.biz.id/home.html">
+    
+    <!-- FACEBOOK META -->
+    <meta property="fb:app_id" content="123456789012345">
+    <meta property="fb:pages" content="123456789012345">
+    <meta property="fb:admins" content="123456789012345">
+    
+    <!-- PRECONNECT & DNS-PREFETCH - PERFORMANCE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.onesignal.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://cdn.onesignal.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    
+    <!-- PRELOAD CRITICAL RESOURCES -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style">
+    
+    <!-- STYLESHEETS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <!-- SCHEMA.ORG STRUCTURED DATA - SUPER BRUTAL -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.tiketkita.biz.id/#organization",
+          "name": "TiketKu",
+          "url": "https://www.tiketkita.biz.id/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://i.pinimg.com/1200x/e2/45/0b/e2450b2317cb9a071ecc1f33e4e126ee.jpg",
+            "width": 1200,
+            "height": 630
+          },
+          "description": "Platform terdepan untuk jual beli tiket event, transportasi, dan hiburan secara online. Mudah, cepat, dan aman.",
+          "email": "dukungan@tiketku.com",
+          "telephone": "+62-XXX-XXXX-XXXX",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "ID",
+            "addressLocality": "Jakarta",
+            "addressRegion": "DKI Jakarta"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+62-XXX-XXXX-XXXX",
+            "contactType": "customer service",
+            "email": "dukungan@tiketku.com",
+            "areaServed": "ID",
+            "availableLanguage": ["Indonesian", "English"]
+          },
+          "sameAs": [
+            "https://www.facebook.com/TiketKuOfficial",
+            "https://www.twitter.com/TiketKuOfficial",
+            "https://www.instagram.com/TiketKuOfficial",
+            "https://www.linkedin.com/company/tiketku",
+            "https://www.youtube.com/c/TiketKuOfficial"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.tiketkita.biz.id/#website",
+          "url": "https://www.tiketkita.biz.id/",
+          "name": "TiketKu",
+          "description": "Platform Jual Beli Tiket Online #1 di Indonesia",
+          "publisher": {
+            "@id": "https://www.tiketkita.biz.id/#organization"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.tiketkita.biz.id/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          },
+          "inLanguage": "id-ID"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.tiketkita.biz.id/home.html#webpage",
+          "url": "https://www.tiketkita.biz.id/home.html",
+          "name": "🎫💰 TiketKu | Platform Jual Beli Tiket Event & Transportasi #1",
+          "isPartOf": {
+            "@id": "https://www.tiketkita.biz.id/#website"
+          },
+          "datePublished": "2025-01-01T00:00:00+07:00",
+          "dateModified": "2025-10-06T00:00:00+07:00",
+          "description": "🎫💰 TiketKu | Jual & Beli Tiket Mudah! 🏠 Bisnis dari rumah 🎪🎭🎵 Tiket event, transport, hiburan 📲 Satu platform untuk semua! ✨🚀",
+          "breadcrumb": {
+            "@id": "https://www.tiketkita.biz.id/home.html#breadcrumb"
+          },
+          "inLanguage": "id-ID",
+          "potentialAction": [
+            {
+              "@type": "ReadAction",
+              "target": ["https://www.tiketkita.biz.id/home.html"]
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.tiketkita.biz.id/home.html#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Beranda",
+              "item": "https://www.tiketkita.biz.id/home.html"
+            }
+          ]
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://www.tiketkita.biz.id/#sitemap",
+          "name": "Halaman Situs TiketKu",
+          "itemListElement": [
+            {
+              "@type": "SiteNavigationElement",
+              "position": 1,
+              "name": "Beranda",
+              "description": "Halaman utama TiketKu - Jual beli tiket mudah",
+              "url": "https://www.tiketkita.biz.id/home.html"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 2,
+              "name": "Riwayat Pemesanan",
+              "description": "Lihat riwayat semua pemesanan tiket Anda",
+              "url": "https://www.tiketkita.biz.id/riwayatpemesanan.html"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 3,
+              "name": "Sosial Media",
+              "description": "Hubungkan dengan kami di media sosial",
+              "url": "https://www.tiketkita.biz.id/sosial.html"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 4,
+              "name": "Dashboard",
+              "description": "Dashboard pengelolaan akun dan tiket",
+              "url": "https://www.tiketkita.biz.id/dashboard.html"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 5,
+              "name": "Input Tiket",
+              "description": "Tambahkan tiket baru untuk dijual",
+              "url": "https://www.tiketkita.biz.id/inputtiket.html"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 6,
+              "name": "Profil",
+              "description": "Kelola profil dan pengaturan akun Anda",
+              "url": "https://www.tiketkita.biz.id/profil.html"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Bagaimana cara membeli tiket di TiketKu?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Anda dapat membeli tiket dengan mengakses halaman beranda, memilih kategori tiket yang diinginkan, dan mengikuti proses pemesanan yang mudah dan aman."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Apakah TiketKu aman untuk transaksi?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ya, TiketKu menggunakan sistem keamanan terkini untuk melindungi setiap transaksi dan data pribadi Anda."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Bagaimana cara menjual tiket di TiketKu?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Untuk menjual tiket, buka halaman Input Tiket, isi detail tiket yang ingin dijual, dan unggah ke platform kami."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "Service",
+          "name": "Platform Jual Beli Tiket Online",
+          "description": "Layanan jual beli tiket event, transportasi, dan hiburan",
+          "provider": {
+            "@id": "https://www.tiketkita.biz.id/#organization"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "Indonesia"
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Katalog Tiket",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Tiket Event & Konser"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Tiket Transportasi"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Tiket Hiburan"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <!-- SITEMAP XML INLINE - BRUTAL -->
+    <script type="application/xml" id="sitemap-data">
+    <?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+      <url>
+        <loc>https://www.tiketkita.biz.id/home.html</loc>
+        <lastmod>2025-10-06</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="id" href="https://www.tiketkita.biz.id/home.html"/>
+      </url>
+      <url>
+        <loc>https://www.tiketkita.biz.id/riwayatpemesanan.html</loc>
+        <lastmod>2025-10-06</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="id" href="https://www.tiketkita.biz.id/riwayatpemesanan.html"/>
+      </url>
+      <url>
+        <loc>https://www.tiketkita.biz.id/sosial.html</loc>
+        <lastmod>2025-10-06</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="id" href="https://www.tiketkita.biz.id/sosial.html"/>
+      </url>
+      <url>
+        <loc>https://www.tiketkita.biz.id/dashboard.html</loc>
+        <lastmod>2025-10-06</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="id" href="https://www.tiketkita.biz.id/dashboard.html"/>
+      </url>
+      <url>
+        <loc>https://www.tiketkita.biz.id/inputtiket.html</loc>
+        <lastmod>2025-10-06</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="id" href="https://www.tiketkita.biz.id/inputtiket.html"/>
+      </url>
+      <url>
+        <loc>https://www.tiketkita.biz.id/profil.html</loc>
+        <lastmod>2025-10-06</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="id" href="https://www.tiketkita.biz.id/profil.html"/>
+      </url>
+    </urlset>
+    </script>
+    
+    <!-- GOOGLE ANALYTICS & TAG MANAGER -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S54YFF38FF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S54YFF38FF', {
+        'page_path': window.location.pathname,
+        'page_title': document.title,
+        'page_location': window.location.href
+      });
+      
+      // Track all page views
+      gtag('event', 'page_view', {
+        page_title: document.title,
+        page_location: window.location.href,
+        page_path: window.location.pathname
+      });
+    </script>
+    
+    <!-- EXTERNAL SCRIPTS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    
+    <!-- CRITICAL SEO HINTS -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="max-age=31536000, public">
+    
+    <!-- VERIFICATION META TAGS -->
+    <meta name="google-site-verification" content="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX">
+    <meta name="msvalidate.01" content="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX">
+    <meta name="yandex-verification" content="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX">
+    <meta name="alexaVerifyID" content="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX">
+    <meta name="p:domain_verify" content="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX">
+    
+    <!-- PAGE NAVIGATION HINTS FOR CRAWLERS -->
+    <meta name="page-topic" content="E-Commerce, Ticketing, Online Shopping">
+    <meta name="audience" content="all">
+    <meta name="page-type" content="Marketplace, Service">
+    <meta name="resource-type" content="document">
+    <meta name="classification" content="Business">
+    
+    <!-- NORAK BRUTAL SEO INJECTOR SCRIPT -->
+    <script>
+    // AUTO SEO INJECTOR - BRUTAL MODE
+    (function() {
+      'use strict';
+      
+      // Inject internal links everywhere
+      const pages = [
+        {url: 'https://www.tiketkita.biz.id/home.html', title: 'Beranda', desc: 'Halaman utama TiketKu'},
+        {url: 'https://www.tiketkita.biz.id/riwayatpemesanan.html', title: 'Riwayat Pemesanan', desc: 'Lihat riwayat pemesanan tiket'},
+        {url: 'https://www.tiketkita.biz.id/sosial.html', title: 'Sosial Media', desc: 'Hubungkan dengan kami'},
+        {url: 'https://www.tiketkita.biz.id/dashboard.html', title: 'Dashboard', desc: 'Dashboard pengelolaan'},
+        {url: 'https://www.tiketkita.biz.id/inputtiket.html', title: 'Input Tiket', desc: 'Tambahkan tiket baru'},
+        {url: 'https://www.tiketkita.biz.id/profil.html', title: 'Profil', desc: 'Kelola profil Anda'}
+      ];
+      
+      // Inject meta descriptions for each page dynamically
+      window.addEventListener('DOMContentLoaded', function() {
+        const currentPath = window.location.pathname;
+        const currentPage = pages.find(p => p.url.includes(currentPath));
+        
+        // Update document title for SEO
+        if (currentPage && !document.title.includes(currentPage.title)) {
+          document.title = document.title + ' | ' + currentPage.title;
+        }
+        
+        // Inject hidden SEO content
+        const seoDiv = document.createElement('div');
+        seoDiv.style.display = 'none';
+        seoDiv.setAttribute('itemscope', '');
+        seoDiv.setAttribute('itemtype', 'https://schema.org/SiteNavigationElement');
+        
+        let seoHTML = '<nav aria-label="Site Navigation">';
+        pages.forEach((page, index) => {
+          seoHTML += `
+            <a href="${page.url}" title="${page.desc}" itemprop="url">
+              <span itemprop="name">${page.title}</span>
+              <meta itemprop="position" content="${index + 1}">
+            </a>
+          `;
+        });
+        seoHTML += '</nav>';
+        
+        // Add keyword-rich content
+        seoHTML += `
+          <article itemscope itemtype="https://schema.org/Article">
+            <h1 itemprop="headline">TiketKu - Platform Jual Beli Tiket Online Terpercaya</h1>
+            <div itemprop="articleBody">
+              <p>Jual beli tiket event, tiket konser, tiket pesawat, tiket kereta, tiket bus, tiket wisata, tiket festival, tiket olahraga, tiket bioskop, tiket teater, dan berbagai tiket hiburan lainnya dengan mudah, cepat, dan aman di TiketKu.</p>
+              <p>Platform marketplace tiket online terlengkap di Indonesia untuk semua kebutuhan tiket transportasi dan entertainment Anda.</p>
+              <p>Dapatkan promo tiket murah, diskon tiket spesial, cashback pembelian tiket, dan berbagai penawaran menarik setiap hari.</p>
+            </div>
+          </article>
+        `;
+        
+        seoDiv.innerHTML = seoHTML;
+        document.body.appendChild(seoDiv);
+        
+        // Inject breadcrumb navigation
+        const breadcrumb = document.createElement('div');
+        breadcrumb.style.display = 'none';
+        breadcrumb.setAttribute('itemscope', '');
+        breadcrumb.setAttribute('itemtype', 'https://schema.org/BreadcrumbList');
+        breadcrumb.innerHTML = `
+          <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="https://www.tiketkita.biz.id/home.html">
+              <span itemprop="name">Beranda</span>
+            </a>
+            <meta itemprop="position" content="1">
+          </span>
+        `;
+        document.body.appendChild(breadcrumb);
+        
+        // Auto submit to search engines (simulation)
+        console.log('SEO Optimization Active - All pages indexed');
+        console.log('Indexing:', pages.map(p => p.url).join(', '));
+      });
+      
+      // Rich snippets injector
+      const richSnippets = {
+        '@context': 'https://schema.org',
+        '@type': 'WebApplication',
+        'name': 'TiketKu',
+        'url': 'https://www.tiketkita.biz.id/',
+        'applicationCategory': 'BusinessApplication',
+        'operatingSystem': 'Any',
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'IDR'
+        },
+        'aggregateRating': {
+          '@type': 'AggregateRating',
+          'ratingValue': '4.8',
+          'ratingCount': '15420',
+          'reviewCount': '8935',
+          'bestRating': '5',
+          'worstRating': '1'
+        }
+      };
+      
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.textContent = JSON.stringify(richSnippets);
+      document.head.appendChild(script);
+      
+    })();
+    </script>
+</head>
+
+<body>
+    <!-- HIDDEN SEO CONTENT - SUPER BRUTAL -->
+    <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+        <!-- Navigation Map for Crawlers -->
+        <nav itemscope itemtype="https://schema.org/SiteNavigationElement">
+            <h2>Navigasi Situs TiketKu</h2>
+            <ul>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="url" href="https://www.tiketkita.biz.id/home.html">
+                        <span itemprop="name">Beranda TiketKu - Jual Beli Tiket Online Mudah</span>
+                    </a>
+                    <meta itemprop="position" content="1">
+                    <meta itemprop="description" content="Halaman utama platform jual beli tiket event, transportasi, dan hiburan terpercaya">
+                </li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="url" href="https://www.tiketkita.biz.id/riwayatpemesanan.html">
+                        <span itemprop="name">Riwayat Pemesanan - Cek Status Tiket Anda</span>
+                    </a>
+                    <meta itemprop="position" content="2">
+                    <meta itemprop="description" content="Lihat semua riwayat pemesanan dan pembelian tiket Anda dengan detail lengkap">
+                </li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="url" href="https://www.tiketkita.biz.id/sosial.html">
+                        <span itemprop="name">Sosial Media TiketKu - Hubungkan Dengan Kami</span>
+                    </a>
+                    <meta itemprop="position" content="3">
+                    <meta itemprop="description" content="Ikuti TiketKu di berbagai platform media sosial untuk update promo dan info terbaru">
+                </li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="url" href="https://www.tiketkita.biz.id/dashboard.html">
+                        <span itemprop="name">Dashboard - Kelola Akun dan Tiket</span>
+                    </a>
+                    <meta itemprop="position" content="4">
+                    <meta itemprop="description" content="Dashboard lengkap untuk mengelola semua aktivitas jual beli tiket Anda">
+                </li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="url" href="https://www.tiketkita.biz.id/inputtiket.html">
+                        <span itemprop="name">Input Tiket - Jual Tiket Anda Disini</span>
+                    </a>
+                    <meta itemprop="position" content="5">
+                    <meta itemprop="description" content="Tambahkan dan jual tiket Anda dengan mudah di platform TiketKu">
+                </li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="url" href="https://www.tiketkita.biz.id/profil.html">
+                        <span itemprop="name">Profil - Pengaturan Akun TiketKu</span>
+                    </a>
+                    <meta itemprop="position" content="6">
+                    <meta itemprop="description" content="Kelola profil, pengaturan keamanan, dan preferensi akun TiketKu Anda">
+                </li>
+            </ul>
+        </nav>
+        
+        <!-- Keyword Rich Content for SEO -->
+        <article itemscope itemtype="https://schema.org/Article">
+            <h1 itemprop="headline">TiketKu: Platform Jual Beli Tiket Online #1 di Indonesia</h1>
+            <div itemprop="articleBody">
+                <h2>Jual Beli Tiket Event, Transportasi, dan Hiburan</h2>
+                <p>TiketKu adalah platform marketplace tiket online terlengkap dan terpercaya di Indonesia. Kami menyediakan berbagai jenis tiket mulai dari tiket event, tiket konser, tiket festival musik, tiket pertunjukan seni, tiket teater, tiket stand up comedy, tiket seminar, tiket workshop, tiket konferensi, hingga tiket olahraga seperti tiket sepak bola, tiket basket, tiket badminton, dan berbagai pertandingan olahraga lainnya.</p>
+                
+                <h3>Tiket Transportasi Lengkap</h3>
+                <p>Pesan tiket transportasi dengan mudah dan cepat di TiketKu. Tersedia tiket pesawat domestik dan internasional, tiket kereta api untuk berbagai rute di Indonesia, tiket bus AKAP antar kota antar provinsi, tiket travel door to door, tiket kapal ferry, tiket kapal laut, tiket speedboat, dan berbagai moda transportasi lainnya dengan harga terbaik dan promo menarik setiap hari.</p>
+                
+                <h3>Tiket Hiburan dan Wisata</h3>
+                <p>Nikmati berbagai destinasi wisata dan hiburan dengan membeli tiket melalui TiketKu. Kami menyediakan tiket masuk theme park, tiket taman hiburan, tiket wahana permainan, tiket waterpark, tiket kebun binatang, tiket museum, tiket galeri seni, tiket bioskop untuk film terbaru, tiket tempat wisata populer, tiket atraksi wisata, dan masih banyak lagi pilihan tiket hiburan untuk keluarga dan teman-teman Anda.</p>
+                
+                <h3>Cara Beli Tiket di TiketKu</h3>
+                <p>Membeli tiket di TiketKu sangat mudah dan praktis. Cukup buka website atau aplikasi TiketKu, pilih kategori tiket yang Anda inginkan, tentukan tanggal dan jumlah tiket, lakukan pembayaran melalui berbagai metode pembayaran yang tersedia seperti transfer bank, e-wallet, kartu kredit, atau cicilan, dan dapatkan e-tiket atau tiket digital Anda langsung di email atau aplikasi. Proses pembelian tiket cepat, aman, dan terjamin.</p>
+                
+                <h3>Jual Tiket di TiketKu</h3>
+                <p>Ingin menjadi reseller tiket atau menjual tiket event Anda sendiri? TiketKu menyediakan platform yang memudahkan Anda untuk menjual tiket secara online. Daftar sebagai penjual tiket, upload detail tiket yang ingin dijual, tentukan harga dan kuota tiket, dan mulai menjual tiket Anda kepada ribuan pembeli potensial di seluruh Indonesia. Sistem pembayaran aman dan terpercaya dengan berbagai opsi penarikan dana.</p>
+                
+                <h3>Keunggulan TiketKu</h3>
+                <ul>
+                    <li>Platform marketplace tiket online terlengkap di Indonesia</li>
+                    <li>Proses pembelian tiket mudah, cepat, dan aman</li>
+                    <li>Harga tiket kompetitif dengan banyak promo dan diskon menarik</li>
+                    <li>Sistem pembayaran lengkap dan fleksibel</li>
+                    <li>Customer service responsif siap membantu 24/7</li>
+                    <li>E-tiket digital langsung dikirim ke email atau aplikasi</li>
+                    <li>Verifikasi QR Code untuk keamanan tiket</li>
+                    <li>Program cashback dan reward untuk pelanggan setia</li>
+                    <li>Aplikasi mobile user-friendly untuk iOS dan Android</li>
+                    <li>Partnership dengan berbagai event organizer terkemuka</li>
+                </ul>
+                
+                <h3>Kategori Tiket Populer</h3>
+                <p>Tiket konser musik pop, tiket konser rock, tiket konser jazz, tiket konser dangdut, tiket konser K-Pop, tiket festival musik elektronik, tiket pameran seni, tiket car free day, tiket bazaar kuliner, tiket expo teknologi, tiket job fair, tiket education fair, tiket property expo, tiket wedding expo, tiket fashion show, tiket launching produk, tiket grand opening, tiket meet and greet artis, tiket fan meeting, tiket screening film, tiket premiering movie, tiket talkshow, tiket gathering komunitas, dan berbagai tiket event menarik lainnya.</p>
+                
+                <h3>Promo dan Diskon Tiket</h3>
+                <p>Dapatkan berbagai promo tiket murah setiap hari di TiketKu. Promo early bird untuk pembelian tiket lebih awal, diskon spesial di hari-hari tertentu, flash sale tiket dengan harga super hemat, bundling paket tiket hemat untuk grup, voucher diskon untuk pengguna baru, cashback pembelian tiket dengan e-wallet, cicilan 0% untuk pembelian tiket dengan kartu kredit, dan masih banyak penawaran menarik lainnya yang bisa Anda manfaatkan.</p>
+                
+                <h3>Cara Pembayaran</h3>
+                <p>TiketKu menyediakan berbagai metode pembayaran yang mudah dan aman: transfer bank (BCA, Mandiri, BNI, BRI, CIMB Niaga, Permata, dll), e-wallet (GoPay, OVO, Dana, ShopeePay, LinkAja), kartu kredit (Visa, Mastercard, JCB, American Express), kartu debit online, virtual account, cicilan kartu kredit 0%, paylater (Kredivo, Akulaku, Indodana), dan pembayaran di minimarket (Indomaret, Alfamart).</p>
+                
+                <h3>Layanan Pelanggan</h3>
+                <p>Tim customer service TiketKu siap membantu Anda 24 jam setiap hari melalui berbagai channel: live chat di website dan aplikasi, email dukungan@tiketku.com, telepon hotline customer service, WhatsApp business, media sosial (Instagram, Facebook, Twitter), dan help center dengan FAQ lengkap. Kami berkomitmen memberikan pelayanan terbaik untuk kepuasan pelanggan.</p>
+                
+                <h3>Keamanan dan Kepercayaan</h3>
+                <p>TiketKu menggunakan teknologi keamanan terkini untuk melindungi data pribadi dan transaksi Anda. Sistem enkripsi SSL 256-bit, verifikasi dua faktor (2FA) untuk keamanan akun, proteksi fraud detection otomatis, kebijakan refund dan pengembalian dana yang jelas, jaminan keaslian tiket 100%, dan sertifikasi keamanan internasional. Kepercayaan Anda adalah prioritas utama kami.</p>
+            </div>
+            <meta itemprop="datePublished" content="2025-01-01T00:00:00+07:00">
+            <meta itemprop="dateModified" content="2025-10-06T00:00:00+07:00">
+            <meta itemprop="author" content="TiketKu Official">
+            <meta itemprop="publisher" content="TiketKu Indonesia">
+        </article>
+        
+        <!-- Additional Keywords Dense Content -->
+        <section>
+            <h2>Tiket Online Terlengkap</h2>
+            <p>beli tiket online, jual tiket online, booking tiket online, pesan tiket online, cari tiket online, tiket murah online, tiket promo online, marketplace tiket, platform tiket, situs tiket, website tiket, aplikasi tiket, tiket digital, e-ticket, tiket elektronik, tiket resmi, tiket original, tiket asli, tiket verified, tiket terpercaya, tiket aman, jual beli tiket, transaksi tiket, pembayaran tiket, pemesanan tiket, reservasi tiket, booking ticket, ticket marketplace, ticket platform, online ticketing, ticketing system, ticket booking, ticket reservation, ticket sales, sell tickets, buy tickets, event tickets, concert tickets, transportation tickets, entertainment tickets, travel tickets, tourism tickets, attraction tickets, show tickets, performance tickets, sports tickets, cinema tickets, theater tickets, museum tickets</p>
+        </section>
+        
+        <!-- Location and Service Area -->
+        <section itemscope itemtype="https://schema.org/Service">
+            <h2 itemprop="name">Layanan TiketKu</h2>
+            <meta itemprop="serviceType" content="Online Ticket Marketplace">
+            <div itemprop="areaServed" itemscope itemtype="https://schema.org/Country">
+                <meta itemprop="name" content="Indonesia">
+            </div>
+            <p itemprop="description">Melayani penjualan tiket online untuk seluruh Indonesia termasuk Jakarta, Surabaya, Bandung, Medan, Semarang, Makassar, Palembang, Tangerang, Depok, Bekasi, Yogyakarta, Malang, Bogor, Batam, Pekanbaru, Bandar Lampung, Padang, Denpasar, Bali, Manado, Balikpapan, Samarinda, Pontianak, Banjarmasin, Jambi, Cirebon, Serang, Mataram, Solo, Sukabumi, dan kota-kota lainnya di seluruh nusantara.</p>
+        </section>
+    </div>
+    
+    <!-- Regular page content goes here -->
+    <div id="app-content">
+        <!-- Your actual website content -->
+    </div>
+    
+    <!-- Footer with Additional SEO Links -->
+    <footer style="display:none;" aria-hidden="true">
+        <nav>
+            <h3>Sitemap TiketKu</h3>
+            <a href="https://www.tiketkita.biz.id/home.html" title="Beranda TiketKu">Home</a> |
+            <a href="https://www.tiketkita.biz.id/riwayatpemesanan.html" title="Riwayat Pemesanan Tiket">Riwayat</a> |
+            <a href="https://www.tiketkita.biz.id/sosial.html" title="Media Sosial TiketKu">Sosial</a> |
+            <a href="https://www.tiketkita.biz.id/dashboard.html" title="Dashboard Pengguna">Dashboard</a> |
+            <a href="https://www.tiketkita.biz.id/inputtiket.html" title="Jual Tiket">Input Tiket</a> |
+            <a href="https://www.tiketkita.biz.id/profil.html" title="Profil Pengguna">Profil</a>
+        </nav>
+        
+        <div itemscope itemtype="https://schema.org/Organization">
+            <span itemprop="name">TiketKu Indonesia</span>
+            <span itemprop="description">Platform Jual Beli Tiket Online Terpercaya</span>
+            <link itemprop="url" href="https://www.tiketkita.biz.id/">
+            <link itemprop="logo" href="https://i.pinimg.com/1200x/e2/45/0b/e2450b2317cb9a071ecc1f33e4e126ee.jpg">
+        </div>
+    </footer>
+
+
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-S54YFF38FF"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <style>
+     
+    :root {
+        --primary-color: #2563EB;
+        --primary-color-light: #60A5FA;
+        --highlight-color: #F59E0B;
+        --text-color: #1F2937;
+        --subtle-gray: #E5E7EB;
+        --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Quicksand', sans-serif;
+        font-weight: 400; /* Menetapkan bobot default */
+        color: var(--text-color);
+        background-color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 80px; /* Space for bottom navbar */
+        min-height: 100vh;
+        /* Gradasi berlapis yang sangat halus sebagai "aura" warna */
+        background-image:
+            radial-gradient(at 0% 0%, hsla(340, 90%, 96%, 0.6) 0px, transparent 50%),
+            radial-gradient(at 100% 20%, hsla(275, 90%, 96%, 0.6) 0px, transparent 50%),
+            radial-gradient(at 20% 100%, hsla(175, 85%, 94%, 0.8) 0px, transparent 60%);
+        background-attachment: fixed;
+    }
+
+    .font-mono {
+        font-family: 'Quicksand', sans-serif;
+        font-weight: 600; /* Menggunakan bobot tebal agar menonjol */
+    }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        @media (min-width: 640px) {
+            .container {
+                padding: 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                padding: 2rem;
+            }
+        }
+        
+        /* Gaya untuk dropdown kategori */
+        #category-dropdown,
+        #search-suggestions {
+            display: none;
+            /* Defaultnya tersembunyi */
+        }
+        
+        #category-dropdown.show,
+        #search-suggestions.show {
+            display: block;
+            /* Tampilkan saat class 'show' ditambahkan */
+        }
+        
+        @keyframes marquee {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        .carousel-viewport {
+            overflow: hidden;
+            width: 100%;
+            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        }
+        
+        .carousel-track {
+            display: flex;
+            will-change: transform;
+        }
+        
+        .carousel-track.is-animating {
+            animation: marquee 60s linear infinite;
+        }
+        
+        .carousel-track.is-animating:hover {
+            animation-play-state: paused;
+        }
+        
+        .carousel-item {
+            flex-shrink: 0;
+            width: 320px;
+            margin-right: 1.5rem;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .no-print {
+                display: none !important;
+            }
+            
+            body.is-printing .printable-card:not(.printing-this-ticket) {
+                display: none;
+            }
+            
+            body.is-printing .printing-this-ticket {
+                display: block !important;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                right: 20px;
+                width: auto;
+                margin: 0 !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+                border: 2px solid #000 !important;
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* Gaya umum untuk elemen yang terlihat seperti kartu (dropdown, card, dll.) */
+        .card-style {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--subtle-gray);
+        }
+        
+        /* =============================================================== */
+        /* DROPDOWN & SUGGESTIONS */
+        /* =============================================================== */
+        #category-dropdown,
+        #search-suggestions {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--subtle-gray);
+            overflow: hidden;
+            /* Agar item di dalamnya ikut membulat */
+        }
+        
+        /* =============================================================== */
+        /* CAROUSEL IKLAN */
+        /* =============================================================== */
+        #ad-carousel-container,
+        #user-ads-carousel-container {
+            aspect-ratio: 16 / 6;
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            #ad-carousel-container,
+            #user-ads-carousel-container {
+                aspect-ratio: 16 / 9;
+            }
+        }
+        
+        #ad-carousel-prev,
+        #ad-carousel-next,
+        #user-ads-carousel-prev,
+        #user-ads-carousel-next {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(31, 41, 55, 0.7);
+            color: white;
+            border-radius: 50%;
+            transition: background-color 0.2s, transform 0.2s;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 10;
+        }
+        
+        #ad-carousel-prev:hover,
+        #ad-carousel-next:hover,
+        #user-ads-carousel-prev:hover,
+        #user-ads-carousel-next:hover {
+            background-color: rgba(31, 41, 55, 0.9);
+            transform: scale(1.1);
+        }
+        
+        .indicator-dot,
+        .user-ad-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            border: none;
+            padding: 0;
+            transition: background-color 0.3s, transform  0.3s;
+        }
+        
+        .indicator-dot.active,
+        .user-ad-indicator.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+        
+        #ad-carousel-track,
+        #user-ads-carousel-track {
+            display: flex;
+            transition: transform 500ms ease-in-out;
+        }
+        
+        .ad-slide,
+        .user-ad-slide {
+            position: relative;
+            width: 100%;
+            flex-shrink: 0;
+        }
+        
+        .ad-slide img,
+        .user-ad-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* =============================================================== */
+        /* NAVBAR BOTTOM */
+        /* =============================================================== */
+        .bottom-navbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background-color: white;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 100;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #4B5563;
+            font-size: 10px;
+            text-decoration: none;
+            flex: 1;
+            height: 100%;
+            transition: color 0.2s;
+        }
+        
+        .nav-item.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+        
+        .profile-nav-item {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #E5E7EB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+        
+        .profile-nav-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* =============================================================== */
+        /* PROFILE CARD */
+        /* =============================================================== */
+        .profile-card {
+            background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);
+            border-radius: 16px;
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3), 0 4px 6px -2px rgba(37, 99, 235, 0.2);
+            padding: 20px;
+            margin-bottom: 24px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(45deg);
+            z-index: 1;
+        }
+        
+        .profile-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .profile-image-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .profile-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.8);
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .profile-status {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #10B981;
+            border: 3px solid white;
+        }
+        
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 10px 0 5px;
+        }
+        
+        .profile-email {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+        
+        .balance-section {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 12px;
+            margin-top: 15px;
+        }
+        
+        .balance-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        .balance-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 5px 0;
+        }
+        
+        .balance-note {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            font-style: italic;
+        }
+        
+        .profile-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 15px;
+        }
+        
+        .profile-button {
+            background-color: white;
+            color: #2563EB;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* =============================================================== */
+        /* VOUCHER SECTION */
+        /* =============================================================== */
+        .voucher-card {
+            border: 1px dashed var(--primary-color);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            background-color: rgba(37, 99, 235, 0.05);
+        }
+        
+        .voucher-code {
+            font-family: 'Source Code Pro', monospace;
+            background-color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid var(--subtle-gray);
+            display: inline-block;
+            margin-top: 8px;
+        }
+        
+        /* =============================================================== */
+        /* WEB ICON CARDS */
+        /* =============================================================== */
+        .web-icon-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.2s;
+        }
+        
+        .web-icon-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .web-icon-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            margin-bottom: 8px;
+        }
+        
+        /* =============================================================== */
+        /* STYLING FOR THE ANNOUNCEMENT TICKER */
+        /* =============================================================== */
+        .announcement-container {
+            display: flex;
+            align-items: center;
+            background-image: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .announcement-icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-right: 16px;
+            border-right: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 1.25rem;
+        }
+        
+        .announcement-viewport {
+            flex-grow: 1;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        }
+        
+        .announcement-track {
+            display: flex;
+            white-space: nowrap;
+            will-change: transform;
+        }
+        
+        @keyframes continuous-marquee {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        .announcement-track.is-animating {
+            animation: continuous-marquee 60s linear infinite;
+        }
+        
+        .announcement-track.is-animating:hover {
+            animation-play-state: paused;
+        }
+        
+        .announcement-item {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 48px;
+            align-self: center;
+        }
+        
+        .announcement-separator {
+            margin-right: 48px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.2rem;
+            align-self: center;
+        }
+        
+        /* =============================================================== */
+        /* KATEGORI TIKET SECTION */
+        /* =============================================================== */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        
+        @media (max-width: 640px) {
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .category-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px;
+            border-radius: 12px;
+            background-color: white;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+        
+        .category-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .category-count {
+            font-size: 12px;
+            color: #6B7280;
+        }
+        
+        /* Warna untuk kategori kelas tiket */
+        .category-ekonomi {
+            background-color: #FEF3C7;
+            color: #92400E;
+        }
+        
+        .category-bisnis {
+            background-color: #DBEAFE;
+            color: #1E40AF;
+        }
+        
+        .category-eksekutif {
+            background-color: #E5E7EB;
+            color: #1F2937;
+        }
+        
+        /* Warna untuk kategori harga */
+        .category-rendah {
+            background-color: #D1FAE5;
+            color: #065F46;
+        }
+        
+        .category-sedang {
+            background-color: #FCE7F3;
+            color: #9D174D;
+        }
+        
+        .category-tinggi {
+            background-color: #FEE2E2;
+            color: #991B1B;
+        }
+        
+        /* =============================================================== */
+        /* FAVORITE TICKETS SECTION */
+        /* =============================================================== */
+        .favorite-section {
+            margin-bottom: 24px;
+        }
+        
+        .favorite-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        
+        .favorite-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1F2937;
+            display: flex;
+            align-items: center;
+        }
+        
+        .favorite-title i {
+            margin-right: 8px;
+            color: #F59E0B;
+        }
+        
+        .favorite-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        @media (max-width: 640px) {
+            .favorite-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .favorite-ticket {
+            background-color: #FFFBEB;
+            border: 1px solid #FEF3C7;
+            border-radius: 12px;
+            padding: 12px;
+            position: relative;
+        }
+        
+        .favorite-ticket .price-promo {
+            color: #B45309;
+        }
+        
+        .favorite-ticket .save-button {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: #FEF3C7;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #B45309;
+            cursor: pointer;
+        }
+        
+        .favorite-ticket .save-button:hover {
+            background-color: #FDE68A;
+        }
+        
+        .favorite-empty {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 24px;
+            background-color: #F3F4F6;
+            border-radius: 8px;
+            color: #6B7280;
+        }
+        
+        .favorite-empty i {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #9CA3AF;
+        }
+        
+        /* =============================================================== */
+        /* USER ADS CAROUSEL STYLES - PERBAIKAN UTAMA */
+        /* =============================================================== */
+        .user-ads-section {
+            margin-bottom: 32px;
+            width: 100%;
+        }
+        
+        .user-ads-carousel-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+        }
+        
+        .user-ads-carousel-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 6;
+            overflow: hidden;
+        }
+        
+        @media (max-width: 768px) {
+            .user-ads-carousel-wrapper {
+                aspect-ratio: 16 / 9;
+                min-height: 320px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .user-ads-carousel-wrapper {
+                aspect-ratio: 4 / 3;
+                min-height: 360px;
+            }
+        }
+        
+        .user-ads-carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+        
+        .user-ad-slide {
+            flex: 0 0 100%;
+            height: 100%;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        @media (max-width: 768px) {
+            .user-ad-slide {
+                flex-direction: column;
+                text-align: center;
+                padding: 16px;
+                justify-content: flex-start;
+            }
+        }
+        
+        .user-ad-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 12px;
+            object-fit: cover;
+            margin-right: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            flex-shrink: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .user-ad-image {
+                width: 100px;
+                height: 100px;
+                margin-right: 0;
+                margin-bottom: 16px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .user-ad-image {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 12px;
+            }
+        }
+        
+        .user-ad-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            position: relative;
+        }
+        
+        @media (max-width: 768px) {
+            .user-ad-content {
+                width: 100%;
+                min-height: 180px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .user-ad-content {
+                min-height: 200px;
+            }
+        }
+        
+        .user-ad-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 12px;
+            line-height: 1.3;
+            word-wrap: break-word;
+        }
+        
+        @media (max-width: 768px) {
+            .user-ad-title {
+                font-size: 1.1rem;
+                margin-bottom: 8px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .user-ad-title {
+                font-size: 1rem;
+                margin-bottom: 6px;
+            }
+        }
+        
+        .user-ad-description {
+            font-size: 0.95rem;
+            color: #4b5563;
+            margin-bottom: 16px;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            word-wrap: break-word;
+        }
+        
+        @media (max-width: 768px) {
+            .user-ad-description {
+                font-size: 0.875rem;
+                margin-bottom: 12px;
+                -webkit-line-clamp: 3;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .user-ad-description {
+                font-size: 0.8rem;
+                margin-bottom: 10px;
+                -webkit-line-clamp: 4;
+            }
+        }
+        
+        .user-ad-meta {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding-bottom: 5px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        @media (max-width: 768px) {
+            .user-ad-meta {
+                flex-direction: column;
+                gap: 12px;
+                align-items: center;
+                width: 100%;
+                padding-bottom: 5px;
+            }
+        }
+        
+        .user-ad-author {
+            font-size: 0.875rem;
+            color: #6b7280;
+            flex-shrink: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .user-ad-author {
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* Perbaikan utama untuk tombol Lihat Detail */
+        .user-ad-cta {
+            background-color: #6366f1;
+            color: white;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: inline-block;
+            white-space: nowrap;
+            flex-shrink: 0;
+            box-shadow: 0 4px 6px rgba(99, 102, 241, 0.3);
+            border: 2px solid transparent;
+            position: relative;
+            z-index: 20;
+            min-width: 120px;
+            text-align: center;
+            margin-bottom: 0;
+        }
+        
+        .user-ad-cta:hover {
+            background-color: #4f46e5;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(99, 102, 241, 0.4);
+            border-color: #4f46e5;
+        }
+        
+        .user-ad-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+            z-index: -1;
+        }
+        
+        @media (max-width: 768px) {
+            .user-ad-cta {
+                width: 100%;
+                max-width: 200px;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+                margin-bottom: 0;
+                min-width: 140px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .user-ad-cta {
+                max-width: 180px;
+                padding: 10px 18px;
+                font-size: 0.85rem;
+                margin-bottom: 0;
+                min-width: 120px;
+            }
+        }
+        
+        .user-ad-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: rgba(99, 102, 241, 0.9);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 4px;
+            z-index: 5;
+        }
+        
+        .user-ads-carousel-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+        }
+        
+        .user-ads-carousel-nav-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            color: #6366f1;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+        
+        .user-ads-carousel-nav-btn:hover {
+            background-color: #6366f1;
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .user-ads-carousel-indicators {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .user-ad-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(99, 102, 241, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .user-ad-indicator.active {
+            background-color: #6366f1;
+            transform: scale(1.2);
+        }
+        
+        /* =============================================================== */
+        /* AD CREATION MODAL STYLES - PERBAIKAN */
+        /* =============================================================== */
+        #ad-creation-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            padding: 20px;
+        }
+        
+        #ad-creation-modal.hidden {
+            display: none;
+        }
+        
+        #ad-creation-content {
+            background-color: white;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e5e7eb;
+        }
+        
+        #ad-creation-header {
+            padding: 20px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+        }
+        
+        #ad-creation-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        
+        #ad-creation-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #6b7280;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+        }
+        
+        #ad-creation-close:hover {
+            background-color: #f3f4f6;
+        }
+        
+        #ad-creation-form {
+            padding: 24px;
+            background-color: white;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+        
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            color: #1f2937;
+            background-color: white;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+            font-family: inherit;
+        }
+        
+        .image-preview-container {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px dashed #d1d5db;
+            min-height: 200px;
+            align-items: center;
+        }
+        
+        .image-preview {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 8px;
+            object-fit: contain;
+            border: 1px solid #e5e7eb;
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        #ad-creation-actions {
+            padding: 16px 24px;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            background-color: white;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+        
+        .btn {
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.875rem;
+        }
+        
+        .btn-cancel {
+            background-color: #f3f4f6;
+            color: #4b5563;
+            border: 1px solid #d1d5db;
+        }
+        
+        .btn-cancel:hover {
+            background-color: #e5e7eb;
+        }
+        
+        .btn-submit {
+            background-color: #6366f1;
+            color: white;
+            border: none;
+        }
+        
+        .btn-submit:hover {
+            background-color: #4f46e5;
+        }
+        
+        .btn-submit:disabled {
+            background-color: #a5b4fc;
+            cursor: not-allowed;
+        }
+        
+        /* Media queries untuk responsivitas */
+        @media (max-width: 768px) {
+            #ad-creation-content {
+                max-width: 100%;
+                border-radius: 16px 16px 0 0;
+                margin-bottom: 0;
+            }
+            
+            #ad-creation-form {
+                padding: 20px;
+            }
+            
+            .form-group {
+                margin-bottom: 16px;
+            }
+            
+            .image-preview {
+                max-height: 200px;
+            }
+            
+            #ad-creation-actions {
+                padding: 16px 20px;
+                flex-direction: column-reverse;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            #ad-creation-header {
+                padding: 16px;
+            }
+            
+            #ad-creation-title {
+                font-size: 1.25rem;
+            }
+            
+            #ad-creation-form {
+                padding: 16px;
+            }
+            
+            .form-label {
+                font-size: 0.8125rem;
+            }
+            
+            .form-input,
+            .form-textarea,
+            .form-select {
+                padding: 10px 14px;
+                font-size: 0.8125rem;
+            }
+            
+            .image-preview {
+                max-height: 180px;
+            }
+            
+            .image-preview-container {
+                min-height: 160px;
+                padding: 12px;
+            }
+        }
+        
+        /* Form layout horizontal untuk desktop */
+        @media (min-width: 768px) {
+            .form-horizontal {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            
+            .form-horizontal .form-group {
+                flex: 1;
+                min-width: 250px;
+                margin-bottom: 0;
+            }
+            
+            .form-horizontal .form-group-full {
+                flex: 100%;
+            }
+        }
+        
+        /* =============================================================== */
+        /* MY ADS SECTION STYLES */
+        /* =============================================================== */
+        #my-ads-section {
+            margin-bottom: 24px;
+            width: 100%;
+        }
+        
+        .my-ads-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .my-ads-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        
+        .my-ads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        @media (max-width: 640px) {
+            .my-ads-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .my-ad-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+        }
+        
+        .my-ad-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .my-ad-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+        
+        .my-ad-content {
+            padding: 16px;
+        }
+        
+        .my-ad-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        
+        .my-ad-description {
+            font-size: 0.875rem;
+            color: #4b5563;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .my-ad-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .my-ad-status {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        
+        .status-active {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        
+        .status-expired {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .my-ad-date {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        .my-ad-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 0.75rem;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .btn-edit {
+            background-color: #f3f4f6;
+            color: #4b5563;
+            border: none;
+        }
+        
+        .btn-edit:hover {
+            background-color: #e5e7eb;
+        }
+        
+        .btn-delete {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: none;
+        }
+        
+        .btn-delete:hover {
+            background-color: #fecaca;
+        }
+        
+        .btn-activate {
+            background-color: #d1fae5;
+            color: #065f46;
+            border: none;
+        }
+        
+        .btn-activate:hover {
+            background-color: #a7f3d0;
+        }
+        
+        .my-ads-empty {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 24px;
+            background-color: #f3f4f6;
+            border-radius: 8px;
+            color: #6b7280;
+        }
+        
+        .my-ads-empty i {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #9ca3af;
+        }
+        
+        /* =============================================================== */
+        /* ADS DRAWER STYLES */
+        /* =============================================================== */
+        #ads-drawer {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+        
+        #ads-drawer.open {
+            right: 0;
+        }
+        
+        #ads-drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+            display: none;
+        }
+        
+        #ads-drawer-overlay.show {
+            display: block;
+        }
+        
+        .ads-drawer-header {
+            padding: 20px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+        }
+        
+        .ads-drawer-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        
+        .ads-drawer-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #6b7280;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+        }
+        
+        .ads-drawer-close:hover {
+            background-color: #f3f4f6;
+        }
+        
+        .ads-drawer-content {
+            padding: 20px;
+        }
+        
+        .ads-drawer-section {
+            margin-bottom: 24px;
+        }
+        
+        .ads-drawer-section-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .ads-drawer-section-title i {
+            margin-right: 8px;
+        }
+        
+        .ads-drawer-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .ads-drawer-item {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 12px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .ads-drawer-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .ads-drawer-item-title {
+            font-weight: 600;
+            color: #1f2937;
+            font-size: 0.875rem;
+        }
+        
+        .ads-drawer-item-status {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        
+        .ads-drawer-item-description {
+            font-size: 0.8125rem;
+            color: #4b5563;
+            margin-bottom: 8px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .ads-drawer-item-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        .ads-drawer-item-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .ads-drawer-empty {
+            text-align: center;
+            padding: 24px;
+            background-color: #f3f4f6;
+            border-radius: 8px;
+            color: #6b7280;
+        }
+        
+        .ads-drawer-empty i {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #9ca3af;
+        }
+        
+        /* Media queries untuk responsivitas */
+        @media (max-width: 768px) {
+            #ads-drawer {
+                width: 100%;
+                right: -100%;
+            }
+        }
+        
+        /* Animasi untuk badge label */
+        @keyframes pulseHighlight {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .badge-popular {
+            animation: pulseHighlight 2s infinite;
+        }
+        
+        /* Gaya untuk komentar */
+        .comments-section {
+            max-height: 300px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+        }
+        
+        /* Styling scrollbar untuk webkit browsers */
+        .comments-section::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .comments-section::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .comments-section::-webkit-scrollbar-thumb {
+            background: #c5c5c5;
+            border-radius: 10px;
+        }
+        
+        /* Menu penyortiran */
+        .sort-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            z-index: 20;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        
+        .sort-menu.show {
+            display: block;
+        }
+        
+        /* Gaya untuk ticker */
+        .ticker-viewport {
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+        
+        .ticker-track {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+        
+        .ticker-track.is-animating {
+            animation: marquee 40s linear infinite;
+        }
+        
+        .ticker-track.is-animating:hover {
+            animation-play-state: paused;
+        }
+        
+        .ticker-item {
+            margin-right: 24px;
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        
+        .ticker-item:hover {
+            color: var(--primary-color-light);
+            text-decoration: underline;
+        }
+        
+        .ticker-separator {
+            margin-right: 24px;
+            color: var(--subtle-gray);
+        }
+        
+        .ticker-dropdown {
+            display: none;
+            position: absolute;
+            top: calc(100% + 5px);
+            right: 0;
+            z-index: 30;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--subtle-gray);
+        }
+        
+        .ticker-dropdown.show {
+            display: block;
+        }
+        /* =============================================================== */
+/* HEADER STICKY - PERUBAHAN BARU */
+/* =============================================================== */
+.app-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    transition: all 0.3s ease;
+    background-color: white;
+    border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+}
+
+.app-header.scrolled {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.header-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+@media (min-width: 640px) {
+    .header-content {
+        padding: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .header-content {
+        padding: 2rem;
+    }
+}
+
+/* Popup Styling */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-container {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    border-radius: 20px;
+    padding: 40px;
+    width: 400px;
+    max-width: 90%;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    transform: scale(0.8) translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-overlay.active .popup-container {
+    transform: scale(1) translateY(0);
+}
+
+/* Animasi Border Berputar */
+.popup-border-animation {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 20px;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.border-line {
+    position: absolute;
+    background: linear-gradient(90deg, #4285f4, #34a853, #fbbc05, #ea4335, #4285f4);
+    background-size: 300% 100%;
+    animation: gradientMove 3s linear infinite;
+}
+
+.border-line.top {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    animation: slideTop 3s linear infinite;
+}
+
+.border-line.right {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 2px;
+    animation: slideRight 3s linear infinite;
+}
+
+.border-line.bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    animation: slideBottom 3s linear infinite;
+}
+
+.border-line.left {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 2px;
+    animation: slideLeft 3s linear infinite;
+}
+
+@keyframes slideTop {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes slideRight {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+@keyframes slideBottom {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+@keyframes slideLeft {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(-100%); }
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Tombol Close */
+.popup-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+}
+
+.popup-close:hover {
+    transform: rotate(90deg);
+}
+
+.popup-close span {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #666;
+    top: 50%;
+    left: 0;
+    transition: background-color 0.3s ease;
+}
+
+.popup-close:hover span {
+    background-color: #4285f4;
+}
+
+.popup-close span:first-child {
+    transform: rotate(45deg);
+}
+
+.popup-close span:last-child {
+    transform: rotate(-45deg);
+}
+
+/* Konten Popup - Diperbarui untuk centering */
+.popup-content {
+    text-align: center;
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Icon Perisai - Diperbarui untuk perfect centering */
+.popup-icon {
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.popup-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #333;
+    background: linear-gradient(135deg, #4285f4, #34a853);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    width: 100%;
+}
+
+.popup-description {
+    font-size: 15px;
+    margin-bottom: 25px;
+    color: #666;
+    line-height: 1.5;
+    width: 100%;
+    max-width: 320px;
+}
+
+.install-button {
+    background: linear-gradient(135deg, #4285f4, #1a73e8);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    display: inline-block;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.install-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.install-button:hover::before {
+    left: 100%;
+}
+
+.install-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(66, 133, 244, 0.4);
+}
+
+.dont-show-again {
+    font-size: 14px;
+    color: #888;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.dont-show-again:hover {
+    color: #4285f4;
+    background-color: rgba(66, 133, 244, 0.1);
+}
+
+.dont-show-again.disabled {
+    color: #ea4335;
+    text-decoration: line-through;
+    background-color: rgba(234, 67, 53, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .popup-container {
+        width: 95%;
+        padding: 30px 20px;
+    }
+    
+    .popup-title {
+        font-size: 20px;
+    }
+    
+    .install-button {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+    
+    .popup-description {
+        max-width: 280px;
+    }
+}
+
+
+    </style>
+</head>
+  
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8R37X9Z"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="Tiket Kita" />
+<link rel="manifest" href="/site.webmanifest" />
+       <!-- Sticky Header -->
+<header id="app-header" class="app-header no-print">
+    <!-- 
+      File ini berisi komponen header untuk aplikasi Tiketku.
+      Termasuk navigasi, branding, dan tombol otentikasi.
+      Versi ini ukurannya disesuaikan (lebih kecil).
+    -->
+    <div x-data class="header-content bg-white rounded-xl shadow-md p-3 flex flex-row justify-between items-center relative">
+        <div class="flex items-center gap-3">
+            <button id="menu-button" class="p-2 rounded-full hover:bg-gray-100
+                <svg class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <div>
+                <h1 class="flex items-center">
+    <img src="UKURAN 3 GRID IG (1).png" 
+         alt="Logo Tiketku" 
+         style="height: 30px; width: auto;">
+</h1>
+                <p id="header-user-name" class="text-xs text-gray-500">Selamat datang!</p>
+            </div>
+        </div>
+        <div id="auth-area" class="flex items-center gap-4 flex-shrink-0">
+            <div id="user-info-header" class="hidden">
+                <a id="profile-link" href="profil.html" class="relative inline-block">
+                    <img id="header-profile-image" src="https://placehold.co/40x40/e2e8f0/adb5bd?text=U" alt="Foto Profil" class="w-8 h-8 rounded-full object-cover">
+                    <span class="absolute bottom-0 right-0 block h-2.5 w-2.5 rounded-full bg-green-500 ring-2 ring-white"></span>
+                </a>
+            </div>
+            <!-- 
+              Area tombol otentikasi untuk tamu (Guest).
+              Tombol login diubah menjadi gaya 'outline' (garis).
+              Tombol daftar (Register) ditambahkan dengan gaya 'solid' biru.
+            -->
+            <div id="guest-header" class="flex items-center gap-3">
+                <a href="login.html" class="text-sm font-semibold px-3 py-1.5 rounded-lg border border-indigo-600 text-indigo-600 hover:bg-indigo-50 hover:text-indigo-700 transition-colors duration-200">
+                    Login
+                </a>
+                <a href="daftar.html" class="text-sm bg-indigo-600 text-white font-semibold px-3 py-1.5 rounded-lg hover:bg-indigo-700 transition-colors duration-200">
+                    Daftar
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="menu-dropdown" class="hidden absolute top-16 right-4 sm:right-auto w-64 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-20">
+        <!-- Konten dropdown menu akan diisi di sini (posisi top disesuaikan) -->
+    </div>
+</header>
+
+
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <!-- Profile Card -->
+        <section class="profile-card mb-6 no-print">
+            <div class="profile-content">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center">
+                    <div class="profile-image-container mb-4 sm:mb-0 sm:mr-6">
+                        <img id="profile-image" src="https://placehold.co/80x80/e2e8f0/adb5bd?text=U" alt="Foto Profil" class="profile-image">
+                        <span class="profile-status"></span>
+                    </div>
+                    <div class="flex-grow">
+                        <h2 id="profile-name" class="profile-name">Memuat...</h2>
+                        <p id="profile-email" class="profile-email">memuat@email.com</p>
+                        <div class="balance-section">
+                            <p class="balance-label">Saldo Anda</p>
+                            <p class="balance-amount">Silahkan Cek Di Menu Wallet</p>
+                            <p class="balance-note">Silahakan Cek Di Menu Wallet, Untuk Melihat Jumlah Saldo Anda</p>
+                        </div>
+                    </div>
+                   
+        </section>
+            <section id="announcement-section" class="announcement-container no-print">
+            <div class="announcement-icon-wrapper">
+                <i class="fas fa-bullhorn"></i>
+            </div>
+            <div class="announcement-viewport">
+                <div id="announcement-track" class="announcement-track">
+                </div>
+            </div>
+        </section>
+      
+ <section aria-label="Iklan Sponsor" class="my-6 no-print">
+    <div id="ad-carousel-container" class="relative w-full max-w-5xl mx-auto rounded-xl shadow-lg overflow-hidden">
+        <div id="ad-carousel-track" class="flex">
+         
+            <a href="#link-tujuan-iklan-1" class="ad-slide block w-full flex-shrink-0">
+                <img src="https://saving.ct.ws/uploads/1764157792_Cuplikan_layar_2025_11_26_184844.png"
+                    alt="Iklan Promosi 1" class="w-full h-full object-cover" fetchpriority="high">
+            </a>
+
+           <a href="#link-tujuan-iklan-2" class="ad-slide block w-full flex-shrink-0">
+    <img src="https://i.pinimg.com/1200x/e2/45/0b/e2450b2317cb9a071ecc1f33e4e126ee.jpg"
+        alt="Iklan Promosi 2" class="w-full h-full object-cover" fetchpriority="high">
+</a>
+
+<a href="#link-tujuan-iklan-3" class="ad-slide block w-full flex-shrink-0">
+    <img src="https://i.pinimg.com/1200x/9e/6f/88/9e6f880ad87d5cc45e92ef47e52b1b13.jpg"
+        alt="Iklan Promosi 3" class="w-full h-full object-cover" fetchpriority="low" loading="lazy">
+</a>
+
+<a href="#link-tujuan-iklan-4" class="ad-slide block w-full flex-shrink-0">
+    <img src="https://i.pinimg.com/1200x/95/22/6b/95226bca485e811e5567b02d957b8d47.jpg"
+        alt="Iklan Promosi 4" class="w-full h-full object-cover" fetchpriority="low" loading="lazy">
+</a>
+
+<a href="#link-tujuan-iklan-5" class="ad-slide block w-full flex-shrink-0">
+    <img src="https://i.pinimg.com/1200x/9c/e3/94/9ce394fe4b8dbd8436f1c9a744df137e.jpg"
+        alt="Iklan Promosi 5" class="w-full h-full object-cover" fetchpriority="low" loading="lazy">
+</a>
+
+<a href="#link-tujuan-iklan-1" class="ad-slide block w-full flex-shrink-0">
+    <img src="https://i.pinimg.com/736x/9a/5f/2b/9a5f2b7127f8d26fbf02431d26b87edd.jpg"
+        alt="Iklan Promosi 1" class="w-full h-full object-cover" fetchpriority="low" loading="lazy">
+</a>
+
+        </div>
+
+        <button id="ad-carousel-prev" aria-label="Iklan Sebelumnya"
+            class="absolute top-1/2 left-4 transform -translate-y-1/2">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button id="ad-carousel-next" aria-label="Iklan Berikutnya"
+            class="absolute top-1/2 right-4 transform -translate-y-1/2">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div id="ad-carousel-indicators"
+            class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        </div>
+    </div>
+</section>
+        
+        <!-- User Ads Section -->
+        <section aria-label="Iklan Pengguna" class="my-6 no-print">
+            <div class="user-ads-carousel-container">
+                <div class="user-ads-carousel-wrapper">
+                    <div id="user-ads-carousel-track" class="user-ads-carousel-track">
+                        <!-- Iklan user akan dimuat di sini secara dinamis -->
+                    </div>
+                    <button id="user-ads-carousel-prev" aria-label="Iklan Sebelumnya"
+                        class="absolute top-1/2 left-4 transform -translate-y-1/2 user-ads-carousel-nav-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="user-ads-carousel-next" aria-label="Iklan Berikutnya"
+                        class="absolute top-1/2 right-4 transform -translate-y-1/2 user-ads-carousel-nav-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="user-ads-carousel-controls">
+                    <div id="user-ads-carousel-indicators" class="user-ads-carousel-indicators">
+                        <!-- Indikator akan dimuat di sini secara dinamis -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Voucher Section -->
+        <section class="mb-6 no-print">
+            <h2 class="text-lg font-bold text-gray-800 mb-3">Voucher Diskon</h2>
+            <div class="voucher-card">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="font-semibold text-blue-600">Diskon 20%</p>
+                        <p class="text-sm text-gray-700">Min. belanja Rp 100.000</p>
+                        <p class="text-xs text-gray-500">Berlaku hingga 31/12/2023</p>
+                    </div>
+                    <div>
+                        <p class="voucher-code">----</p>
+                    </div>
+                </div>
+            </div>
+            <div class="voucher-card">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="font-semibold text-blue-600">Diskon 50K</p>
+                        <p class="text-sm text-gray-700">Min. belanja Rp 200.000</p>
+                        <p class="text-xs text-gray-500">Berlaku hingga 30/09/2023</p>
+                    </div>
+                    <div>
+                        <p class="voucher-code">----</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+ 
+      
+        
+
+        
+        <div id="menu-dropdown"
+            class="hidden absolute top-20 right-4 sm:right-auto w-64 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-20 no-print">
+        </div>
+        <nav id="dynamic-nav-container"
+            class="flex flex-wrap items-start justify-center gap-4 text-center text-sm text-gray-700 mb-8 max-w-3xl mx-auto no-print">
+        </nav>
+        
+        <!-- My Ads Section -->
+        <section id="my-ads-section" class="no-print">
+            <div class="my-ads-header">
+                <h2 class="my-ads-title">Iklan Saya</h2>
+                <button id="create-ad-btn" class="bg-indigo-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-indigo-700 flex items-center">
+                    <i class="fas fa-plus-circle mr-2"></i> Buat Iklan
+                </button>
+            </div>
+            <div id="my-ads-grid" class="my-ads-grid">
+                <div class="my-ads-empty">
+                    <i class="fas fa-ad"></i>
+                    <p>Belum ada iklan</p>
+                    <p class="text-xs mt-2">Klik tombol "Buat Iklan" untuk membuat iklan promosi Anda</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Favorite Tickets Section -->
+        <section id="favorite-section" class="favorite-section no-print">
+            <div class="favorite-header">
+                <h2 class="favorite-title"><i class="fas fa-star"></i> Tiket Favorit Anda</h2>
+            </div>
+            <div id="favorite-grid" class="favorite-grid">
+                <div class="favorite-empty">
+                    <i class="fas fa-star"></i>
+                    <p>Belum ada tiket favorit</p>
+                    <p class="text-xs mt-2">Klik tombol bintang pada tiket untuk menambahkannya ke favorit</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Ticket Categories Section -->
+        <section id="ticket-categories" class="mb-8 no-print">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Kategori Tiket</h2>
+            <div class="category-grid">
+                <!-- Kelas Tiket -->
+                <div class="category-card" data-category="Ekonomi" data-type="class">
+                    <div class="category-icon category-ekonomi">
+                        <i class="fas fa-chair"></i>
+                    </div>
+                    <h3 class="category-title">Kelas Ekonomi</h3>
+                    <p class="category-count">Mulai dari Rp 100.000</p>
+                </div>
+                
+                <div class="category-card" data-category="Bisnis" data-type="class">
+                    <div class="category-icon category-bisnis">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <h3 class="category-title">Kelas Bisnis</h3>
+                    <p class="category-count">Mulai dari Rp 300.000</p>
+                </div>
+                
+                <div class="category-card" data-category="Eksekutif" data-type="class">
+                    <div class="category-icon category-eksekutif">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="category-title">Kelas Eksekutif</h3>
+                    <p class="category-count">Mulai dari Rp 500.000</p>
+                </div>
+                
+                <!-- Harga Tiket -->
+                <div class="category-card" data-category="Rendah" data-type="price">
+                    <div class="category-icon category-rendah">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3 class="category-title">Harga Rendah</h3>
+                    <p class="category-count">Dibawah Rp 200.000</p>
+                </div>
+                
+                <div class="category-card" data-category="Sedang" data-type="price">
+                    <div class="category-icon category-sedang">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3 class="category-title">Harga Sedang</h3>
+                    <p class="category-count">Rp 200.000 - 500.000</p>
+                </div>
+                
+                <div class="category-card" data-category="Tinggi" data-type="price">
+                    <div class="category-icon category-tinggi">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="category-title">Harga Tinggi</h3>
+                    <p class="category-count">Diatas Rp 500.000</p>
+                </div>
+            </div>
+        </section>
+        
+    
+        
+    
+        <main class="space-y-12">
+            <section id="marketplace-section">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-bold text-gray-800">Tiket Tersedia</h2>
+                    <div class="flex items-center gap-3">
+                        <div class="relative">
+                            <button id="sort-button" class="flex items-center gap-1 text-sm bg-white px-3 py-1.5 rounded-lg border shadow-sm hover:bg-gray-100">
+                                <i class="fas fa-sort-amount-down text-gray-500"></i>
+                                <span id="current-sort">Terbaru</span>
+                            </button>
+                            <div id="sort-menu" class="sort-menu w-48">
+                                <div class="py-1">
+                                    <button class="sort-option block w-full text-left px-4 py-2 text-sm hover:bg-gray-100" data-sort="newest">Terbaru</button>
+                                    <button class="sort-option block w-full text-left px-4 py-2 text-sm hover:bg-gray-100" data-sort="popular">Terpopuler</button>
+                                    <button class="sort-option block w-full text-left px-4 py-2 text-sm hover:bg-gray-100" data-sort="likes">Like Terbanyak</button>
+                                    <button class="sort-option block w-full text-left px-4 py-2 text-sm hover:bg-gray-100" data-sort="comments">Komentar Terbanyak</button>
+                                </div>
+                            </div>
+                        </div>
+                        <p id="filter-status" class="text-sm text-gray-600 font-medium"></p>
+                    </div>
+                </div>
+                <section id="new-ticket-ticker-section"
+                    class="bg-white p-3 rounded-lg shadow-sm flex items-center text-sm relative no-print mb-8">
+                    <span class="font-bold text-gray-600 mr-3 flex-shrink-0">
+                        TIKET BARU:
+                    </span>
+                    <div id="ticker-viewport" class="flex-grow overflow-hidden relative h-5">
+                        <div id="ticker-track" class="flex items-center absolute whitespace-nowrap top-0 left-0">
+                            <p class="text-gray-400">Memuat tiket...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="relative">
+                        <button id="ticker-expand-btn"
+                            class="hidden ml-3 px-2 text-gray-500 hover:bg-gray-200 rounded-md"
+                            title="Lihat Semua Tiket Terbaru">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="ticker-dropdown" class="ticker-dropdown w-72 bg-white rounded-md shadow-lg border">
+                            <div class="p-2 font-bold border-b text-gray-700">Semua Tiket Terbaru</div>
+                            <ul id="ticker-full-list" class="max-h-64 overflow-y-auto p-2">
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                  
+        <div class="mb-8 flex justify-center items-start gap-2 no-print">
+            <div class="relative flex-grow max-w-lg">
+                <div class="relative">
+                    <input type="search" id="search-input" placeholder="Cari nama tiket..."
+                        class="w-full pl-10 pr-4 py-2 border rounded-full text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        autocomplete="off">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-search text-gray-400"></i>
+                    </div>
+                </div>
+                <div id="search-suggestions"
+                    class="absolute w-full mt-1 bg-white rounded-md shadow-lg z-20 border border-gray-200">
+                </div>
+            </div>
+            <div id="category-dropdown-container" class="relative">
+                <button id="category-dropdown-button" aria-label="Pilih Kategori"
+                
+                </button>
+                <div id="category-dropdown"
+                    class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-20">
+                    <div id="category-list" class="py-1" role="menu" aria-orientation="vertical"
+                        aria-labelledby="category-dropdown-button">
+                        <a href="#" class="category-filter-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            role="menuitem" data-category="Semua">Semua Kategori</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div id="ticket-list" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"></div>
+            </section>
+            <hr class="border-gray-300 no-print">
+            <section id="history-section">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Riwayat Pesanan Anda</h2>
+                <div id="history-carousel-container" class="carousel-viewport py-4 bg-gray-200 rounded-2xl">
+                    <div id="history-carousel-track" class="carousel-track"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Ad Creation Modal -->
+    <div id="ad-creation-modal" class="hidden no-print">
+        <div class="ad-creation-content">
+            <div class="ad-creation-header">
+                <h2 class="ad-creation-title">Buat Iklan Promosi</h2>
+                <button id="ad-creation-close" class="ad-creation-close" aria-label="Tutup">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="ad-creation-form" class="ad-creation-form">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="ad-title" class="form-label">Judul Iklan</label>
+                        <input type="text" id="ad-title" class="form-input" placeholder="Masukkan judul iklan" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ad-duration" class="form-label">Durasi Iklan (hari)</label>
+                        <select id="ad-duration" class="form-select" required>
+                            <option value="1">1 hari</option>
+                            <option value="3">3 hari</option>
+                            <option value="7" selected>7 hari</option>
+                            <option value="14">14 hari</option>
+                            <option value="30">30 hari</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ad-target-url" class="form-label">URL Target</label>
+                        <input type="url" id="ad-target-url" class="form-input" placeholder="https://example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ad-image-url" class="form-label">URL Gambar Iklan</label>
+                        <input type="url" id="ad-image-url" class="form-input" placeholder="https://example.com/gambar-iklan.jpg" required>
+                        <div class="image-preview-container">
+                            <img id="ad-image-preview" class="image-preview hidden" alt="Preview gambar iklan">
+                            <div id="image-placeholder" class="text-gray-400 text-center">
+                                <i class="fas fa-image text-3xl mb-2"></i>
+                                <p>Preview gambar akan muncul di sini</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group form-group-full">
+                        <label for="ad-description" class="form-label">Deskripsi Iklan</label>
+                        <textarea id="ad-description" class="form-textarea" placeholder="Jelaskan tentang promosi Anda" required></textarea>
+                    </div>
+                </div>
+                
+                <div class="ad-creation-actions">
+                    <button type="button" id="ad-cancel-btn" class="btn btn-cancel">Batal</button>
+                    <button type="submit" id="ad-submit-btn" class="btn btn-submit">Buat Iklan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Ads Drawer -->
+    <div id="ads-drawer-overlay" class="no-print"></div>
+    <div id="ads-drawer" class="no-print">
+        <div class="ads-drawer-header">
+            <h2 class="ads-drawer-title">Kelola Iklan</h2>
+            <button id="ads-drawer-close" class="ads-drawer-close" aria-label="Tutup">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="ads-drawer-content">
+            <div class="ads-drawer-section">
+                <h3 class="ads-drawer-section-title">
+                    <i class="fas fa-check-circle text-green-500"></i> Iklan Aktif
+                </h3>
+                <div id="active-ads-list" class="ads-drawer-list">
+                    <div class="ads-drawer-empty">
+                        <i class="fas fa-ad"></i>
+                        <p>Belum ada iklan aktif</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ads-drawer-section">
+                <h3 class="ads-drawer-section-title">
+                    <i class="fas fa-exclamation-circle text-red-500"></i> Iklan Kadaluarsa
+                </h3>
+                <div id="expired-ads-list" class="ads-drawer-list">
+                    <div class="ads-drawer-empty">
+                        <i class="fas fa-ad"></i>
+                        <p>Belum ada iklan kadaluarsa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<!-- Bottom Navigation Bar -->
+<nav class="bottom-navbar no-print" style="
+    position: fixed;        
+    bottom: 0;        
+    left: 0;        
+    right: 0;        
+    height: 70px;        
+    background-color: white;        
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);        
+    display: flex;        
+    justify-content: space-around;        
+    align-items: center;        
+    z-index: 100;    
+">
+    <!-- Buy -->
+    <a href="home.html" class="nav-item" style="
+        display: flex;            
+        flex-direction: column;            
+        align-items: center;            
+        justify-content: center;            
+        color: #4B5563;            
+        font-size: 10px;            
+        text-decoration: none;            
+        flex: 1;            
+        height: 100%;        
+    ">
+        <svg class="nav-icon" style="width: 24px; height: 24px; margin-bottom: 4px; fill: none; stroke: currentColor; stroke-width: 1.5;" viewBox="0 0 24 24">
+            <path d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"/>
+        </svg>
+        <span>Buy</span>
+    </a>
+    
+    <!-- History -->
+    <a href="riwayatpemesanan.html" class="nav-item" style="
+        display: flex;            
+        flex-direction: column;            
+        align-items: center;            
+        justify-content: center;            
+        color: #4B5563;            
+        font-size: 10px;            
+        text-decoration: none;            
+        flex: 1;            
+        height: 100%;        
+    ">
+        <svg class="nav-icon" style="width: 24px; height: 24px; margin-bottom: 4px; fill: none; stroke: currentColor; stroke-width: 1.5;" viewBox="0 0 24 24">
+            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span>Hist</span>
+    </a>
+    
+    <!-- Sosial -->
+    <a href="sosial.html" class="nav-item" style="
+        display: flex;            
+        flex-direction: column;            
+        align-items: center;            
+        justify-content: center;            
+        color: #4B5563;            
+        font-size: 10px;            
+        text-decoration: none;            
+        flex: 1;            
+        height: 100%;        
+    ">
+        <svg class="nav-icon" style="width: 24px; height: 24px; margin-bottom: 4px; fill: none; stroke: currentColor; stroke-width: 1.5;" viewBox="0 0 24 24">
+            <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+        </svg>
+        <span>Sosial</span>
+    </a>
+    
+    <!-- Profile (gambar dari localStorage) -->
+    <a href="profil.html" class="nav-item" style="
+        display: flex;            
+        flex-direction: column;            
+        align-items: center;            
+        justify-content: center;            
+        color: #4B5563;            
+        font-size: 10px;            
+        text-decoration: none;            
+        flex: 1;            
+        height: 100%;        
+    ">
+        <div class="profile-nav-item" style="
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #E5E7EB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4px;
+            overflow: hidden;
+            border: 2px solid transparent;
+        ">
+            <img id="bottom-nav-profile" src="https://placehold.co/50x50/e2e8f0/adb5bd?text=U" alt="Profile" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <span>Profile</span>
+    </a>
+    
+    <!-- Wallet -->
+    <a href="wallet.html" class="nav-item" style="
+        display: flex;            
+        flex-direction: column;            
+        align-items: center;            
+        justify-content: center;            
+        color: #4B5563;            
+        font-size: 10px;            
+        text-decoration: none;            
+        flex: 1;            
+        height: 100%;        
+    ">
+        <svg class="nav-icon" style="width: 24px; height: 24px; margin-bottom: 4px; fill: none; stroke: currentColor; stroke-width: 1.5;" viewBox="0 0 24 24">
+            <path d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+        </svg>
+        <span>Wallet</span>
+    </a>
+    
+    <!-- Sell -->
+    <a href="inputtiket.html" class="nav-item" style="
+        display: flex;            
+        flex-direction: column;            
+        align-items: center;            
+        justify-content: center;            
+        color: #4B5563;            
+        font-size: 10px;            
+        text-decoration: none;            
+        flex: 1;            
+        height: 100%;        
+    ">
+        <svg class="nav-icon" style="width: 24px; height: 24px; margin-bottom: 4px; fill: none; stroke: currentColor; stroke-width: 1.5;" viewBox="0 0 24 24">
+            <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span>Sell</span>
+    </a>
+    
+    <!-- Ads -->
+    <a href="#" id="ads-nav-item" class="nav-item" style="
+        display: flex;            
+        flex-direction: column;            
+        align-items: center;            
+        justify-content: center;            
+        color: #4B5563;            
+        font-size: 10px;            
+        text-decoration: none;            
+        flex: 1;            
+        height: 100%;        
+    ">
+        <svg class="nav-icon" style="width: 24px; height: 24px; margin-bottom: 4px; fill: none; stroke: currentColor; stroke-width: 1.5;" viewBox="0 0 24 24">
+            <path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+            <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span>Ads</span>
+    </a>
+</nav>
+
+<script>
+// Script untuk mengatur navigasi aktif dan load gambar profile
+document.addEventListener('DOMContentLoaded', function() {
+    const navItems = document.querySelectorAll('.nav-item');
+    const profileImage = document.getElementById('bottom-nav-profile');
+    
+    // Load gambar profile dari localStorage
+    function loadProfileImage() {
+        const savedImage = localStorage.getItem('userProfileImage');
+        if (savedImage) {
+            profileImage.src = savedImage;
+        }
+    }
+    
+    // Set active item berdasarkan halaman saat ini
+    function setActiveItem() {
+        const currentPage = window.location.pathname.split('/').pop();
+        
+        navItems.forEach(item => {
+            const href = item.getAttribute('href');
+            
+            // Semua item dimulai dengan warna default
+            item.style.color = '#4B5563';
+            
+            // Jika item profile, reset border
+            if (href === 'profil.html') {
+                const profileContainer = item.querySelector('.profile-nav-item');
+                if (profileContainer) {
+                    profileContainer.style.borderColor = 'transparent';
+                }
+            }
+            
+            // Set item aktif berdasarkan halaman saat ini
+            if (href === currentPage) {
+                item.style.color = '#2563eb';
+                
+                // Jika item profile aktif, tambahkan border biru
+                if (href === 'profil.html') {
+                    const profileContainer = item.querySelector('.profile-nav-item');
+                    if (profileContainer) {
+                        profileContainer.style.borderColor = '#2563eb';
+                    }
+                }
+            }
+        });
+    }
+    
+    // Load gambar profile dan set active item
+    loadProfileImage();
+    setActiveItem();
+    
+    // Tambahkan event listener untuk setiap item
+    navItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            // Update semua item ke warna default
+            navItems.forEach(nav => {
+                nav.style.color = '#4B5563';
+                // Reset border untuk semua profile container
+                const profileContainer = nav.querySelector('.profile-nav-item');
+                if (profileContainer) {
+                    profileContainer.style.borderColor = 'transparent';
+                }
+            });
+            
+            // Set item yang diklik menjadi aktif
+            this.style.color = '#2563eb';
+            
+            // Jika yang diklik adalah profile, tambahkan border biru
+            if (this.getAttribute('href') === 'profil.html') {
+                const profileContainer = this.querySelector('.profile-nav-item');
+                if (profileContainer) {
+                    profileContainer.style.borderColor = '#2563eb';
+                }
+            }
+        });
+    });
+    
+    // Listen untuk perubahan di localStorage (jika gambar profile diupdate di halaman lain)
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'userProfileImage') {
+            loadProfileImage();
+        }
+    });
+});
+</script>
+    
+    <div id="delete-confirmation-modal"
+        class="hidden fixed inset-0 bg-gray-600 bg-opacity-75 flex items-center justify-center z-50 no-print">
+        <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-sm">
+            <h3 class="text-lg font-bold text-gray-900">Konfirmasi Hapus Tiket</h3>
+            <p class="text-sm text-gray-600 mt-2">Untuk menghapus tiket ini, masukkan kata sandi Anda.</p>
+            <div class="mt-4"><label for="password-confirmation" class="block text-sm font-medium text-gray-700">Kata
+                    Sandi</label><input type="password" id="password-confirmation"
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
+                <p id="delete-error-message" class="text-red-500 text-xs mt-1 hidden"></p>
+            </div>
+            <div class="mt-6 flex justify-end gap-3"><button id="cancel-delete-button" type="button"
+                    class="bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded-lg hover:bg-gray-300">Batal</button><button
+                    id="confirm-delete-button" type="button"
+                    class="bg-red-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-700">Hapus</button>
+            </div>
+        </div>
+    </div>
+    <div id="your-link-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 no-print">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md max-h-[90vh] flex flex-col p-6 sm:p-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">Kelola Tautan</h2><button id="close-your-link-modal"
+                    class="text-gray-400 hover:text-gray-600 text-3xl">&times;</button>
+            </div>
+            <p class="text-sm text-gray-500 mb-4">Tambah atau hapus tautan cepat Anda.</p>
+            <div id="saved-links-list" class="flex-grow overflow-y-auto space-y-3 pr-2 mb-6"></div>
+            <div class="mt-auto pt-4 border-t"><label for="new-link-input"
+                    class="block text-sm font-medium text-gray-700 mb-1">URL Baru</label>
+                <div class="flex gap-2"><input type="url" id="new-link-input" placeholder="https://www.google.com"
+                        class="flex-grow block w-full px-3 py-2 border rounded-md"><button id="add-link-button"
+                        class="bg-indigo-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-indigo-700">Tambah</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal untuk komentar -->
+    <div id="comments-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 no-print">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg max-h-[90vh] flex flex-col p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-gray-800" id="comment-modal-title">Komentar untuk [Nama Tiket]</h2>
+                <button id="close-comments-modal" class="text-gray-400 hover:text-gray-600 text-3xl">&times;</button>
+            </div>
+            <div id="comments-section" class="comments-section flex-grow overflow-y-auto mb-4 space-y-3 pr-2"></div>
+            <div class="mt-auto pt-4 border-t">
+                <textarea id="new-comment-input" placeholder="Tambahkan komentar Anda..." 
+                    class="w-full px-3 py-2 border rounded-md resize-none h-20"></textarea>
+                <div class="mt-2 flex justify-end">
+                    <button id="submit-comment-button" 
+                        class="bg-indigo-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-indigo-700">
+                        Kirim Komentar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- Popup untuk instalasi aplikasi -->
+    <div class="popup-overlay" id="installPopup">
+        <div class="popup-container">
+            <div class="popup-border-animation">
+                <div class="border-line top"></div>
+                <div class="border-line right"></div>
+                <div class="border-line bottom"></div>
+                <div class="border-line left"></div>
+            </div>
+            <div class="popup-close" id="closePopup">
+                <span></span>
+                <span></span>
+            </div>
+            <div class="popup-content">
+                <div class="popup-icon">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L2 7V12C2 16.5 4.23 20.68 7.62 23.15L12 24L16.38 23.15C19.77 20.68 22 16.5 22 12V7L12 2Z" fill="#4285f4"/>
+                        <path d="M9 12L11 14L15 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="popup-title">Instal Aplikasi Tiket Kita</div>
+                <div class="popup-description">
+                    Dapatkan pengalaman terbaik dengan menginstal aplikasi Tiket Kita di perangkat Anda.
+                </div>
+                <a href="https://median.co/share/jbnkyop#apk" class="install-button" id="installButton">
+                    Instal Sekarang
+                </a>
+                <div class="dont-show-again" id="dontShowAgain">Jangan tampilkan lagi</div>
+            </div>
+        </div>
+    </div>
+
+  <script>// api.js - Frontend API untuk berkomunikasi dengan backend
+const API_BASE_URL = 'http://localhost:3000/api'; // Ganti dengan URL backend Anda
+
+class API {
+    static async request(endpoint, options = {}) {
+        const url = `${API_BASE_URL}${endpoint}`;
+        const token = localStorage.getItem('token');
+        
+        const defaultHeaders = {
+            'Content-Type': 'application/json',
+            ...(token && { 'Authorization': `Bearer ${token}` })
+        };
+        
+        const config = {
+            headers: defaultHeaders,
+            ...options
+        };
+        
+        try {
+            const response = await fetch(url, config);
+            
+            if (!response.ok) {
+                if (response.status === 401) {
+                    // Token expired, redirect to login
+                    localStorage.removeItem('token');
+                    window.location.href = 'login.html';
+                    throw new Error('Session expired');
+                }
+                throw new Error(`HTTP ${response.status}: ${await response.text()}`);
+            }
+            
+            return await response.json();
+        } catch (error) {
+            console.error('API request failed:', error);
+            throw error;
+        }
+    }
+
+    // Auth
+    static async login(email, password) {
+        const response = await this.request('/auth/login', {
+            method: 'POST',
+            body: JSON.stringify({ email, password })
+        });
+        
+        if (response.token) {
+            localStorage.setItem('token', response.token);
+            localStorage.setItem('user', JSON.stringify(response.user));
+        }
+        
+        return response;
+    }
+
+    static async register(userData) {
+        const response = await this.request('/auth/register', {
+            method: 'POST',
+            body: JSON.stringify(userData)
+        });
+        
+        if (response.token) {
+            localStorage.setItem('token', response.token);
+            localStorage.setItem('user', JSON.stringify(response.user));
+        }
+        
+        return response;
+    }
+
+    static async logout() {
+        await this.request('/auth/logout');
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+    }
+
+    static async getCurrentUser() {
+        try {
+            const user = await this.request('/auth/me');
+            localStorage.setItem('user', JSON.stringify(user));
+            return user;
+        } catch (error) {
+            return null;
+        }
+    }
+
+    // Users
+    static async updateProfile(userId, data) {
+        return await this.request(`/users/${userId}`, {
+            method: 'PUT',
+            body: JSON.stringify(data)
+        });
+    }
+
+    static async getUserProfile(userId) {
+        return await this.request(`/users/${userId}`);
+    }
+
+    // Tickets
+    static async getAllTickets() {
+        return await this.request('/tickets');
+    }
+
+    static async getTicket(ticketId) {
+        return await this.request(`/tickets/${ticketId}`);
+    }
+
+    static async createTicket(ticketData) {
+        return await this.request('/tickets', {
+            method: 'POST',
+            body: JSON.stringify(ticketData)
+        });
+    }
+
+    static async updateTicket(ticketId, ticketData) {
+        return await this.request(`/tickets/${ticketId}`, {
+            method: 'PUT',
+            body: JSON.stringify(ticketData)
+        });
+    }
+
+    static async deleteTicket(ticketId) {
+        return await this.request(`/tickets/${ticketId}`, {
+            method: 'DELETE'
+        });
+    }
+
+    static async likeTicket(ticketId) {
+        return await this.request(`/tickets/${ticketId}/like`, {
+            method: 'POST'
+        });
+    }
+
+    static async dislikeTicket(ticketId) {
+        return await this.request(`/tickets/${ticketId}/dislike`, {
+            method: 'POST'
+        });
+    }
+
+    // Comments
+    static async getComments(ticketId) {
+        return await this.request(`/tickets/${ticketId}/comments`);
+    }
+
+    static async addComment(ticketId, comment) {
+        return await this.request(`/tickets/${ticketId}/comments`, {
+            method: 'POST',
+            body: JSON.stringify({ text: comment })
+        });
+    }
+
+    static async deleteComment(ticketId, commentId) {
+        return await this.request(`/tickets/${ticketId}/comments/${commentId}`, {
+            method: 'DELETE'
+        });
+    }
+
+    // Bookings
+    static async createBooking(bookingData) {
+        return await this.request('/bookings', {
+            method: 'POST',
+            body: JSON.stringify(bookingData)
+        });
+    }
+
+    static async getUserBookings() {
+        return await this.request('/bookings/my');
+    }
+
+    static async getAllBookings() {
+        return await this.request('/bookings');
+    }
+
+    static async updateBookingStatus(bookingId, status) {
+        return await this.request(`/bookings/${bookingId}/status`, {
+            method: 'PUT',
+            body: JSON.stringify({ status })
+        });
+    }
+
+    static async deleteBooking(bookingId) {
+        return await this.request(`/bookings/${bookingId}`, {
+            method: 'DELETE'
+        });
+    }
+
+    // Ads
+    static async createAd(adData) {
+        return await this.request('/ads', {
+            method: 'POST',
+            body: JSON.stringify(adData)
+        });
+    }
+
+    static async getActiveAds() {
+        return await this.request('/ads/active');
+    }
+
+    static async getUserAds() {
+        return await this.request('/ads/my');
+    }
+
+    static async updateAd(adId, adData) {
+        return await this.request(`/ads/${adId}`, {
+            method: 'PUT',
+            body: JSON.stringify(adData)
+        });
+    }
+
+    static async deleteAd(adId) {
+        return await this.request(`/ads/${adId}`, {
+            method: 'DELETE'
+        });
+    }
+
+    // Categories
+    static async getCategories() {
+        return await this.request('/categories');
+    }
+
+    // Analytics
+    static async incrementViewCount(ticketId) {
+        return await this.request(`/tickets/${ticketId}/view`, {
+            method: 'POST'
+        });
+    }
+
+    // File Upload (untuk gambar profil dan iklan)
+    static async uploadFile(file, type = 'image') {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('type', type);
+
+        const response = await fetch(`${API_BASE_URL}/upload`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error('Upload failed');
+        }
+
+        return await response.json();
+    }
+}
+
+// Simpan ke window untuk akses global
+window.API = API;
+
+// Helper function untuk check auth state
+window.checkAuth = async function() {
+    const token = localStorage.getItem('token');
+    if (token) {
+        try {
+            const user = await API.getCurrentUser();
+            return { isAuthenticated: true, user };
+        } catch (error) {
+            return { isAuthenticated: false, user: null };
+        }
+    }
+    return { isAuthenticated: false, user: null };
+};
+
+// Inisialisasi
+document.addEventListener('DOMContentLoaded', function() {
+    // Check auth state saat halaman load
+    checkAuth().then(authState => {
+        if (authState.isAuthenticated) {
+            // User sudah login
+            console.log('User authenticated:', authState.user);
+            
+            // Tambahkan event listener untuk logout
+            const logoutButtons = document.querySelectorAll('[data-logout]');
+            logoutButtons.forEach(button => {
+                button.addEventListener('click', async function(e) {
+                    e.preventDefault();
+                    await API.logout();
+                    window.location.href = 'login.html';
+                });
+            });
+        } else {
+            // User belum login
+            console.log('User not authenticated');
+        }
+    });
+});</script>
+</body>
+</html>
+<div class="developer-info py-3 text-center text-sm"></div>
+
+
+
+
+
+
+
+
+
+
+
