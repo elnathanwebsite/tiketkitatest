@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TiketKita | Verifikasi Email</title>
+  <!-- Font & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Source+Code+Pro:wght@600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <!-- CSS -->
+  <style>
+    :root { --primary-color: #2563EB; --primary-color-light: #60A5FA; --text-color: #1F2937; --subtle-gray: #E5E7EB; --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); --border-radius: 16px; --transition: all 0.2s ease; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Quicksand', sans-serif; font-weight: 500; color: var(--text-color); background-color: #FFFFFF; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 1rem; background-image: radial-gradient(at 0% 0%, hsla(340, 90%, 96%, 0.6) 0px, transparent 50%), radial-gradient(at 100% 20%, hsla(275, 90%, 96%, 0.6) 0px, transparent 50%), radial-gradient(at 20% 100%, hsla(175, 85%, 94%, 0.8) 0px, transparent 60%); background-attachment: fixed; }
+    .container { width: 100%; max-width: 420px; background: white; border-radius: var(--border-radius); box-shadow: var(--card-shadow); padding: 2.5rem; text-align: center; }
+    .logo { width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary-color), #3B82F6); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 36px; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3); }
+    .status-icon { font-size: 4rem; margin-bottom: 1rem; }
+    .status-icon.success { color: #10B981; }
+    .status-icon.error { color: #EF4444; }
+    .status-icon.loading { color: var(--primary-color); animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.5rem; background: linear-gradient(135deg, var(--primary-color), var(--primary-color-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-color); }
+    p { color: #6B7280; margin-bottom: 1.5rem; line-height: 1.6; }
+    .btn { display: inline-block; padding: 0.875rem 2rem; border-radius: 12px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: var(--transition); text-decoration: none; }
+    .btn-primary { background: linear-gradient(135deg, var(--primary-color), #3B82F6); color: white; border: none; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo"><i class="fas fa-ticket-alt"></i></div>
+    <h1>Verifikasi Email</h1>
+
+    <!-- Tampilan Loading (ditampilkan pertama kali) -->
+    <div id="loading-view">
+      <i class="fas fa-spinner fa-spin status-icon loading"></i>
+      <p>Sedang memverifikasi email Anda...</p>
+    </div>
+
+    <!-- Tampilan Sukses (disembunyikan secara default) -->
+    <div id="success-view" style="display:none;">
+      <i class="fas fa-check-circle status-icon success"></i>
+      <h2>Email Berhasil Diverifikasi!</h2>
+      <p>Akun Anda sekarang aktif. Silakan masuk untuk melanjutkan.</p>
+      <a href="login.html" class="btn btn-primary">Masuk Sekarang</a>
+    </div>
+
+    <!-- Tampilan Error (disembunyikan secara default) -->
+    <div id="error-view" style="display:none;">
+      <i class="fas fa-exclamation-triangle status-icon error"></i>
+      <h2>Verifikasi Gagal</h2>
+      <p id="error-message">Link verifikasi tidak valid atau telah kedaluwarsa.</p>
+      <a href="login.html" class="btn btn-primary">Kembali ke Login</a>
+    </div>
+  </div>
+
+  <script type="module">
+    // Import modul Firebase yang diperlukan
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getAuth, applyActionCode } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+
+    // Gunakan konfigurasi Firebase yang sama
+    const firebaseConfig = {
+      apiKey: "AIzaSyD_-DI0MQIug3J8vciKcaFZ-knyYZC67K8",
+      authDomain: "sosmed-7d6ee.firebaseapp.com",
+      databaseURL: "https://sosmed-7d6ee-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "sosmed-7d6ee",
+      storageBucket: "sosmed-7d6ee.appspot.com",
+      messagingSenderId: "807759832196",
+      appId: "1:807759832196:web:d176775e2f51f1e1918ed1",
+    };
+
+    // Inisialisasi Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Dapatkan elemen DOM
+    const loadingView = document.getElementById('loading-view');
+    const successView = document.getElementById('success-view');
+    const errorView = document.getElementById('error-view');
+    const errorMessageP = document.getElementById('error-message');
+
+    // Ambil kode oobCode dari URL
+    // Contoh URL: https://yourapp.com/verification.html?oobCode=XYZ123...
+    const urlParams = new URLSearchParams(window.location.search);
+    const oobCode = urlParams.get('oobCode');
+
+    // Fungsi untuk menampilkan tampilan error
+    function showError(message) {
+      loadingView.style.display = 'none';
+      errorView.style.display = 'block';
+      errorMessageP.textContent = message;
+    }
+
+    // Cek apakah oobCode ada di URL
+    if (oobCode) {
+      // Terapkan kode aksi (verifikasi email)
+      applyActionCode(auth, oobCode)
+        .then(() => {
+          // Berhasil: Tampilkan tampilan sukses
+          loadingView.style.display = 'none';
+          successView.style.display = 'block';
+        })
+        .catch((error) => {
+          // Gagal: Tampilkan tampilan error dengan pesan yang spesifik
+          console.error("Error applying action code:", error);
+          let message = 'Link verifikasi tidak valid atau telah kedaluwarsa.';
+          if (error.code === 'auth/invalid-action-code') {
+            message = 'Kode verifikasi sudah tidak berlaku atau telah digunakan. Silakan coba lagi atau minta email verifikasi baru.';
+          }
+          showError(message);
+        });
+    } else {
+      // Jika tidak ada oobCode, tampilkan error
+      showError('Tidak ada kode verifikasi yang ditemukan. Pastikan Anda mengklik link yang benar dari email Anda.');
+    }
+  </script>
+</body>
+</html>
