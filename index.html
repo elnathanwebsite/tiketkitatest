@@ -1,318 +1,1241 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TiketKita | Masuk</title>
-  <!-- Gunakan CDN yang sama seperti daftar.html -->
-  <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@4.2.0/dist/fp.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/clientjs@0.2.1/dist/client.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ua-parser-js/1.0.35/ua-parser.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bowser@2.11.0/es5.min.js"></script>
-  <script src="https://www.google.com/recaptcha/api.js?render=explicit"></script>
-  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.1/purify.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xss/1.0.14/xss.min.js"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEMO"></script>
-  <script src="https://browser.sentry-cdn.com/7.89.0/bundle.min.js"></script>
-  <script src="https://cdn.logrocket.io/LogRocket.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/web-vitals@3.5.0/dist/web-vitals.umd.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.15.0/dist/tf.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/brain.js@2.0.0-beta.25/browser.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/hotkeys-js@3.13.0/dist/hotkeys.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/uuid@9.0.1/dist/umd/uuid.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.0/build/global/luxon.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.8.1/rxjs.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/tor-detector@1.0.0/dist/tor-detector.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vpn-detector@1.2.0/dist/vpn-detector.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.11.0/validator.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/joi@17.11.0/dist/joi-browser.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/performance-now@2.1.0/lib/performance-now.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/stacktrace.js/2.0.2/stacktrace.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/web3@4.2.0/dist/web3.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.0/dist/ethers.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-fingerprint@1.0.2/index.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/audio-fingerprint@2.0.1/dist/audio-fingerprint.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/webgl-fingerprint@1.0.3/dist/webgl-fingerprint.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/font-fingerprint@1.2.0/dist/font-fingerprint.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/asmcrypto.js@2.3.2/asmcrypto.all.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/libsodium.js@0.7.13/dist/sodium.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/tweetnacl@1.0.3/nacl.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sjcl@1.0.8/sjcl.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/synaptic@1.1.4/dist/synaptic.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/convnetjs@0.3.0/build/convnet.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mind@0.11.0/dist/mind.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/ip-reputation@1.3.0/dist/ip-reputation.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/proxy-checker@2.1.0/dist/proxy-checker.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/tor-ip@1.0.2/dist/tor-ip.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/keystroke-dynamics@2.2.0/dist/keystroke-dynamics.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mouse-dynamics@1.5.0/dist/mouse-dynamics.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/scroll-dynamics@1.1.0/dist/scroll-dynamics.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/hardware-fingerprint@2.1.0/dist/hardware-fingerprint.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/battery-status@1.0.3/dist/battery-status.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/memory-analyzer@1.2.0/dist/memory-analyzer.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/isbot@3.6.10/index.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bot-detector@2.3.0/dist/bot-detector.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/anomaly-detector@1.4.0/dist/anomaly-detector.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/performance-timing@2.0.1/dist/performance-timing.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/timing-attack@1.1.0/dist/timing-attack.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/threat-intel@1.5.0/dist/threat-intel.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/malware-detector@1.3.0/dist/malware-detector.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/schema-validator@2.4.0/dist/schema-validator.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/input-sanitizer@1.6.0/dist/input-sanitizer.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/network-analyzer@1.8.0/dist/network-analyzer.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/traffic-monitor@2.1.0/dist/traffic-monitor.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/behavioral-analysis@2.3.0/dist/behavioral-analysis.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/cognitive-security@1.7.0/dist/cognitive-security.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/zkp@0.3.0/dist/zkp.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/snarkjs@0.7.0/snarkjs.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/advanced-geolocation@2.2.0/dist/advanced-geolocation.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/ip-geolocation@1.9.0/dist/ip-geolocation.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mobile-fingerprint@2.0.1/dist/mobile-fingerprint.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/device-orientation@1.4.0/dist/device-orientation.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/elliptic@6.5.4/dist/elliptic.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/hash.js@1.1.7/lib/hash.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/pqcrypto@0.2.1/dist/pqcrypto.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/kyber@0.2.0/dist/kyber.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/client-firewall@1.8.0/dist/client-firewall.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/request-validator@2.3.0/dist/request-validator.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/security-metrics@1.6.0/dist/security-metrics.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/threat-score@1.4.0/dist/threat-score.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/anti-cheat@2.1.0/dist/anti-cheat.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/game-integrity@1.3.0/dist/game-integrity.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/webauthn@1.2.0/dist/webauthn.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/passkeys@0.8.0/dist/passkeys.min.js"></script>
-  <script src="https://unpkg.com/@fingerprintjs/fingerprintjs@4.2.0/dist/fp.min.js"></script>
-  <script src="https://unpkg.com/clientjs@0.2.1/dist/client.min.js"></script>
-  <script src="https://unpkg.com/lodash@4.17.21/lodash.min.js"></script>
-  <script src="https://unpkg.com/axios@1.6.2/dist/axios.min.js"></script>
-  <script src="https://unpkg.com/rxjs@7.8.1/dist/bundles/rxjs.umd.min.js"></script>
-
-  <!-- Font & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Source+Code+Pro:wght@600&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
-  <!-- CSS (sama seperti daftar.html) -->
-  <style>
-    :root { --primary-color: #2563EB; --primary-color-light: #60A5FA; --highlight-color: #F59E0B; --text-color: #1F2937; --subtle-gray: #E5E7EB; --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); --border-radius: 16px; --transition: all 0.2s ease; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Quicksand', sans-serif; font-weight: 500; color: var(--text-color); background-color: #FFFFFF; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 1rem; background-image: radial-gradient(at 0% 0%, hsla(340, 90%, 96%, 0.6) 0px, transparent 50%), radial-gradient(at 100% 20%, hsla(275, 90%, 96%, 0.6) 0px, transparent 50%), radial-gradient(at 20% 100%, hsla(175, 85%, 94%, 0.8) 0px, transparent 60%); background-attachment: fixed; }
-    .container { display: flex; width: 100%; max-width: 1000px; background: white; border-radius: var(--border-radius); box-shadow: var(--card-shadow); overflow: hidden; min-height: 600px; }
-    .image-section { flex: 1; background: linear-gradient(135deg, var(--primary-color), #3B82F6); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; position: relative; overflow: hidden; }
-    .image-section::before { content: ''; position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%); transform: rotate(45deg); z-index: 0; pointer-events: none; }
-    .image-content { position: relative; z-index: 1; text-align: center; color: white; }
-    .image-content h2 { font-size: 2rem; margin-bottom: 1rem; font-weight: 700; }
-    .image-content p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem; }
-    .feature-image { width: 100%; max-width: 400px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); }
-    .card-style { flex: 1; background-color: white; padding: 2rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
-    .card-style::before { content: ''; position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%); transform: rotate(45deg); z-index: 0; pointer-events: none; }
-    .card-content { position: relative; z-index: 1; }
-    .logo { width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary-color), #3B82F6); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3); }
-    .form-title { font-size: 1.75rem; font-weight: 700; text-align: center; margin-bottom: 0.5rem; background: linear-gradient(135deg, var(--primary-color), var(--primary-color-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .form-subtitle { text-align: center; color: #6B7280; margin-bottom: 1.5rem; font-size: 0.95rem; }
-    .btn { width: 100%; padding: 0.875rem; border-radius: 12px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 0.5rem; position: relative; overflow: hidden; }
-    .btn-primary { background: linear-gradient(135deg, var(--primary-color), #3B82F6); color: white; border: none; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); }
-    .btn-google { background-color: white; color: #1F2937; border: 1px solid var(--subtle-gray); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); }
-    .btn-google:hover { background-color: #f8fafc; border-color: var(--primary-color-light); color: var(--primary-color); }
-    .input-group { position: relative; margin-bottom: 1rem; }
-    .input-group input { width: 100%; padding: 0.875rem 1rem 0.875rem 2.75rem; border: 1px solid var(--subtle-gray); border-radius: 12px; font-size: 1rem; background-color: #fafafa; transition: var(--transition); }
-    .input-group input:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); background-color: white; }
-    .input-group i { position: absolute; left: 0.875rem; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 1.1rem; z-index: 2; }
-    .input-group .toggle-pass { right: 0.875rem; left: auto; cursor: pointer; color: #64748b; }
-    .divider { text-align: center; margin: 1.5rem 0; color: #94a3b8; position: relative; font-size: 0.9rem; }
-    .divider::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--subtle-gray); }
-    .divider span { background: white; padding: 0 1rem; }
-    .flex { display: flex; }
-    .items-center { align-items: center; }
-    .justify-between { justify-content: space-between; }
-    .mb-4 { margin-bottom: 1rem; }
-    .mb-6 { margin-bottom: 1.5rem; }
-    .text-center { text-align: center; }
-    .text-sm { font-size: 0.875rem; }
-    .checkbox-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: #6B7280; cursor: pointer; }
-    .checkbox-label input { accent-color: var(--primary-color); }
-    .link { color: var(--primary-color); font-weight: 600; text-decoration: none; }
-    .link:hover { text-decoration: underline; }
-    .toggle-link { text-align: center; margin-top: 1.5rem; color: #6B7280; font-size: 0.9rem; }
-    .toggle-link span { color: var(--primary-color); cursor: pointer; font-weight: 600; }
-    .loading { display: inline-block; width: 18px; height: 18px; border: 2px solid transparent; border-top: 2px solid white; border-radius: 50%; animation: spin 1s linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    #popup { position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); display: flex; justify-content: center; align-items: center; z-index: 9999; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
-    #popup.active { opacity: 1; visibility: visible; }
-    .popup-container { background: linear-gradient(145deg, #ffffff, #f8f9fa); border-radius: 20px; padding: 2.5rem; width: 380px; max-width: 90%; text-align: center; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); transform: scale(0.8) translateY(20px); transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
-    #popup.active .popup-container { transform: scale(1) translateY(0); }
-    .popup-icon { width: 70px; height: 70px; margin: 0 auto 1rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-    .popup-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; background: linear-gradient(135deg, var(--primary-color), var(--primary-color-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .popup-message { color: #4b5563; margin-bottom: 1rem; line-height: 1.5; }
-    .popup-joke { font-size: 0.8rem; color: #9ca3af; font-style: italic; margin-top: 1rem; }
-    .popup-close-btn { margin-top: 1.5rem; color: var(--primary-color); font-weight: 600; background: none; border: none; cursor: pointer; font-size: 1rem; }
-    .popup-close-btn:hover { text-decoration: underline; }
-    @media (max-width: 768px) { .container { flex-direction: column; max-width: 420px; } .image-section { padding: 1.5rem; } .image-content h2 { font-size: 1.5rem; } .image-content p { font-size: 1rem; } .card-style { padding: 1.5rem; } .logo { width: 60px; height: 60px; font-size: 28px; } .form-title { font-size: 1.5rem; } }
-  </style>
+     <script src="router.js" defer></script>
+<!-- PREFETCH SEMUA HALAMAN MENU -->
+<link rel="prefetch" href="home.html">
+<link rel="prefetch" href="riwayatpemesanan.html">
+<link rel="prefetch" href="sosial.html">
+<link rel="prefetch" href="inputtiket.html">
+<link rel="prefetch" href="profil.html">
+<!-- PRELOAD HALAMAN PALING PENTING -->
+<link rel="preload" href="home.html" as="document">
+<link rel="preload" href="riwayatpemesanan.html" as="document">
+<link rel="preload" href="sosial.html" as="document">
+<link rel="preload" href="inputtiket.html" as="document">
+<link rel="preload" href="profil.html" as="document">
+<!-- DNS PREFETCH & PRECONNECT (untuk resource eksternal) -->
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<meta name="theme-color" content="#4F46E5">
+<meta name="google-site-verification" content="3ymKz6IFpn90XmVb_uiGS94xuMwG_aTeg6OaZQBYRSM">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="images/icons/icon-192x192.png">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7u1itGfLepjKNTGfnZlUSHGeXxXYSI8Imha2bn/sMqKhaRtxbMzuNE9jLQ==" crossorigin="anonymous" referrerpolicy="no-referrer" async></script>
+<script src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/luxon@3.4.0/build/global/luxon.min.js"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.1/purify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.11.0/validator.min.js"></script>
+<script async src="https://www.googletagmanager/gtag/js?id=G-DEMO"></script>
+<script src="https://browser.sentry-cdn.com/7.89.0/bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/web-vitals@3.5.0/dist/web-vitals.umd.js"></script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N8R37X9Z');</script>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="Tiket Kita" />
+<link rel="manifest" href="/site.webmanifest" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="🎫💰 TiketKu | Jual & Beli Tiket Mudah! 🏠 Bisnis dari rumah 🎪🎭🎵 Tiket event, transport, hiburan 📲 Satu platform untuk semua! ✨🚀">
+    <meta name="keywords"
+        content="tiket kereta, tiket pesawat, tiket bus, tiket konser, tiket wisata, tiket event, tiket online, pesan tiket, jual tiket, beli tiket, TiketKu, booking transportasi, booking hiburan, bisnis tiket">
+    <meta name="author" content="TiketKu Official">
+    <meta name="robots" content="index, follow">
+   
+    <!-- Meta tags Open Graph yang akan diupdate secara dinamis -->
+    <meta property="og:title" id="og-title" content="🎫💰 TiketKu | Jual & Beli Tiket Mudah!">
+    <meta property="og:description" id="og-description"
+        content="🏠 Bisnis dari rumah 🎪🎭🎵 Tiket event, transport, hiburan 📲 Satu platform untuk semua! ✨🚀">
+    <meta property="og:image" id="og-image" content="https://i.pinimg.com/1200x/e2/45/0b/e2450b2317cb9a071ecc1f33e4e126ee.jpg">
+    <meta property="og:url" id="og-url" content="https://tiketku.vercel.app/">
+    <meta property="og:type" content="website">
+   
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" id="twitter-title" content="🎫💰 TiketKu | Jual & Beli Tiket Mudah!">
+    <meta name="twitter:description" id="twitter-description"
+        content="🏠 Bisnis dari rumah 🎪🎭🎵 Tiket event, transport, hiburan 📲 Satu platform untuk semua! ✨🚀">
+    <meta name="twitter:image" id="twitter-image" content="https://i.pinimg.com/1200x/e2/45/0b/e2450b2317cb9a071ecc1f33e4e126ee.jpg">
+   
+    <title>Semua Tiket - Marketplace</title>
+   
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+   <style>
+    body {
+        font-family: 'Quicksand', sans-serif;
+    }
+    .price-promo {
+        font-weight: 700;
+        color: #10B981;
+    }
+    .price-original {
+        text-decoration: line-through;
+        color: #EF4444;
+    }
+    #ticket-detail-modal,
+    #full-image-modal,
+    #cart-modal {
+        transition: transform 0.3s ease-in-out;
+        position: fixed;
+        bottom: 70px;
+        left: 0;
+        right: 0;
+        transform: translateY(100%);
+        background-color: white;
+        max-height: calc(80vh - 70px);
+        overflow-y: auto;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+        z-index: 50;
+    }
+    #ticket-detail-modal.show,
+    #full-image-modal.show,
+    #cart-modal.show {
+        transform: translateY(0);
+    }
+    #category-dropdown,
+    #search-suggestions,
+    #rating-dropdown {
+        display: none;
+        transition: transform 0.3s ease-in-out;
+        position: fixed;
+        bottom: 140px; /* Adjusted for bottom nav + extra spacing */
+        left: 0;
+        right: 0;
+        transform: translateY(100%);
+        background-color: white;
+        max-height: calc(50vh - 70px);
+        overflow-y: auto;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+        z-index: 40;
+    }
+    #category-dropdown.show,
+    #search-suggestions.show,
+    #rating-dropdown.show {
+        display: block;
+        transform: translateY(0);
+    }
+    #menu-dropdown {
+        display: none;
+        transition: transform 0.3s ease-in-out;
+        position: fixed;
+        bottom: 140px; /* Adjusted for bottom nav + extra spacing */
+        left: 0;
+        right: 0;
+        transform: translateY(100%);
+        background-color: white;
+        max-height: calc(70vh - 70px);
+        overflow-y: auto;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+        z-index: 40;
+    }
+    #menu-dropdown.show {
+        display: block;
+        transform: translateY(0);
+    }
+       
+        /* Sticky Header - DIUBAH: tanpa background */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            padding: 10px 0;
+        }
+       
+        /* Header Card - BARU: card untuk membungkus header */
+        .header-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            padding: 12px 16px;
+            margin-bottom: 12px;
+        }
+       
+        /* Sticky Search and Filters - DIUBAH: tanpa background */
+        .sticky-search {
+            position: sticky;
+            top: 80px;
+            z-index: 30;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+       
+        /* Search Card - BARU: card untuk membungkus pencarian */
+        .search-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            padding: 12px 16px;
+            margin-bottom: 16px;
+        }
+       
+        /* NAVBAR BOTTOM */
+        .bottom-navbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background-color: white;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 100;
+        }
+       
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #4B5563;
+            font-size: 10px;
+            text-decoration: none;
+            flex: 1;
+            height: 100%;
+            transition: color 0.2s;
+        }
+       
+        .nav-item.active {
+            color: var(--primary-color);
+        }
+       
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+       
+        .profile-nav-item {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #E5E7EB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+       
+        .profile-nav-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+       
+        /* Rating Stars */
+        .star-rating {
+            display: flex;
+            gap: 2px;
+        }
+       
+        .star {
+            color: #d1d5db;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+       
+        .star:hover,
+        .star.hover {
+            color: #fbbf24;
+        }
+       
+        .star.selected {
+            color: #fbbf24;
+        }
+       
+        /* Loading Spinner */
+        .spinner {
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 3px solid #3498db;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+       
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+       
+        /* Premium Badges - Simple version */
+        .premium-badge {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            z-index: 10;
+        }
+       
+        .gold-badge {
+            background-color: #FFD700;
+            color: #7B341E;
+        }
+       
+        .silver-badge {
+            background-color: #C0C0C0;
+            color: #333;
+        }
+       
+        .bronze-badge {
+            background-color: #CD7F32;
+            color: white;
+        }
+       
+        /* Cart Badge */
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #EF4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+       
+        /* Star Rating Animation */
+        @keyframes starPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+       
+        .star-rating-animate {
+            animation: starPulse 0.3s ease-in-out;
+        }
+       
+        /* Star Rating Transparency */
+        .star-1 { opacity: 0.2; }
+        .star-2 { opacity: 0.4; }
+        .star-3 { opacity: 0.6; }
+        .star-4 { opacity: 0.8; }
+        .star-5 { opacity: 1; }
+       
+        /* Layout Toggle Button */
+        .layout-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background-color: #f3f4f6;
+            border-radius: 8px;
+            padding: 4px;
+        }
+       
+        .layout-toggle button {
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+       
+        .layout-toggle button.active {
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            color: #4f46e5;
+        }
+       
+        /* List Layout Styles */
+        .ticket-list-item {
+            display: flex;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+       
+        .ticket-list-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+       
+        .ticket-list-item-image {
+            width: 120px;
+            height: 120px;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+       
+        .ticket-list-item-content {
+            flex-grow: 1;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+        }
+       
+        .ticket-list-item-title {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+       
+        .ticket-list-item-route {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 4px;
+        }
+       
+        .ticket-list-item-seller {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+       
+        .ticket-list-item-rating {
+            margin-bottom: 8px;
+        }
+       
+        .ticket-list-item-price {
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+       
+        .ticket-list-item-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: auto;
+        }
+       
+        /* Mobile Layout Adjustments - DIUBAH: lebih mobile-friendly */
+        @media (max-width: 640px) {
+            .mobile-search-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+           
+            .mobile-search-input {
+                width: 100%;
+                max-width: none;
+            }
+           
+            .mobile-icons-container {
+                display: flex;
+                justify-content: center;
+                gap: 12px;
+                width: 100%;
+            }
+           
+            .mobile-icon-button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+           
+            /* Mobile dropdown adjustments */
+            #menu-dropdown {
+                position: fixed;
+                top: auto !important;
+                left: 16px !important;
+                right: 16px !important;
+                width: calc(100% - 32px) !important;
+                max-width: none !important;
+                max-height: 70vh;
+                overflow-y: auto;
+                border-radius: 12px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            }
+           
+            #category-dropdown {
+                position: fixed;
+                top: auto !important;
+                left: 16px !important;
+                right: 16px !important;
+                width: calc(100% - 32px) !important;
+                max-width: none !important;
+                max-height: 50vh;
+                overflow-y: auto;
+                border-radius: 12px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            }
+           
+            #rating-dropdown {
+                position: fixed;
+                top: auto !important;
+                left: 16px !important;
+                right: 16px !important;
+                width: calc(100% - 32px) !important;
+                max-width: none !important;
+                max-height: 50vh;
+                overflow-y: auto;
+                border-radius: 12px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            }
+           
+            #search-suggestions {
+                position: fixed;
+                top: auto !important;
+                left: 16px !important;
+                right: 16px !important;
+                width: calc(100% - 32px) !important;
+                max-width: none !important;
+                max-height: 50vh;
+                overflow-y: auto;
+                border-radius: 12px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            }
+           
+            /* Mobile dropdown position calculation */
+            .dropdown-mobile {
+                position: fixed !important;
+            }
+           
+            /* Header adjustments for mobile - BARU */
+            .header-card {
+                padding: 10px 12px;
+            }
+           
+            .search-card {
+                padding: 10px 12px;
+            }
+           
+            .mobile-icons-container {
+                gap: 8px;
+            }
+           
+            .mobile-icon-button button {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
 </head>
-<body>
-  <div class="container">
-    <div class="image-section">
-      <div class="image-content">
-        <h2>Selamat Datang Kembali</h2>
-        <p>Masuk ke akun Anda untuk melanjutkan perjalanan</p>
-        <img src="https://placehold.co/400x300/3B82F6/FFFFFF?text=Login" alt="TiketKita Platform" class="feature-image">
-        <p style="margin-top: 2rem;">Jelajahi event dan dapatkan penawaran terbaik</p>
-      </div>
-    </div>
-    <div class="card-style">
-      <div class="card-content">
-        <div class="text-center mb-6">
-          <div class="logo"><i class="fas fa-ticket-alt"></i></div>
-          <h1 class="form-title">Masuk ke Akun Anda</h1>
-          <p class="form-subtitle">Selamat datang kembali!</p>
+<body class="bg-gray-100">
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8R37X9Z"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <!-- Sticky Header - DIUBAH: menggunakan card -->
+    <div class="sticky-header">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="header-card">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center gap-4">
+                        <button id="menu-button"
+                            class="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <svg class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16m-7 6h7" />
+                            </svg>
+                        </button>
+                        <div>
+                            <h1 class="text-xl sm:text-2xl font-bold text-gray-800">Marketplace Tiket</h1>
+                            <p id="header-user-name" class="text-sm text-gray-500">Silakan Login atau Daftar untuk memesan Tiket</p>
+                        </div>
+                    </div>
+                    <div id="auth-area">
+                        <div id="user-info-header" class="hidden">
+                            <a id="profile-link" href="profil.html" class="relative inline-block">
+                                <img id="header-profile-image" src="https://placehold.co/40x40/e2e8f0/adb5bd?text=U"
+                                    alt="Foto Profil"
+                                    class="w-10 h-10 rounded-full object-cover border-2 border-transparent hover:border-indigo-500 transition">
+                                <span
+                                    class="absolute bottom-0 right-0 block h-3 w-3 rounded-full bg-green-500 ring-2 ring-white"
+                                    title="Online"></span>
+                            </a>
+                        </div>
+                        <div id="guest-header">
+                            <a href="login.html"
+                                class="bg-indigo-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors text-sm">
+                                Login
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="menu-dropdown"
+                class="hidden">
+            </div>
         </div>
-        <button id="google-signin-btn" class="btn btn-google mb-4">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-          </svg>
-          <span>Masuk dengan Google</span>
-        </button>
-        <div class="divider"><span>atau</span></div>
-        <form id="auth-form" onsubmit="event.preventDefault(); handleLogin();">
-          <div class="input-group"><i class="fas fa-envelope"></i><input type="email" id="email" placeholder="Email" required /></div>
-          <div class="input-group"><i class="fas fa-lock"></i><input type="password" id="password" placeholder="Kata Sandi" required /><i class="fas fa-eye toggle-pass" id="toggle-pass" onclick="togglePassword()"></i></div>
-          <div class="flex items-center justify-between mb-4">
-            <label class="checkbox-label"><input type="checkbox" id="remember-me"><span>Ingat saya</span></label>
-            <a href="#" class="link text-sm">Lupa Kata Sandi?</a>
-          </div>
-          <button type="submit" class="btn btn-primary" id="primary-btn"><span id="btn-text">Masuk</span><span id="btn-loading" class="loading" style="display:none"></span></button>
-        </form>
-        <p class="toggle-link">Belum punya akun? <span onclick="goToRegister()" id="toggle-link">Daftar</span></p>
-      </div>
     </div>
-  </div>
-  <div id="popup">
-    <div class="popup-container">
-      <div id="popup-icon" class="popup-icon"><i id="icon-symbol"></i></div>
-      <h3 id="popup-title" class="popup-title"></h3>
-      <p id="popup-message" class="popup-message"></p>
-      <p id="popup-joke" class="popup-joke"></p>
-      <button onclick="closePopup()" class="popup-close-btn">OK</button>
+   <source src="gif.mp4" type="video/mp4">
+    <!-- Sticky Search and Filters - DIUBAH: menggunakan card -->
+    <div class="sticky-search">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="search-card">
+                <div class="mobile-search-container flex flex-col sm:flex-row justify-center items-start gap-2 no-print">
+                    <div class="relative mobile-search-input flex-grow max-w-lg w-full sm:w-auto">
+                        <div class="relative">
+                            <input type="search" id="search-input" placeholder="Cari nama tiket..."
+                                class="w-full pl-10 pr-4 py-2 border rounded-full text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                autocomplete="off">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </div>
+                        </div>
+                        <div id="search-suggestions"
+                            class="hidden">
+                        </div>
+                    </div>
+                    <div class="mobile-icons-container flex flex-row sm:flex-row justify-center gap-2 w-full sm:w-auto">
+                        <div id="category-dropdown-container" class="relative mobile-icon-button">
+                            <button id="category-dropdown-button" aria-label="Pilih Kategori"
+                                class="p-2 h-[42px] w-[42px] border rounded-full text-gray-600 bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                            <div id="category-dropdown"
+                                class="hidden">
+                                <div class="py-1" role="menu" aria-orientation="vertical"
+                                    aria-labelledby="category-dropdown-button">
+                                    <a href="#" class="category-filter-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" data-category="Semua">Semua Kategori</a>
+                                    <a href="#" class="category-filter-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" data-category="Musik">Musik</a>
+                                    <a href="#" class="category-filter-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" data-category="Olahraga">Olahraga</a>
+                                    <a href="#" class="category-filter-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" data-category="Workshop">Workshop</a>
+                                    <a href="#" class="category-filter-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" data-category="Travel">Travel</a>
+                                    <a href="#" class="category-filter-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" data-category="Lainnya">Lainnya</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="rating-dropdown-container" class="relative mobile-icon-button">
+                            <button id="rating-dropdown-button" aria-label="Filter Rating"
+                                class="p-2 h-[42px] w-[42px] border rounded-full text-gray-600 bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <i class="fas fa-star"></i>
+                            </button>
+                            <div id="rating-dropdown"
+                                class="hidden">
+                                <div class="py-1" role="menu" aria-orientation="vertical"
+                                    aria-labelledby="rating-dropdown-button">
+                                    <a href="#" class="rating-filter-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" data-rating="all">Semua Rating</a>
+                                    <a href="#" class="rating-filter-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" data-rating="low">Rating Terendah</a>
+                                    <a href="#" class="rating-filter-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" data-rating="medium">Rating Sedang</a>
+                                    <a href="#" class="rating-filter-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" data-rating="high">Rating Tertinggi</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative mobile-icon-button">
+                            <button id="cart-button" aria-label="Keranjang Belanja"
+                                class="p-2 h-[42px] w-[42px] border rounded-full text-gray-600 bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span id="cart-badge" class="cart-badge hidden">0</span>
+                            </button>
+                        </div>
+                        <div class="layout-toggle mobile-icon-button">
+                            <button id="card-layout-btn" class="active" title="Tampilan Kartu">
+                                <i class="fas fa-th-large"></i>
+                            </button>
+                            <button id="list-layout-btn" title="Tampilan Daftar">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
-    import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyD_-DI0MQIug3J8vciKcaFZ-knyYZC67K8",
-      authDomain: "sosmed-7d6ee.firebaseapp.com",
-      databaseURL: "https://sosmed-7d6ee-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "sosmed-7d6ee",
-      storageBucket: "sosmed-7d6ee.appspot.com",
-      messagingSenderId: "807759832196",
-      appId: "1:807759832196:web:d176775e2f51f1e1918ed1",
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const database = getDatabase(app);
-    const provider = new GoogleAuthProvider();
-
-    const REGISTER_URL = "daftar.html";
-    const DASHBOARD_URL = "dashboard.html"; // Ganti dengan URL dashboard Anda
-
-    const jokes = {
-      'auth/invalid-email': 'Email ini kayak mantan: nggak valid.',
-      'auth/user-not-found': 'User tidak ditemukan. Coba registrasi dulu.',
-      'auth/wrong-password': 'Password salah. Coba ingat-ingat, atau reset aja.',
-      'email-not-verified': 'Email Anda belum diverifikasi. Silakan periksa inbox dan klik link verifikasi.',
-      'default': 'Ada yang error. Coba lagi, atau hubungi admin.'
-    };
-    
-    function showPopup(type, key) {
-      const popup = document.getElementById('popup');
-      const icon = document.getElementById('icon-symbol');
-      const title = document.getElementById('popup-title');
-      const msg = document.getElementById('popup-message');
-      const joke = document.getElementById('popup-joke');
-      if (type === 'error') {
-        icon.textContent = '⚠️';
-        document.getElementById('popup-icon').style.backgroundColor = '#EF4444';
-        title.textContent = 'Oops!';
-        msg.textContent = jokes[key] || jokes['default'];
-      }
-      popup.classList.add('active');
+   
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <main>
+            <div id="ticket-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                <p id="loading-tickets" class="text-gray-500 col-span-full text-center">
+                    <div class="spinner"></div>
+                    <p>Memuat semua tiket yang tersedia...</p>
+                </p>
+            </div>
+        </main>
+    </div>
+    <div id="ticket-detail-modal" class="hidden">
+        <div id="ticket-detail-content" class="p-6 sm:p-8">
+        </div>
+    </div>
+    <div id="full-image-modal" class="hidden">
+        <button id="close-full-image-button" class="absolute top-4 right-4 text-white text-4xl font-bold hover:text-gray-300 transition">&times;</button>
+        <img id="full-image-content" src="" alt="Gambar Tiket Ukuran Penuh" class="max-w-full max-h-full object-contain">
+    </div>
+    <div id="cart-modal" class="hidden">
+        <div id="cart-content" class="p-6 sm:p-8">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-900">Keranjang Belanja</h2>
+                <button id="close-cart-button" class="text-gray-400 hover:text-gray-600 text-3xl">&times;</button>
+            </div>
+            <div id="cart-items" class="space-y-4 mb-6">
+                <!-- Cart items will be inserted here -->
+            </div>
+            <div class="border-t pt-4">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-lg font-semibold">Total Harga:</span>
+                    <span id="cart-total" class="text-xl font-bold text-indigo-600">Rp 0</span>
+                </div>
+                <div class="flex gap-3">
+                    <button id="checkout-button" class="flex-1 bg-indigo-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-indigo-700 transition-colors">
+                        Checkout
+                    </button>
+                    <button id="clear-cart-button" class="flex-1 bg-gray-200 text-gray-800 font-bold py-3 px-4 rounded-lg hover:bg-gray-300 transition-colors">
+                        Kosongkan Keranjang
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bottom Navigation Bar -->
+    <!-- Bottom Navigation Bar -->
+<nav class="bottom-navbar no-print" style="
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background-color: white;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 100;
+">
+    <!-- Buy -->
+    <a href="home.html" class="nav-item" style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #2563eb;
+        font-size: 10px;
+        text-decoration: none;
+        flex: 1;
+        height: 100%;
+    ">
+        <svg class="nav-icon" style="width: 24px; height: 24px; margin-bottom: 4px; fill: none; stroke: currentColor; stroke-width: 1.5;" viewBox="0 0 24 24">
+            <path d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"/>
+        </svg>
+        <span>Buy</span>
+    </a>
+   
+    <!-- History -->
+    <a href="riwayatpemesanan.html" class="nav-item" style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #4B5563;
+        font-size: 10px;
+        text-decoration: none;
+        flex: 1;
+        height: 100%;
+    ">
+        <svg class="nav-icon" style="width: 24px; height: 24px; margin-bottom: 4px; fill: none; stroke: currentColor; stroke-width: 1.5;" viewBox="0 0 24 24">
+            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span>Hist</span>
+    </a>
+   
+    <!-- Sosial -->
+    <a href="sosial.html" class="nav-item" style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #4B5563;
+        font-size: 10px;
+        text-decoration: none;
+        flex: 1;
+        height: 100%;
+    ">
+        <svg class="nav-icon" style="width: 24px; height: 24px; margin-bottom: 4px; fill: none; stroke: currentColor; stroke-width: 1.5;" viewBox="0 0 24 24">
+            <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+        </svg>
+        <span>Sosial</span>
+    </a>
+   
+    <!-- Home -->
+    <a href="dashboard.html" class="nav-item" style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #4B5563;
+        font-size: 10px;
+        text-decoration: none;
+        flex: 1;
+        height: 100%;
+    ">
+        <svg class="nav-icon" style="width: 24px; height: 24px; margin-bottom: 4px; fill: none; stroke: currentColor; stroke-width: 1.5;" viewBox="0 0 24 24">
+            <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+        </svg>
+        <span>Home</span>
+    </a>
+   
+    <!-- Wallet -->
+    <a href="wallet.html" class="nav-item" style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #4B5563;
+        font-size: 10px;
+        text-decoration: none;
+        flex: 1;
+        height: 100%;
+    ">
+        <svg class="nav-icon" style="width: 24px; height: 24px; margin-bottom: 4px; fill: none; stroke: currentColor; stroke-width: 1.5;" viewBox="0 0 24 24">
+            <path d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+        </svg>
+        <span>Wallet</span>
+    </a>
+   
+    <!-- Sell -->
+    <a href="inputtiket.html" class="nav-item" style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #4B5563;
+        font-size: 10px;
+        text-decoration: none;
+        flex: 1;
+        height: 100%;
+    ">
+        <svg class="nav-icon" style="width: 24px; height: 24px; margin-bottom: 4px; fill: none; stroke: currentColor; stroke-width: 1.5;" viewBox="0 0 24 24">
+            <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span>Sell</span>
+    </a>
+   
+    <!-- Ads -->
+    <a href="dashboard.html" id="ads-nav-item" class="nav-item" style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #4B5563;
+        font-size: 10px;
+        text-decoration: none;
+        flex: 1;
+        height: 100%;
+    ">
+        <svg class="nav-icon" style="width: 24px; height: 24px; margin-bottom: 4px; fill: none; stroke: currentColor; stroke-width: 1.5;" viewBox="0 0 24 24">
+            <path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+            <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span>Ads</span>
+    </a>
+</nav>
+<script>
+// Script untuk mengatur navigasi aktif
+document.addEventListener('DOMContentLoaded', function() {
+    const navItems = document.querySelectorAll('.nav-item');
+   
+    // Set active item berdasarkan halaman saat ini
+    function setActiveItem() {
+        const currentPage = window.location.pathname.split('/').pop();
+       
+        navItems.forEach(item => {
+            const href = item.getAttribute('href');
+            if (href === currentPage || (currentPage === '' && href === 'home.html')) {
+                item.style.color = '#2563eb';
+            } else {
+                item.style.color = '#4B5563';
+            }
+        });
     }
-
-    window.closePopup = () => {
-      document.getElementById('popup').classList.remove('active');
-    };
-
-    function showLoading(show) {
-      document.getElementById('btn-text').style.display = show ? 'none' : 'inline';
-      document.getElementById('btn-loading').style.display = show ? 'inline-block' : 'none';
-    }
-
-    window.togglePassword = () => {
-      const input = document.getElementById('password');
-      const icon = document.getElementById('toggle-pass');
-      input.type = input.type === 'password' ? 'text' : 'password';
-      icon.classList.toggle('fa-eye');
-      icon.classList.toggle('fa-eye-slash');
-    };
-
-    window.goToRegister = () => { window.location.href = REGISTER_URL; };
-
-    window.handleLogin = async () => {
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value;
-      
-      if (!email || !password) return showPopup('error', 'empty-fields');
-
-      showLoading(true);
-      try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        
-        // CEK KRUSIAL: Apakah email sudah diverifikasi?
-        if (!userCredential.user.emailVerified) {
-          // Jika belum, logout user dan tampilkan pesan error
-          await signOut(auth);
-          showPopup('error', 'email-not-verified');
-          showLoading(false);
-          return; // Hentikan proses login
-        }
-
-        // Jika sudah terverifikasi, arahkan ke dashboard
-        window.location.href = DASHBOARD_URL;
-      } catch (e) {
-        showLoading(false);
-        showPopup('error', e.code);
-      }
-    };
-
-    document.getElementById('google-signin-btn').onclick = async () => {
-      try {
-        const result = await signInWithPopup(auth, provider);
-        // Google biasanya sudah memverifikasi email, tapi tetap aman untuk mengecek
-        if (!result.user.emailVerified) {
-            await signOut(auth);
-            showPopup('error', 'email-not-verified');
-            return;
-        }
-        // Login berhasil, arahkan ke dashboard
-        window.location.href = DASHBOARD_URL;
-      } catch (e) {
-        if (e.code !== 'auth/popup-closed-by-user') showPopup('error', e.code);
-      }
-    };
-  </script>
+   
+    // Set active item saat halaman dimuat
+    setActiveItem();
+   
+    // Tambahkan event listener untuk setiap item
+    navItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            // Update warna semua item
+            navItems.forEach(nav => nav.style.color = '#4B5563');
+            this.style.color = '#2563eb';
+        });
+    });
+});
+</script><!-- KODE JAVASCRIPT TETAP SAMA SEPERTI YANG ANDA BERIKAN --><script type="module">import{initializeApp}from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";import{getAuth,onAuthStateChanged,signOut}from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";import{getDatabase,ref,onValue,get,set,push,remove,update}from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";const firebaseConfig={apiKey:"AIzaSyD_-DI0MQIug3J8vciKcaFZ-knyYZC67K8",authDomain:"sosmed-7d6ee.firebaseapp.com",databaseURL:"https://sosmed-7d6ee-default-rtdb.asia-southeast1.firebasedatabase.app",projectId:"sosmed-7d6ee",storageBucket:"sosmed-7d6ee.appspot.com",messagingSenderId:"807759832196",appId:"1:807759832196:web:e48799a32c227418918ed1",measurementId:"G-B58VM0RLHP"};function main(){const app=initializeApp(firebaseConfig);const auth=getAuth(app);const realtimeDb=getDatabase(app);const userInfoHeader=document.getElementById('user-info-header');const guestHeader=document.getElementById('guest-header');const headerProfileImage=document.getElementById('header-profile-image');const ticketListContainer=document.getElementById('ticket-list');const menuButton=document.getElementById('menu-button');const menuDropdown=document.getElementById('menu-dropdown');const headerUserName=document.getElementById('header-user-name');const ticketDetailModal=document.getElementById('ticket-detail-modal');const ticketDetailContent=document.getElementById('ticket-detail-content');const fullImageModal=document.getElementById('full-image-modal');const fullImageContent=document.getElementById('full-image-content');const closeFullImageButton=document.getElementById('close-full-image-button');const searchInput=document.getElementById('search-input');const searchSuggestions=document.getElementById('search-suggestions');const categoryDropdownButton=document.getElementById('category-dropdown-button');const categoryDropdown=document.getElementById('category-dropdown');const ratingDropdownButton=document.getElementById('rating-dropdown-button');const ratingDropdown=document.getElementById('rating-dropdown');const cartButton=document.getElementById('cart-button');const cartBadge=document.getElementById('cart-badge');const cartModal=document.getElementById('cart-modal');const cartContent=document.getElementById('cart-content');const cartItems=document.getElementById('cart-items');const cartTotal=document.getElementById('cart-total');const closeCartButton=document.getElementById('close-cart-button');const checkoutButton=document.getElementById('checkout-button');const clearCartButton=document.getElementById('clear-cart-button');const cardLayoutBtn=document.getElementById('card-layout-btn');const listLayoutBtn=document.getElementById('list-layout-btn');const ogTitle=document.getElementById('og-title');const ogDescription=document.getElementById('og-description');const ogImage=document.getElementById('og-image');const ogUrl=document.getElementById('og-url');const twitterTitle=document.getElementById('twitter-title');const twitterDescription=document.getElementById('twitter-description');const twitterImage=document.getElementById('twitter-image');let allMarketplaceTickets=[];let currentSearchQuery='';let currentCategoryFilter='Semua';let currentRatingFilter='all';let initialLinkCheckDone=!1;let currentUserName=null;let cart=[];let isCardLayout=!0;async function getSellerRating(sellerEmail){if(!sellerEmail)return null;try{const usersRef=ref(realtimeDb,'users');const penggunaRef=ref(realtimeDb,'Pengguna');const[usersSnapshot,penggunaSnapshot]=await Promise.all([get(usersRef),get(penggunaRef)]);let sellerUserId=null;if(usersSnapshot.exists()){const usersData=usersSnapshot.val();for(const userId in usersData){if(usersData[userId].email===sellerEmail){sellerUserId=userId;break}}}
+if(!sellerUserId&&penggunaSnapshot.exists()){const penggunaData=penggunaSnapshot.val();for(const userId in penggunaData){if(penggunaData[userId].email===sellerEmail){sellerUserId=userId;break}}}
+if(!sellerUserId)return null;const ratingsRef=ref(realtimeDb,`user_ratings/${sellerUserId}`);const ratingsSnapshot=await get(ratingsRef);if(!ratingsSnapshot.exists())return null;const ratingsData=ratingsSnapshot.val();let totalRating=0;let ratingCount=0;const ratingsList=[];for(const raterId in ratingsData){const rating=ratingsData[raterId];totalRating+=rating.rating;ratingCount++;ratingsList.push({rating:rating.rating,comment:rating.comment,raterName:rating.raterName||'Anonymous'})}
+const avgRating=ratingCount>0?(totalRating/ratingCount).toFixed(1):0;return{avgRating,ratingCount,ratingsList}}catch(error){console.error("Error mengambil data rating penjual:",error);return null}}
+async function getTicketRating(ticketId){if(!ticketId)return null;try{const ratingsRef=ref(realtimeDb,`ticket_rating/${ticketId}`);const ratingsSnapshot=await get(ratingsRef);if(!ratingsSnapshot.exists())return null;const ratingsData=ratingsSnapshot.val();let totalRating=0;let ratingCount=0;const ratingsList=[];for(const ratingId in ratingsData){const rating=ratingsData[ratingId];totalRating+=rating.rating;ratingCount++;ratingsList.push({rating:rating.rating,comment:rating.comment,raterName:rating.userName||'Anonymous',timestamp:rating.timestamp||Date.now()})}
+const avgRating=ratingCount>0?(totalRating/ratingCount).toFixed(1):0;return{avgRating,ratingCount,ratingsList}}catch(error){console.error("Error mengambil data rating tiket:",error);return null}}
+async function addTicketRating(ticketId,rating,comment,raterName){if(!ticketId||!rating)return!1;if(!auth.currentUser){alert('Anda harus login terlebih dahulu untuk memberikan rating.');return!1}
+try{const ratingsRef=ref(realtimeDb,`ticket_rating/${ticketId}`);const newRatingRef=push(ratingsRef);await set(newRatingRef,{rating:parseInt(rating),comment:comment||'',userId:auth.currentUser.uid,userName:raterName||'Anonymous',timestamp:Date.now()});return!0}catch(error){console.error("Error menambahkan rating tiket:",error);if(error.code==='PERMISSION_DENIED'){alert('Anda tidak memiliki izin untuk memberikan rating tiket ini.')}else{alert('Gagal menambahkan rating. Silakan coba lagi.')}
+return!1}}
+function loadCart(){const savedCart=localStorage.getItem('tiketku_cart');if(savedCart){cart=JSON.parse(savedCart);updateCartBadge()}}
+function saveCart(){localStorage.setItem('tiketku_cart',JSON.stringify(cart));updateCartBadge()}
+function updateCartBadge(){const totalItems=cart.reduce((sum,item)=>sum+item.quantity,0);cartBadge.textContent=totalItems;if(totalItems>0){cartBadge.classList.remove('hidden')}else{cartBadge.classList.add('hidden')}}
+function addToCart(ticket,quantity=1){const existingItemIndex=cart.findIndex(item=>item.id===ticket.id);if(existingItemIndex!==-1){cart[existingItemIndex].quantity+=quantity}else{cart.push({id:ticket.id,name:ticket.name,price:ticket.price.promo||ticket.price.original,imageUrl:ticket.imageUrl,bookingUrl:ticket.bookingUrl,quantity:quantity})}
+saveCart();showNotification('Tiket berhasil ditambahkan ke keranjang!')}
+function removeFromCart(ticketId){cart=cart.filter(item=>item.id!==ticketId);saveCart();renderCart()}
+function updateCartItemQuantity(ticketId,newQuantity){if(newQuantity<=0){removeFromCart(ticketId);return}
+const itemIndex=cart.findIndex(item=>item.id===ticketId);if(itemIndex!==-1){cart[itemIndex].quantity=newQuantity;saveCart();renderCart()}}
+function calculateCartTotal(){return cart.reduce((total,item)=>total+(item.price*item.quantity),0)}
+function renderCart(){cartItems.innerHTML='';if(cart.length===0){cartItems.innerHTML='<p class="text-center text-gray-500 py-8">Keranjang belanja Anda kosong</p>';cartTotal.textContent='Rp 0';return}
+cart.forEach(item=>{const cartItem=document.createElement('div');cartItem.className='flex items-center gap-4 p-4 bg-gray-50 rounded-lg';cartItem.innerHTML=`
+                        <img src="${item.imageUrl}" alt="${item.name}" class="w-16 h-16 object-cover rounded-md">
+                        <div class="flex-grow">
+                            <h3 class="font-semibold text-gray-800">${item.name}</h3>
+                            <p class="text-sm text-gray-600">Rp ${item.price.toLocaleString('id-ID')}</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button class="decrease-quantity w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300" data-ticket-id="${item.id}">
+                                <i class="fas fa-minus text-xs"></i>
+                            </button>
+                            <span class="w-8 text-center font-medium">${item.quantity}</span>
+                            <button class="increase-quantity w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300" data-ticket-id="${item.id}">
+                                <i class="fas fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-semibold">Rp ${(item.price * item.quantity).toLocaleString('id-ID')}</p>
+                            <button class="remove-item text-red-500 hover:text-red-700 text-sm mt-1" data-ticket-id="${item.id}">
+                                Hapus
+                            </button>
+                        </div>
+                    `;cartItems.appendChild(cartItem)});cartTotal.textContent=`Rp ${calculateCartTotal().toLocaleString('id-ID')}`;document.querySelectorAll('.decrease-quantity').forEach(button=>{button.addEventListener('click',(e)=>{const ticketId=e.currentTarget.getAttribute('data-ticket-id');const item=cart.find(item=>item.id===ticketId);if(item){updateCartItemQuantity(ticketId,item.quantity-1)}})});document.querySelectorAll('.increase-quantity').forEach(button=>{button.addEventListener('click',(e)=>{const ticketId=e.currentTarget.getAttribute('data-ticket-id');const item=cart.find(item=>item.id===ticketId);if(item){updateCartItemQuantity(ticketId,item.quantity+1)}})});document.querySelectorAll('.remove-item').forEach(button=>{button.addEventListener('click',(e)=>{const ticketId=e.currentTarget.getAttribute('data-ticket-id');removeFromCart(ticketId)})})}
+function showNotification(message){const notification=document.createElement('div');notification.className='fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';notification.textContent=message;document.body.appendChild(notification);setTimeout(()=>{notification.remove()},3000)}
+function toggleLayout(isCard){isCardLayout=isCard;if(isCard){cardLayoutBtn.classList.add('active');listLayoutBtn.classList.remove('active')}else{cardLayoutBtn.classList.remove('active');listLayoutBtn.classList.add('active')}
+renderFilteredTickets()}
+function adjustDropdownPosition(dropdown,button){if(window.innerWidth<=640){const buttonRect=button.getBoundingClientRect();const dropdownHeight=300;dropdown.style.top=`${buttonRect.bottom + 5}px`;dropdown.style.left='16px';dropdown.style.right='16px';dropdown.style.width='calc(100% - 32px)';dropdown.style.maxWidth='none';dropdown.classList.add('dropdown-mobile')}else{dropdown.style.top='';dropdown.style.left='';dropdown.style.right='';dropdown.style.width='';dropdown.style.maxWidth='';dropdown.classList.remove('dropdown-mobile')}}
+loadAllTickets();loadCart();onAuthStateChanged(auth,user=>{if(user){guestHeader.classList.add('hidden');userInfoHeader.classList.remove('hidden');loadUserProfile(user.uid);loadProfileImage(user.uid);setupUserMenu(user)}else{guestHeader.classList.remove('hidden');userInfoHeader.classList.add('hidden');headerUserName.textContent='Login atau Daftar Untuk memesan Tiket';currentUserName=null;setupGuestMenu()}});cardLayoutBtn.addEventListener('click',()=>toggleLayout(!0));listLayoutBtn.addEventListener('click',()=>toggleLayout(!1));function updateMetaTagsForTicket(ticketData){if(!ticketData)return;const ticketName=ticketData.name||'Tiket Marketplace';const ticketDescription=ticketData.description||'Beli tiket ini di Marketplace TiketKu';const ticketImage=ticketData.imageUrl||'https://i.pinimg.com/1200x/e2/45/0b/e2450b2317cb9a071ecc1f33e4e126ee.jpg';const currentUrl=window.location.origin+window.location.pathname+'?id='+ticketData.id;ogTitle.setAttribute('content',ticketName);ogDescription.setAttribute('content',ticketDescription);ogImage.setAttribute('content',ticketImage);ogUrl.setAttribute('content',currentUrl);twitterTitle.setAttribute('content',ticketName);twitterDescription.setAttribute('content',ticketDescription);twitterImage.setAttribute('content',ticketImage);document.title=ticketName+' - Marketplace TiketKu'}
+function resetMetaTagsToDefault(){const defaultTitle='🎫💰 TiketKu | Jual & Beli Tiket Mudah!';const defaultDescription='🏠 Bisnis dari rumah 🎪🎭🎵 Tiket event, transport, hiburan 📲 Satu platform untuk semua! ✨🚀';const defaultImage='https://i.pinimg.com/1200x/e2/45/0b/e2450b2317cb9a071ecc1f33e4e126ee.jpg';const defaultUrl=window.location.origin+window.location.pathname;ogTitle.setAttribute('content',defaultTitle);ogDescription.setAttribute('content',defaultDescription);ogImage.setAttribute('content',defaultImage);ogUrl.setAttribute('content',defaultUrl);twitterTitle.setAttribute('content',defaultTitle);twitterDescription.setAttribute('content',defaultDescription);twitterImage.setAttribute('content',defaultImage);document.title='Semua Tiket - Marketplace'}
+function checkUrlForTicketId(){const urlParams=new URLSearchParams(window.location.search);const ticketIdFromUrl=urlParams.get('id');if(ticketIdFromUrl){const ticketData=allMarketplaceTickets.find(t=>t.id===ticketIdFromUrl);if(ticketData){updateMetaTagsForTicket(ticketData);setTimeout(()=>{showTicketDetail(ticketIdFromUrl);const newUrl=window.location.pathname;window.history.replaceState({},document.title,newUrl)},100)}else{resetMetaTagsToDefault()}}else{resetMetaTagsToDefault()}}
+function createShareUrlWithImage(ticketId){const ticketData=allMarketplaceTickets.find(t=>t.id===ticketId);if(!ticketData)return window.location.origin+window.location.pathname;return `${window.location.origin}${window.location.pathname}?id=${ticketId}`}
+function checkForSharedTicket(){if(!initialLinkCheckDone){checkUrlForTicketId();initialLinkCheckDone=!0}}
+function handleShareTicket(ticketId){const ticketData=allMarketplaceTickets.find(t=>t.id===ticketId);if(!ticketData)return;updateMetaTagsForTicket(ticketData);const shareUrl=createShareUrlWithImage(ticketId);const shareData={title:`Tiket: ${ticketData.name}`,text:`Lihat detail dan pesan tiket ${ticketData.name} di Marketplace Tiket!`,url:shareUrl};if(navigator.share){navigator.share(shareData).then(()=>console.log('Berhasil dibagikan.')).catch((error)=>console.error('Gagal membagikan:',error))}else{navigator.clipboard.writeText(shareUrl).then(()=>{alert('Link tiket telah disalin ke clipboard!')}).catch(err=>{console.error('Gagal menyalin link: ',err);alert('Gagal menyalin link. Silakan salin secara manual.')})}}
+function populateAndAttachCategoryFilters(){const dropdownContent=document.querySelector('#category-dropdown .py-1');if(!dropdownContent)return;const categories=new Set(allMarketplaceTickets.map(ticket=>ticket.type||'Lainnya'));const sortedCategories=Array.from(categories).sort();let categoryHtml=`<a href="#" class="category-filter-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" data-category="Semua">Semua Kategori</a>`;sortedCategories.forEach(category=>{categoryHtml+=`<a href="#" class="category-filter-item block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" data-category="${category}">${category}</a>`});dropdownContent.innerHTML=categoryHtml;document.querySelectorAll('.category-filter-item').forEach(item=>{item.addEventListener('click',(e)=>{e.preventDefault();currentCategoryFilter=e.target.dataset.category;categoryDropdownButton.innerHTML=`<i class="fas fa-filter"></i>`;renderFilteredTickets();categoryDropdown.classList.remove('show')})})}
+function loadAllTickets(){const ticketsRef=ref(realtimeDb,'tickets');onValue(ticketsRef,async(snapshot)=>{allMarketplaceTickets=[];if(snapshot.exists()){const allUsersTickets=snapshot.val();const ticketPromises=[];for(const userId in allUsersTickets){const userTickets=allUsersTickets[userId];for(const ticketId in userTickets){const ticket={id:ticketId,...userTickets[ticketId]};ticketPromises.push(getTicketRating(ticketId).then(rating=>{if(rating){ticket.rating=rating}
+return ticket}))}}
+allMarketplaceTickets=await Promise.all(ticketPromises);allMarketplaceTickets.sort((a,b)=>{const ratingA=a.rating?parseFloat(a.rating.avgRating):0;const ratingB=b.rating?parseFloat(b.rating.avgRating):0;if(ratingA!==ratingB){return ratingB-ratingA}
+return(b.createdAt||0)-(a.createdAt||0)})}
+populateAndAttachCategoryFilters();if(!initialLinkCheckDone){checkForSharedTicket();initialLinkCheckDone=!0}
+renderFilteredTickets()},{error:(err)=>{console.error("Gagal memuat semua tiket:",err);ticketListContainer.innerHTML=`<p class="text-center col-span-full text-red-500">Gagal memuat data tiket dari server.</p>`}})}
+function renderFilteredTickets(){ticketListContainer.innerHTML='';if(isCardLayout){ticketListContainer.className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4'}else{ticketListContainer.className='space-y-4'}
+const searchQuery=currentSearchQuery.toLowerCase();let filteredTickets=allMarketplaceTickets.filter(ticket=>{const ticketCategory=ticket.type||"Lainnya";const matchesCategory=currentCategoryFilter==='Semua'||(ticketCategory.toLowerCase()===currentCategoryFilter.toLowerCase());const matchesSearch=ticket.name&&ticket.name.toLowerCase().includes(searchQuery);let matchesRating=!0;if(currentRatingFilter!=='all'){const rating=ticket.rating?parseFloat(ticket.rating.avgRating):0;if(currentRatingFilter==='low'){matchesRating=rating>0&&rating<=2}else if(currentRatingFilter==='medium'){matchesRating=rating>2&&rating<=4}else if(currentRatingFilter==='high'){matchesRating=rating>4}}
+return matchesCategory&&matchesSearch&&matchesRating});if(filteredTickets.length>0){if(isCardLayout){filteredTickets.forEach((ticket,index)=>{const ticketCard=createTicketCard(ticket);ticketCard.style.opacity='0';ticketCard.style.transform='translateY(20px)';setTimeout(()=>{ticketCard.style.transition='opacity 0.5s ease, transform 0.5s ease';ticketCard.style.opacity='1';ticketCard.style.transform='translateY(0)';const rating=ticket.rating?parseFloat(ticket.rating.avgRating):0;if(rating>=4.5){setTimeout(()=>{ticketCard.style.animation='pulse 1s ease 3'},500)}},index*100);ticketListContainer.appendChild(ticketCard)})}else{filteredTickets.forEach((ticket,index)=>{const ticketListItem=createTicketListItem(ticket);ticketListItem.style.opacity='0';ticketListItem.style.transform='translateY(20px)';setTimeout(()=>{ticketListItem.style.transition='opacity 0.5s ease, transform 0.5s ease';ticketListItem.style.opacity='1';ticketListItem.style.transform='translateY(0)'},index*100);ticketListContainer.appendChild(ticketListItem)})}}else{noMarketplaceTickets('Tiket tidak ditemukan.')}}
+function noMarketplaceTickets(message){ticketListContainer.innerHTML=`<p class="text-center col-span-full text-gray-500">${message}</p>`}
+function createTicketCard(ticketData){const card=document.createElement('div');card.className='bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:shadow-xl transition-shadow duration-300 relative';const rating=ticketData.rating?parseFloat(ticketData.rating.avgRating):0;let premiumBadge='';if(rating>=4.9){premiumBadge='<div class="premium-badge gold-badge">👑</div>'}else if(rating>=4.7){premiumBadge='<div class="premium-badge silver-badge">🥈</div>'}else if(rating>=4.5){premiumBadge='<div class="premium-badge bronze-badge">🥉</div>'}
+let priceHtml=`<span class="text-base font-bold text-gray-800">Rp ${ticketData.price.original.toLocaleString('id-ID')}</span>`;if(ticketData.price.promo){priceHtml=`
+                        <span class="text-base font-bold price-promo">Rp ${ticketData.price.promo.toLocaleString('id-ID')}</span>
+                        <span class="ml-1 price-original text-xs">Rp ${ticketData.price.original.toLocaleString('id-ID')}</span>
+                    `}
+let ratingHtml='';if(ticketData.rating){const avgRating=parseFloat(ticketData.rating.avgRating);const fullStars=Math.floor(avgRating);const hasHalfStar=avgRating%1>=0.5;ratingHtml=`
+                        <div class="flex items-center mt-1">
+                            <div class="star-rating flex">
+                                ${Array.from({ length: 5 }, (_, i) => {
+                                    const starClass = i < fullStars ? 'fas fa-star text-yellow-400' :
+                                                     (i === fullStars && hasHalfStar ? 'fas fa-star-half-alt text-yellow-400' : 'far fa-star text-gray-300');
+                                    return `<i class="${starClass} text-xs"></i>`;
+                                }).join('')}
+                            </div>
+                            <span class="text-xs text-gray-600 ml-1">${ticketData.rating.avgRating} (${ticketData.rating.ratingCount})</span>
+                        </div>
+                    `}
+const sellerName=ticketData.sellerInfo?.name||'Penjual';card.innerHTML=`
+                    ${premiumBadge}
+                    <div class="h-28 overflow-hidden">
+                        <img src="${ticketData.imageUrl}" alt="${ticketData.name}" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x250/e0e0e0/757575?text=Gagal Muat';">
+                    </div>
+                    <div class="p-3 flex flex-col flex-grow">
+                        <h3 class="text-sm font-bold text-gray-900 truncate">${ticketData.name || 'Tanpa Judul'}</h3>
+                        <p class="text-xs text-gray-600 mt-1 truncate">${ticketData.route.from} &rarr; ${ticketData.route.to}</p>
+                        <p class="text-xs text-gray-500 mt-1 flex items-center gap-1 truncate"><i class="fas fa-user-tag fa-fw text-gray-400"></i> ${sellerName}</p>
+                        ${ratingHtml}
+                        <div class="mt-auto pt-2">
+                             <div class="flex items-baseline mb-2">${priceHtml}</div>
+                             <div class="flex gap-2">
+                                 <button data-ticket-id="${ticketData.id}" class="flex-1 text-center bg-indigo-600 text-white font-bold py-1 px-2 text-sm rounded-md hover:bg-indigo-700 transition-colors detail-button">
+                                     Detail
+                                 </button>
+                                 <button data-ticket-id="${ticketData.id}" class="flex-1 text-center bg-emerald-500 text-white font-bold py-1 px-2 text-sm rounded-md hover:bg-emerald-600 transition-colors add-to-cart-button">
+                                     <i class="fas fa-cart-plus"></i>
+                                 </button>
+                             </div>
+                        </div>
+                    </div>
+                `;return card}
+function createTicketListItem(ticketData){const item=document.createElement('div');item.className='ticket-list-item';const rating=ticketData.rating?parseFloat(ticketData.rating.avgRating):0;let premiumBadge='';if(rating>=4.9){premiumBadge='<div class="premium-badge gold-badge">👑</div>'}else if(rating>=4.7){premiumBadge='<div class="premium-badge silver-badge">🥈</div>'}else if(rating>=4.5){premiumBadge='<div class="premium-badge bronze-badge">🥉</div>'}
+let priceHtml=`<span class="ticket-list-item-price">Rp ${ticketData.price.original.toLocaleString('id-ID')}</span>`;if(ticketData.price.promo){priceHtml=`
+                        <span class="ticket-list-item-price price-promo">Rp ${ticketData.price.promo.toLocaleString('id-ID')}</span>
+                        <span class="ml-1 price-original text-sm">Rp ${ticketData.price.original.toLocaleString('id-ID')}</span>
+                    `}
+let ratingHtml='';if(ticketData.rating){const avgRating=parseFloat(ticketData.rating.avgRating);const fullStars=Math.floor(avgRating);const hasHalfStar=avgRating%1>=0.5;ratingHtml=`
+                        <div class="ticket-list-item-rating">
+                            <div class="star-rating flex">
+                                ${Array.from({ length: 5 }, (_, i) => {
+                                    const starClass = i < fullStars ? 'fas fa-star text-yellow-400' :
+                                                     (i === fullStars && hasHalfStar ? 'fas fa-star-half-alt text-yellow-400' : 'far fa-star text-gray-300');
+                                    return `<i class="${starClass}"></i>`;
+                                }).join('')}
+                            </div>
+                            <span class="text-sm text-gray-600 ml-1">${ticketData.rating.avgRating} (${ticketData.rating.ratingCount})</span>
+                        </div>
+                    `}
+const sellerName=ticketData.sellerInfo?.name||'Penjual';item.innerHTML=`
+                    ${premiumBadge}
+                    <img src="${ticketData.imageUrl}" alt="${ticketData.name}" class="ticket-list-item-image" onerror="this.onerror=null;this.src='https://placehold.co/400x250/e0e0e0/757575?text=Gagal Muat';">
+                    <div class="ticket-list-item-content">
+                        <h3 class="ticket-list-item-title">${ticketData.name || 'Tanpa Judul'}</h3>
+                        <p class="ticket-list-item-route">${ticketData.route.from} &rarr; ${ticketData.route.to}</p>
+                        <p class="ticket-list-item-seller"><i class="fas fa-user-tag fa-fw text-gray-400 mr-1"></i> ${sellerName}</p>
+                        ${ratingHtml}
+                        <div class="ticket-list-item-price-container">
+                            ${priceHtml}
+                        </div>
+                        <div class="ticket-list-item-actions">
+                            <button data-ticket-id="${ticketData.id}" class="flex-1 bg-indigo-600 text-white font-bold py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors detail-button">
+                                Detail
+                            </button>
+                            <button data-ticket-id="${ticketData.id}" class="flex-1 bg-emerald-500 text-white font-bold py-2 px-4 rounded-md hover:bg-emerald-600 transition-colors add-to-cart-button">
+                                <i class="fas fa-cart-plus mr-2"></i> Keranjang
+                            </button>
+                        </div>
+                    </div>
+                `;return item}
+async function showTicketDetail(ticketId){const ticketData=allMarketplaceTickets.find(t=>t.id===ticketId);if(!ticketData){alert("Tiket tidak ditemukan atau sudah tidak tersedia.");return};const ticketRating=await getTicketRating(ticketId);if(ticketRating){ticketData.rating=ticketRating}
+let priceHtml=`
+                    <div class="mb-4">
+                        <p class="text-sm text-gray-500">Harga</p>
+                        <p class="text-2xl font-bold text-gray-800">Rp ${ticketData.price.original.toLocaleString('id-ID')}</p>
+                    </div>
+                `;let promoHtml='<p class="text-sm text-gray-500">Tidak ada promo yang aktif.</p>';if(ticketData.price.promo){let deadlineHtml='';if(ticketData.price.promoDeadline){const deadline=new Date(ticketData.price.promoDeadline).toLocaleString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'});deadlineHtml=`<p class="text-xs text-red-600 mt-1">Promo berakhir pada: ${deadline}</p>`}
+promoHtml=`
+                        <p class="text-sm text-gray-500">Diskon / Harga Promo</p>
+                        <p class="text-3xl font-bold price-promo">Rp ${ticketData.price.promo.toLocaleString('id-ID')}</p>
+                        ${deadlineHtml}
+                    `}
+const sellerInfo=ticketData.sellerInfo||{};let sellerInfoItems=[];sellerInfoItems.push(`<p class="flex items-center gap-3"><i class="fas fa-user-circle fa-fw w-4 text-center text-gray-500"></i> <span class="font-medium">${sellerInfo.name || 'Tidak tersedia'}</span></p>`);if(sellerInfo.whatsapp){const whatsappLink=sellerInfo.whatsapp.includes('wa.me')?sellerInfo.whatsapp:`https://wa.me/${sellerInfo.whatsapp.replace(/\D/g, '')}`;sellerInfoItems.push(`<p class="flex items-center gap-3"><i class="fab fa-whatsapp fa-fw w-4 text-center text-green-500"></i> <a href="${whatsappLink}" target="_blank" class="text-indigo-600 hover:underline">${sellerInfo.whatsapp}</a></p>`)}
+if(sellerInfo.email){sellerInfoItems.push(`<p class="flex items-center gap-3"><i class="fas fa-envelope fa-fw w-4 text-center text-gray-500"></i> <a href="mailto:${sellerInfo.email}" class="text-indigo-600 hover:underline">${sellerInfo.email}</a></p>`)}
+if(sellerInfo.social&&sellerInfo.social.startsWith('@')){sellerInfoItems.push(`<p class="flex items-center gap-3"><i class="fas fa-share-alt fa-fw w-4 text-center text-gray-500"></i> <span>${sellerInfo.social}</span></p>`)}
+let sellerRatingHtml='';if(sellerInfo.email){const sellerRating=await getSellerRating(sellerInfo.email);if(sellerRating){let starsHtml='';for(let i=1;i<=5;i++){if(i<=Math.round(sellerRating.avgRating)){starsHtml+='<i class="fas fa-star text-yellow-400"></i>'}else{starsHtml+='<i class="far fa-star text-gray-300"></i>'}}
+sellerRatingHtml=`
+                            <div class="mt-4 pt-4 border-t">
+                                <h4 class="text-lg font-semibold text-gray-800 mb-3">Rating Penjual</h4>
+                                <div class="flex items-center mb-3">
+                                    <div class="flex mr-2">${starsHtml}</div>
+                                    <span class="text-gray-600">${sellerRating.avgRating} (${sellerRating.ratingCount} rating)</span>
+                                </div>
+                                ${sellerRating.ratingsList.length > 0 ? `<div class="mt-3 space-y-3 max-h-60 overflow-y-auto pr-2">${sellerRating.ratingsList.map(r=>`
+                                            <div class="bg-gray-50 p-3 rounded-lg">
+                                                <div class="flex items-center mb-2">
+                                                    <span class="font-medium">${r.raterName}</span>
+                                                    <div class="flex ml-2">
+                                                        ${Array.from({length: 5}, (_, i) =>
+                                                            i < r.rating ?
+                                                            '<i class="fas fa-star text-yellow-400 text-xs"></i>' :
+                                                            '<i class="far fa-star text-gray-300 text-xs"></i>'
+                                                        ).join('')}
+                                                    </div>
+                                                </div>
+                                                ${r.comment ? `<p class="text-gray-600 text-sm">${r.comment}</p>` : ''}
+                                            </div>
+                                        `).join('')}</div>` : '<p class="text-gray-500 text-sm">Belum ada komentar untuk penjual ini.</p>'}
+                            </div>
+                        `}else{sellerRatingHtml=`
+                            <div class="mt-4 pt-4 border-t">
+                                <h4 class="text-lg font-semibold text-gray-800 mb-3">Peringatan</h4>
+                                <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+                                    <p class="text-sm">Penjual ini tidak resmi. Mohon berhati-hati dalam melakukan pembelian dan pembayaran karena tidak terdaftar di aplikasi kami. Mohon hubungi terlebih dahulu sebelum melakukan pembelian tiket dengan penjual.</p>
+                                </div>
+                            </div>
+                        `}}
+const sellerInfoHtml=`
+                    <div class="mt-6 pt-4 border-t">
+                        <h4 class="text-lg font-semibold text-gray-800 mb-3">Informasi Penjual</h4>
+                        <div class="space-y-3 text-sm">${sellerInfoItems.join('')}</div>
+                    </div>
+                    ${sellerRatingHtml}
+                `;let ticketRatingHtml='';if(ticketData.rating){const avgRating=parseFloat(ticketData.rating.avgRating);const fullStars=Math.floor(avgRating);const hasHalfStar=avgRating%1>=0.5;ticketRatingHtml=`
+                        <div class="mt-4 pt-4 border-t">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-3">Rating Tiket</h4>
+                            <div class="flex items-center mb-3">
+                                <div class="flex mr-2">
+                                    ${Array.from({ length: 5 }, (_, i) => {
+                                        const starClass = i < fullStars ? 'fas fa-star text-yellow-400' :
+                                                         (i === fullStars && hasHalfStar ? 'fas fa-star-half-alt text-yellow-400' : 'far fa-star text-gray-300');
+                                        return `<i class="${starClass}"></i>`;
+                                    }).join('')}
+                                </div>
+                                <span class="text-gray-600">${ticketData.rating.avgRating} (${ticketData.rating.ratingCount})</span>
+                            </div>
+                            ${ticketData.rating.ratingsList.length > 0 ? `<div class="mt-3 space-y-3 max-h-60 overflow-y-auto pr-2">${ticketData.rating.ratingsList.map(r=>`
+                                        <div class="bg-gray-50 p-3 rounded-lg">
+                                            <div class="flex items-center mb-2">
+                                                <span class="font-medium">${r.raterName}</span>
+                                                <div class="flex ml-2">
+                                                    ${Array.from({length: 5}, (_, i) =>
+                                                        i < r.rating ?
+                                                        '<i class="fas fa-star text-yellow-400 text-xs"></i>' :
+                                                        '<i class="far fa-star text-gray-300 text-xs"></i>'
+                                                    ).join('')}
+                                                </div>
+                                                <span class="text-xs text-gray-500 ml-auto">${new Date(r.timestamp).toLocaleDateString('id-ID')}</span>
+                                            </div>
+                                            ${r.comment ? `<p class="text-gray-600 text-sm">${r.comment}</p>` : ''}
+                                        </div>
+                                    `).join('')}</div>` : '<p class="text-gray-500 text-sm">Belum ada komentar untuk tiket ini.</p>'}
+                        </div>
+                    `}
+let userRatingForm='';if(auth.currentUser){userRatingForm=`
+                        <div class="mt-4 pt-4 border-t">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-3">Beri Rating Tiket</h4>
+                            <div class="mb-4">
+                                <p class="text-sm text-gray-600 mb-2">Klik bintang untuk memberikan rating:</p>
+                                <div class="star-rating flex gap-1 mb-3" id="user-star-rating">
+                                    ${Array.from({ length: 5 }, (_, i) => `<i class="far fa-star text-2xl star star-${i+1} cursor-pointer" data-rating="${i+1}"></i>`).join('')}
+                                </div>
+                                <div class="mb-3">
+                                    <textarea id="rating-comment" class="w-full p-2 border rounded-md" rows="3" placeholder="Tulis komentar Anda (opsional)..."></textarea>
+                                </div>
+                                <button id="submit-rating" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors">
+                                    Kirim Rating
+                                </button>
+                            </div>
+                        </div>
+                    `}else{userRatingForm=`
+                        <div class="mt-4 pt-4 border-t">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-3">Beri Rating Tiket</h4>
+                            <div class="bg-yellow-50 border border-yellow-200 text-yellow-700 px-4 py-3 rounded-lg">
+                                <p class="text-sm">Silakan login terlebih dahulu untuk memberikan rating tiket ini.</p>
+                                <a href="index.html" class="inline-block mt-2 text-indigo-600 hover:underline">Login Sekarang</a>
+                            </div>
+                        </div>
+                    `}
+ticketDetailContent.innerHTML=`
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-2">${ticketData.name}</h2>
+                        <button id="close-modal-button" class="text-gray-400 hover:text-gray-600 text-3xl">&times;</button>
+                    </div>
+                    <hr class="my-4">
+                    <div class="mb-4">
+                       <img id="modal-ticket-image" src="${ticketData.imageUrl}" alt="Gambar ${ticketData.name}" class="w-full h-48 sm:h-64 object-cover rounded-lg cursor-pointer hover:shadow-lg transition-shadow duration-300" onerror="this.onerror=null;this.style.display='none';">
+                    </div>
+                    <div class="space-y-6">
+                        <div><p class="text-sm text-gray-500">Jenis Tiket</p><p class="font-semibold text-lg text-gray-800">${ticketData.type}</p></div>
+                        <div><p class="text-sm text-gray-500">Kelas</p><p class="font-semibold text-lg text-gray-800">${ticketData.class}</p></div>
+                        <div>
+                            <p class="text-sm text-gray-500">Rute Perjalanan</p>
+                            <div class="flex items-center gap-4 mt-1">
+                                <span class="font-bold text-lg text-gray-800">${ticketData.route.from}</span>
+                                <span class="text-indigo-500 font-bold">&rarr;</span>
+                                <span class="font-bold text-lg text-gray-800">${ticketData.route.to}</span>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                           ${priceHtml}
+                           <div>${promoHtml}</div>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Deskripsi</p>
+                            <p class="text-gray-700 mt-1 whitespace-pre-wrap">${ticketData.description || 'Tidak ada deskripsi.'}</p>
+                        </div>
+                        ${sellerInfoHtml}
+                        ${ticketRatingHtml}
+                        ${userRatingForm}
+                    </div>
+                    <div class="mt-8 pt-6 border-t flex flex-col sm:flex-row gap-3">
+                        <button id="order-now-button" class="w-full text-center bg-emerald-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-emerald-600 transition-colors flex-1">
+                            Pesan Sekarang
+                        </button>
+                        <button id="add-to-cart-modal-button" class="w-full text-center bg-amber-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-amber-600 transition-colors flex-1">
+                            <i class="fas fa-cart-plus mr-2"></i> Tambah ke Keranjang
+                        </button>
+                        <button id="share-ticket-button" class="w-full text-center bg-sky-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-sky-600 transition-colors flex-1 flex items-center justify-center gap-2">
+                            <i class="fas fa-share-alt"></i> Bagikan
+                        </button>
+                        <button id="close-modal-button-2" class="w-full text-center bg-gray-200 text-gray-800 font-bold py-3 px-4 rounded-lg hover:bg-gray-300 transition-colors flex-1 sm:flex-none">
+                           Tutup
+                        </button>
+                    </div>
+                `;ticketDetailModal.classList.remove('hidden');ticketDetailModal.classList.add('show');document.body.style.overflow='hidden';if(auth.currentUser){const stars=document.querySelectorAll('#user-star-rating .star');let selectedRating=0;stars.forEach((star,index)=>{star.addEventListener('click',()=>{selectedRating=index+1;updateStarDisplay(selectedRating)});star.addEventListener('mouseenter',()=>{updateStarDisplay(index+1)})});document.getElementById('user-star-rating').addEventListener('mouseleave',()=>{updateStarDisplay(selectedRating)});function updateStarDisplay(rating){stars.forEach((star,index)=>{if(index<rating){star.classList.remove('far');star.classList.add('fas','text-yellow-400');star.classList.remove('star-1','star-2','star-3','star-4','star-5');star.classList.add(`star-${rating}`);star.classList.add('star-rating-animate');setTimeout(()=>{star.classList.remove('star-rating-animate')},300)}else{star.classList.remove('fas','text-yellow-400');star.classList.add('far')}})}
+document.getElementById('submit-rating').addEventListener('click',async()=>{if(selectedRating===0){alert('Silakan pilih rating terlebih dahulu!');return}
+const comment=document.getElementById('rating-comment').value;const raterName=currentUserName||'Anonymous';const success=await addTicketRating(ticketId,selectedRating,comment,raterName);if(success){alert('Rating berhasil ditambahkan!');loadAllTickets();hideTicketDetail()}else{alert('Gagal menambahkan rating. Silakan coba lagi.')}})}
+document.getElementById('order-now-button').addEventListener('click',()=>{let nameToStore=currentUserName;if(!nameToStore){nameToStore=prompt("Anda belum login. Silakan masukkan nama Anda untuk melanjutkan pemesanan:","");if(!nameToStore||nameToStore.trim()===''){alert("Nama diperlukan untuk melanjutkan.");return}}
+const orderData={userName:nameToStore,ticketDetails:ticketData};localStorage.setItem('pendingOrderData',JSON.stringify(orderData));const destinationUrl=ticketData.bookingUrl||'tujuan.html';window.location.href=destinationUrl});document.getElementById('add-to-cart-modal-button').addEventListener('click',()=>{addToCart(ticketData)});document.getElementById('close-modal-button').addEventListener('click',hideTicketDetail);document.getElementById('close-modal-button-2').addEventListener('click',hideTicketDetail);document.getElementById('share-ticket-button').addEventListener('click',()=>{handleShareTicket(ticketData.id)});document.getElementById('modal-ticket-image').addEventListener('click',()=>{fullImageContent.src=ticketData.imageUrl;fullImageModal.classList.remove('hidden');fullImageModal.classList.add('show')})}
+function hideTicketDetail(){ticketDetailModal.classList.remove('show');setTimeout(()=>{ticketDetailModal.classList.add('hidden')},300);document.body.style.overflow='auto'}
+function hideFullImage(){fullImageModal.classList.remove('show');setTimeout(()=>{fullImageModal.classList.add('hidden');fullImageContent.src=''},300)}
+function showCart(){cartModal.classList.remove('hidden');cartModal.classList.add('show');document.body.style.overflow='hidden';renderCart()}
+function hideCart(){cartModal.classList.remove('show');setTimeout(()=>{cartModal.classList.add('hidden')},300);document.body.style.overflow='auto'}
+closeFullImageButton.addEventListener('click',hideFullImage);fullImageModal.addEventListener('click',function(event){if(event.target===fullImageModal){hideFullImage()}});cartButton.addEventListener('click',showCart);closeCartButton.addEventListener('click',hideCart);cartModal.addEventListener('click',function(event){if(event.target===cartModal){hideCart()}});checkoutButton.addEventListener('click',()=>{if(cart.length===0){alert('Keranjang belanja Anda kosong!');return}
+localStorage.setItem('checkoutData',JSON.stringify({items:cart,total:calculateCartTotal()}));window.location.href='checkout.html'});clearCartButton.addEventListener('click',()=>{if(confirm('Apakah Anda yakin ingin mengosongkan keranjang belanja?')){cart=[];saveCart();renderCart();showNotification('Keranjang belanja telah dikosongkan!')}});ticketListContainer.addEventListener('click',function(event){const detailButton=event.target.closest('.detail-button');const addToCartButton=event.target.closest('.add-to-cart-button');if(detailButton){const ticketId=detailButton.getAttribute('data-ticket-id');showTicketDetail(ticketId)}else if(addToCartButton){const ticketId=addToCartButton.getAttribute('data-ticket-id');const ticketData=allMarketplaceTickets.find(t=>t.id===ticketId);if(ticketData){addToCart(ticketData)}}});ticketDetailModal.addEventListener('click',function(event){if(event.target===ticketDetailModal){hideTicketDetail()}});async function loadUserProfile(userId){const userRef=ref(realtimeDb,'users/'+userId);try{const snapshot=await get(userRef);if(snapshot.exists()){const data=snapshot.val();const userName=data.name||'Pengguna';headerUserName.textContent=`Halo, ${userName}!`;currentUserName=userName}else{headerUserName.textContent='Selamat Datang!';currentUserName='Pengguna'}}catch(error){console.error("Gagal memuat profil:",error);headerUserName.textContent='Gagal memuat profil'}}
+function loadProfileImage(userId){const savedImage=localStorage.getItem(`profileImage_${userId}`);if(savedImage){headerProfileImage.src=savedImage}}
+function setupGuestMenu(){menuDropdown.innerHTML=`
+                    <div class="py-1">
+                        <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Login</a>
+                        <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Daftar</a>
+                    </div>`}
+async function setupUserMenu(user){let userName='Pengguna';let userEmail=user.email;const userRef=ref(realtimeDb,'users/'+user.uid);const snapshot=await get(userRef);if(snapshot.exists()){const data=snapshot.val();userName=data.name||'Profil Belum Lengkap';userEmail=data.email||user.email}
+menuDropdown.innerHTML=`
+                    <div class="px-4 py-3 border-b border-gray-200">
+                        <p class="text-sm font-semibold text-gray-900 truncate">${userName}</p>
+                        <p class="text-sm text-gray-500 truncate">${userEmail}</p>
+                    </div>
+                    <div class="py-1">
+                        <a href="dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashbord Anda</a>
+                        <a href="profil.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Edit Profil</a>
+                        <a href="inputtiket.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Manajemen Tiket</a>
+                        <a href="riwayatpemesanan.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Riwayat Pesanan</a>
+                        <div class="border-t border-gray-100 my-1"></div>
+                        <a id="logout-button-menu" href="#" class="block px-4 py-2 text-sm text-red-700 hover:bg-red-50">Keluar</a>
+                    </div>`;document.getElementById('logout-button-menu').addEventListener('click',(e)=>{e.preventDefault();signOut(auth).catch(error=>console.error("Error saat logout:",error))})}
+menuButton.addEventListener('click',(e)=>{e.stopPropagation();adjustDropdownPosition(menuDropdown,menuButton);menuDropdown.classList.toggle('show')});searchInput.addEventListener('input',(e)=>{currentSearchQuery=e.target.value;renderFilteredTickets()});categoryDropdownButton.addEventListener('click',(e)=>{e.stopPropagation();adjustDropdownPosition(categoryDropdown,categoryDropdownButton);categoryDropdown.classList.toggle('show')});ratingDropdownButton.addEventListener('click',(e)=>{e.stopPropagation();adjustDropdownPosition(ratingDropdown,ratingDropdownButton);ratingDropdown.classList.toggle('show')});window.addEventListener('click',(e)=>{if(!menuDropdown.contains(e.target)&&!menuButton.contains(e.target)){menuDropdown.classList.remove('show')}
+if(!categoryDropdown.contains(e.target)&&!categoryDropdownButton.contains(e.target)){categoryDropdown.classList.remove('show')}
+if(!ratingDropdown.contains(e.target)&&!ratingDropdownButton.contains(e.target)){ratingDropdown.classList.remove('show')}
+if(!searchSuggestions.contains(e.target)&&!searchInput.contains(e.target)){searchSuggestions.classList.remove('show')}});document.querySelectorAll('.rating-filter-item').forEach(item=>{item.addEventListener('click',(e)=>{e.preventDefault();currentRatingFilter=e.target.dataset.rating;renderFilteredTickets();ratingDropdown.classList.remove('show')})});window.addEventListener('resize',()=>{if(!menuDropdown.classList.contains('hidden')){adjustDropdownPosition(menuDropdown,menuButton)}
+if(!categoryDropdown.classList.contains('hidden')){adjustDropdownPosition(categoryDropdown,categoryDropdownButton)}
+if(!ratingDropdown.classList.contains('hidden')){adjustDropdownPosition(ratingDropdown,ratingDropdownButton)}
+if(!searchSuggestions.classList.contains('hidden')){adjustDropdownPosition(searchSuggestions,searchInput)}})}
+document.addEventListener('DOMContentLoaded',main);window.OneSignalDeferred=window.OneSignalDeferred||[];OneSignalDeferred.push(async function(OneSignal){await OneSignal.init({appId:"c36f3870-c97e-4455-893a-390733110491",safari_web_id:"web.onesignal.auto.41aef4b6-51a4-4778-92bc-f3aa3e26acde",notifyButton:{enable:!0,},})});</script><script>const pageCache=new Map();const CACHE_DURATION=5*60*1000;function cachePageContent(url,content){pageCache.set(url,{content:content,timestamp:Date.now()});console.log(`💾 Cached: ${url}`)}
+function getCachedContent(url){const cached=pageCache.get(url);if(cached&&(Date.now()-cached.timestamp)<CACHE_DURATION){console.log(`⚡ Cache Hit: ${url}`);return cached.content}
+return null}
+const navigationHistory=JSON.parse(localStorage.getItem('navHistory')||'[]');const pageVisits=JSON.parse(localStorage.getItem('pageVisits')||'{}');function trackNavigation(page){navigationHistory.push({page,time:Date.now()});if(navigationHistory.length>20)navigationHistory.shift();localStorage.setItem('navHistory',JSON.stringify(navigationHistory));pageVisits[page]=(pageVisits[page]||0)+1;localStorage.setItem('pageVisits',JSON.stringify(pageVisits))}
+function predictNextPage(){const currentPage=window.location.pathname.split('/').pop();const mostVisited=Object.entries(pageVisits).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([page])=>page);mostVisited.forEach(page=>{if(page!==currentPage){const link=document.createElement('link');link.rel='prefetch';link.href=page;document.head.appendChild(link);console.log(`🔮 Predicted Prefetch: ${page}`)}})}
+const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){const link=entry.target;const href=link.getAttribute('href');if(href&&!link.dataset.prefetched){const prefetchLink=document.createElement('link');prefetchLink.rel='prefetch';prefetchLink.href=href;document.head.appendChild(prefetchLink);link.dataset.prefetched='true';console.log(`👁️ Visible Prefetch: ${href}`)}}})},{rootMargin:'50px'});document.querySelectorAll('.nav-link').forEach(link=>observer.observe(link));const loadingBar=document.getElementById('loadingBar');function showLoadingBar(){loadingBar.style.display='block';loadingBar.style.width='0%';let progress=0;const interval=setInterval(()=>{progress+=Math.random()*30;if(progress>90)progress=90;loadingBar.style.width=progress+'%'},100);return()=>{clearInterval(interval);loadingBar.style.width='100%';setTimeout(()=>{loadingBar.style.display='none';loadingBar.style.width='0%'},300)}}
+document.querySelectorAll('.nav-link').forEach(link=>{link.addEventListener('click',async function(e){e.preventDefault();const href=this.getAttribute('href');const hideLoading=showLoadingBar();document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));this.classList.add('active');trackNavigation(href);try{let content=getCachedContent(href);if(!content){const response=await fetch(href);content=await response.text();cachePageContent(href,content)}
+setTimeout(()=>{window.location.href=href;hideLoading()},100)}catch(error){console.error('Navigation error:',error);window.location.href=href;hideLoading()}})});let hoverTimeout;document.querySelectorAll('.nav-link').forEach(link=>{link.addEventListener('mouseenter',async function(){const href=this.getAttribute('href');clearTimeout(hoverTimeout);hoverTimeout=setTimeout(async()=>{const alreadyPrefetched=document.querySelector(`link[href="${href}"][rel="prefetch"]`);if(!alreadyPrefetched&&!getCachedContent(href)){const prefetchLink=document.createElement('link');prefetchLink.rel='prefetch';prefetchLink.href=href;document.head.appendChild(prefetchLink);try{const response=await fetch(href);const content=await response.text();cachePageContent(href,content);console.log(`✅ Hover Prefetch + Cache: ${href}`)}catch(error){console.log(`⚠️ Prefetch failed: ${href}`)}}},200)});link.addEventListener('mouseleave',()=>{clearTimeout(hoverTimeout)})});function checkConnection(){const connectionInfo=document.getElementById('connectionInfo');if('connection' in navigator){const connection=navigator.connection;const type=connection.effectiveType;const downlink=connection.downlink;const rtt=connection.rtt;let prefetchAll=!0;if(type==='4g'||type==='wifi'){connectionInfo.innerHTML=`🟢 <strong>Koneksi ${type.toUpperCase()}</strong> - Optimal (${downlink}Mbps, RTT: ${rtt}ms)`;prefetchAll=!0}else if(type==='3g'){connectionInfo.innerHTML=`🟡 <strong>Koneksi 3G</strong> - Moderate (${downlink}Mbps, RTT: ${rtt}ms)`;prefetchAll=!1}else if(type==='2g'||type==='slow-2g'){connectionInfo.innerHTML=`🔴 <strong>Koneksi Lambat</strong> - Limited (${downlink}Mbps, RTT: ${rtt}ms)`;prefetchAll=!1;document.querySelectorAll('link[rel="prefetch"]').forEach(link=>link.remove())}
+if(connection.saveData){connectionInfo.innerHTML+='<br>📵 Data Saver Mode - Prefetch Minimal';prefetchAll=!1}
+return prefetchAll}
+connectionInfo.innerHTML='ℹ️ Connection API tidak tersedia';return!0}
+const shouldPrefetchAll=checkConnection();if('connection' in navigator){navigator.connection.addEventListener('change',checkConnection)}
+if('IntersectionObserver' in window){const imageObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){const img=entry.target;if(img.dataset.src){img.src=img.dataset.src;img.removeAttribute('data-src');imageObserver.unobserve(img)}}})});document.querySelectorAll('img[data-src]').forEach(img=>imageObserver.observe(img))}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').then(registration=>{console.log('✅ Service Worker registered:',registration);registration.addEventListener('updatefound',()=>{console.log('🔄 Service Worker update found')})}).catch(error=>{console.log('❌ Service Worker registration failed:',error)})})}
+if(window.performance&&window.performance.timing){window.addEventListener('load',()=>{setTimeout(()=>{const perfData=window.performance.timing;const pageLoadTime=perfData.loadEventEnd-perfData.navigationStart;const connectTime=perfData.responseEnd-perfData.requestStart;const renderTime=perfData.domComplete-perfData.domLoading;console.log('📊 PERFORMANCE METRICS:');console.log(`⏱️ Page Load Time: ${pageLoadTime}ms`);console.log(`🔌 Connect Time: ${connectTime}ms`);console.log(`🎨 Render Time: ${renderTime}ms`)},0)})}
+function preloadCriticalResources(){const criticalResources=[];criticalResources.forEach(resource=>{const link=document.createElement('link');link.rel='preload';link.href=resource.href;link.as=resource.as;document.head.appendChild(link)})}
+preloadCriticalResources();if('requestIdleCallback' in window){requestIdleCallback(()=>{predictNextPage();console.log('🧠 Predictive prefetch executed during idle time')})}else{setTimeout(()=>{predictNextPage()},2000)}
+window.addEventListener('beforeunload',()=>{const now=Date.now();pageCache.forEach((value,key)=>{if(now-value.timestamp>CACHE_DURATION){pageCache.delete(key)}})});console.log('=== 🚀 MYTICKET ULTRA OPTIMIZATION ===');console.log('✅ Prefetch: All pages');console.log('✅ Preload: Critical pages');console.log('✅ DNS Prefetch: External resources');console.log('✅ In-Memory Cache: 5 min duration');console.log('✅ Predictive Prefetch: AI-powered');console.log('✅ Instant Navigation: Fetch API');console.log('✅ Intersection Observer: Viewport detection');console.log('✅ Loading Bar: Enhanced UX');console.log('✅ Dynamic Prefetch: Hover + debounce');console.log('✅ Connection Detection: Adaptive loading');console.log('✅ Lazy Loading: Images');console.log('✅ Service Worker: Offline support');console.log('✅ Performance Monitoring: Active');console.log('✅ Memory Management: Auto cleanup');console.log('=================================');</script>
+ <script src="router.js" defer></script>
 </body>
 </html>
+<div class="developer-info py-3 text-center text-sm"></div>
+<div class="developer-info py-3 text-center text-sm"></div>
+<div class="developer-info py-3 text-center text-sm"></div>
+<div class="developer-info py-3 text-center text-sm"></div>
+<div class="developer-info py-3 text-center text-sm"></div>
