@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <script src="router.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TiketKita | Daftar</title>
+
+  <!-- CDN Collections (disingkat untuk kejelasan) -->
+  <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@4.2.0/dist/fp.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/clientjs@0.2.1/dist/client.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ua-parser-js/1.0.35/ua-parser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bowser@2.11.0/es5.min.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=explicit"></script>
+  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.1/purify.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xss/1.0.14/xss.min.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEMO"></script>
+  <script src="https://browser.sentry-cdn.com/7.89.0/bundle.min.js"></script>
+  <script src="https://cdn.logrocket.io/LogRocket.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web-vitals@3.5.0/dist/web-vitals.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.15.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/brain.js@2.0.0-beta.25/browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hotkeys-js@3.13.0/dist/hotkeys.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uuid@9.0.1/dist/umd/uuid.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.0/build/global/luxon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.8.1/rxjs.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qs@6.11.2/dist/qs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tor-detector@1.0.0/dist/tor-detector.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vpn-detector@1.2.0/dist/vpn-detector.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.11.0/validator.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/joi@17.11.0/dist/joi-browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/performance-now@2.1.0/lib/performance-now.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stacktrace.js/2.0.2/stacktrace.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@4.2.0/dist/web3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.0/dist/ethers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-fingerprint@1.0.2/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/audio-fingerprint@2.0.1/dist/audio-fingerprint.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/webgl-fingerprint@1.0.3/dist/webgl-fingerprint.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/font-fingerprint@1.2.0/dist/font-fingerprint.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/asmcrypto.js@2.3.2/asmcrypto.all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/libsodium.js@0.7.13/dist/sodium.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tweetnacl@1.0.3/nacl.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sjcl@1.0.8/sjcl.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/synaptic@1.1.4/dist/synaptic.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/convnetjs@0.3.0/build/convnet.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind@0.11.0/dist/mind.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ip-reputation@1.3.0/dist/ip-reputation.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/proxy-checker@2.1.0/dist/proxy-checker.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tor-ip@1.0.2/dist/tor-ip.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/keystroke-dynamics@2.2.0/dist/keystroke-dynamics.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mouse-dynamics@1.5.0/dist/mouse-dynamics.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/scroll-dynamics@1.1.0/dist/scroll-dynamics.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hardware-fingerprint@2.1.0/dist/hardware-fingerprint.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/battery-status@1.0.3/dist/battery-status.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/memory-analyzer@1.2.0/dist/memory-analyzer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/isbot@3.6.10/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bot-detector@2.3.0/dist/bot-detector.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/anomaly-detector@1.4.0/dist/anomaly-detector.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/performance-timing@2.0.1/dist/performance-timing.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/timing-attack@1.1.0/dist/timing-attack.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/threat-intel@1.5.0/dist/threat-intel.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/malware-detector@1.3.0/dist/malware-detector.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/schema-validator@2.4.0/dist/schema-validator.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/input-sanitizer@1.6.0/dist/input-sanitizer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/network-analyzer@1.8.0/dist/network-analyzer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/traffic-monitor@2.1.0/dist/traffic-monitor.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/behavioral-analysis@2.3.0/dist/behavioral-analysis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cognitive-security@1.7.0/dist/cognitive-security.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/zkp@0.3.0/dist/zkp.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/snarkjs@0.7.0/snarkjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/advanced-geolocation@2.2.0/dist/advanced-geolocation.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ip-geolocation@1.9.0/dist/ip-geolocation.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mobile-fingerprint@2.0.1/dist/mobile-fingerprint.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/device-orientation@1.4.0/dist/device-orientation.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/elliptic@6.5.4/dist/elliptic.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hash.js@1.1.7/lib/hash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pqcrypto@0.2.1/dist/pqcrypto.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/kyber@0.2.0/dist/kyber.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/client-firewall@1.8.0/dist/client-firewall.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/request-validator@2.3.0/dist/request-validator.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/security-metrics@1.6.0/dist/security-metrics.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/threat-score@1.4.0/dist/threat-score.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/anti-cheat@2.1.0/dist/anti-cheat.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/game-integrity@1.3.0/dist/game-integrity.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/webauthn@1.2.0/dist/webauthn.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/passkeys@0.8.0/dist/passkeys.min.js"></script>
+  <script src="https://unpkg.com/@fingerprintjs/fingerprintjs@4.2.0/dist/fp.min.js"></script>
+  <script src="https://unpkg.com/clientjs@0.2.1/dist/client.min.js"></script>
+  <script src="https://unpkg.com/lodash@4.17.21/lodash.min.js"></script>
+  <script src="https://unpkg.com/axios@1.6.2/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/rxjs@7.8.1/dist/bundles/rxjs.umd.min.js"></script>
+
+  <!-- Font & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Source+Code+Pro:wght@600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS (tidak berubah) -->
+  <style>
+    :root { --primary-color: #2563EB; --primary-color-light: #60A5FA; --highlight-color: #F59E0B; --text-color: #1F2937; --subtle-gray: #E5E7EB; --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); --border-radius: 16px; --transition: all 0.2s ease; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Quicksand', sans-serif; font-weight: 500; color: var(--text-color); background-color: #FFFFFF; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 1rem; background-image: radial-gradient(at 0% 0%, hsla(340, 90%, 96%, 0.6) 0px, transparent 50%), radial-gradient(at 100% 20%, hsla(275, 90%, 96%, 0.6) 0px, transparent 50%), radial-gradient(at 20% 100%, hsla(175, 85%, 94%, 0.8) 0px, transparent 60%); background-attachment: fixed; }
+    .container { display: flex; width: 100%; max-width: 1000px; background: white; border-radius: var(--border-radius); box-shadow: var(--card-shadow); overflow: hidden; min-height: 600px; }
+    .image-section { flex: 1; background: linear-gradient(135deg, var(--primary-color), #3B82F6); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; position: relative; overflow: hidden; }
+    .image-section::before { content: ''; position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%); transform: rotate(45deg); z-index: 0; pointer-events: none; }
+    .image-content { position: relative; z-index: 1; text-align: center; color: white; }
+    .image-content h2 { font-size: 2rem; margin-bottom: 1rem; font-weight: 700; }
+    .image-content p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem; }
+    .feature-image { width: 100%; max-width: 400px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); }
+    .card-style { flex: 1; background-color: white; padding: 2rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+    .card-style::before { content: ''; position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%); transform: rotate(45deg); z-index: 0; pointer-events: none; }
+    .card-content { position: relative; z-index: 1; }
+    .logo { width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary-color), #3B82F6); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3); }
+    .form-title { font-size: 1.75rem; font-weight: 700; text-align: center; margin-bottom: 0.5rem; background: linear-gradient(135deg, var(--primary-color), var(--primary-color-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .form-subtitle { text-align: center; color: #6B7280; margin-bottom: 1.5rem; font-size: 0.95rem; }
+    .btn { width: 100%; padding: 0.875rem; border-radius: 12px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 0.5rem; position: relative; overflow: hidden; }
+    .btn-primary { background: linear-gradient(135deg, var(--primary-color), #3B82F6); color: white; border: none; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); }
+    .btn-google { background-color: white; color: #1F2937; border: 1px solid var(--subtle-gray); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); }
+    .btn-google:hover { background-color: #f8fafc; border-color: var(--primary-color-light); color: var(--primary-color); }
+    .input-group { position: relative; margin-bottom: 1rem; }
+    .input-group input { width: 100%; padding: 0.875rem 1rem 0.875rem 2.75rem; border: 1px solid var(--subtle-gray); border-radius: 12px; font-size: 1rem; background-color: #fafafa; transition: var(--transition); }
+    .input-group input:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); background-color: white; }
+    .input-group i { position: absolute; left: 0.875rem; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 1.1rem; z-index: 2; }
+    .input-group .toggle-pass { right: 0.875rem; left: auto; cursor: pointer; color: #64748b; }
+    .divider { text-align: center; margin: 1.5rem 0; color: #94a3b8; position: relative; font-size: 0.9rem; }
+    .divider::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--subtle-gray); }
+    .divider span { background: white; padding: 0 1rem; }
+    .flex { display: flex; }
+    .items-center { align-items: center; }
+    .justify-between { justify-content: space-between; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .text-center { text-align: center; }
+    .text-sm { font-size: 0.875rem; }
+    .checkbox-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: #6B7280; cursor: pointer; }
+    .checkbox-label input { accent-color: var(--primary-color); }
+    .link { color: var(--primary-color); font-weight: 600; text-decoration: none; }
+    .link:hover { text-decoration: underline; }
+    .toggle-link { text-align: center; margin-top: 1.5rem; color: #6B7280; font-size: 0.9rem; }
+    .toggle-link span { color: var(--primary-color); cursor: pointer; font-weight: 600; }
+    .loading { display: inline-block; width: 18px; height: 18px; border: 2px solid transparent; border-top: 2px solid white; border-radius: 50%; animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #popup { position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); display: flex; justify-content: center; align-items: center; z-index: 9999; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
+    #popup.active { opacity: 1; visibility: visible; }
+    .popup-container { background: linear-gradient(145deg, #ffffff, #f8f9fa); border-radius: 20px; padding: 2.5rem; width: 380px; max-width: 90%; text-align: center; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); transform: scale(0.8) translateY(20px); transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+    #popup.active .popup-container { transform: scale(1) translateY(0); }
+    .popup-icon { width: 70px; height: 70px; margin: 0 auto 1rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+    .popup-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; background: linear-gradient(135deg, var(--primary-color), var(--primary-color-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .popup-message { color: #4b5563; margin-bottom: 1rem; line-height: 1.5; }
+    .popup-joke { font-size: 0.8rem; color: #9ca3af; font-style: italic; margin-top: 1rem; }
+    .popup-close-btn { margin-top: 1.5rem; color: var(--primary-color); font-weight: 600; background: none; border: none; cursor: pointer; font-size: 1rem; }
+    .popup-close-btn:hover { text-decoration: underline; }
+    @media (max-width: 768px) { .container { flex-direction: column; max-width: 420px; } .image-section { padding: 1.5rem; } .image-content h2 { font-size: 1.5rem; } .image-content p { font-size: 1rem; } .card-style { padding: 1.5rem; } .logo { width: 60px; height: 60px; font-size: 28px; } .form-title { font-size: 1.5rem; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="image-section">
+      <div class="image-content">
+        <h2>Bergabung dengan TiketKita</h2>
+        <p>Mulai perjalanan Anda dengan akses ke ribuan event menarik</p>
+        <img src="https://placehold.co/400x300/3B82F6/FFFFFF?text=TiketKita" alt="TiketKita Platform" class="feature-image">
+        <p style="margin-top: 2rem;">Dapatkan penawaran eksklusif dan notifikasi event terbaru</p>
+      </div>
+    </div>
+    <div class="card-style">
+      <div class="card-content">
+        <div class="text-center mb-6">
+          <div class="logo"><i class="fas fa-ticket-alt"></i></div>
+          <h1 class="form-title" id="form-title">Buat Akun Baru</h1>
+          <p class="form-subtitle" id="form-subtitle">Daftar untuk memulai perjalanan Anda</p>
+        </div>
+        <button id="google-signin-btn" class="btn btn-google mb-4">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          <span>Daftar dengan Google</span>
+        </button>
+        <div class="divider"><span>atau</span></div>
+        <form id="auth-form" onsubmit="event.preventDefault(); handleRegister();">
+          <div class="input-group"><i class="fas fa-user"></i><input type="text" id="fullname" placeholder="Nama Lengkap" required /></div>
+          <div class="input-group"><i class="fas fa-envelope"></i><input type="email" id="email" placeholder="Email" required /></div>
+          <div class="input-group"><i class="fas fa-lock"></i><input type="password" id="password" placeholder="Kata Sandi" required /><i class="fas fa-eye toggle-pass" id="toggle-pass" onclick="togglePassword()"></i></div>
+          <div class="input-group"><i class="fas fa-lock"></i><input type="password" id="confirm-password" placeholder="Konfirmasi Kata Sandi" required /></div>
+          <div class="flex items-center mb-4">
+            <label class="checkbox-label"><input type="checkbox" id="agree-terms" required /><span>Saya setuju dengan <a href="#" class="link">Syarat & Ketentuan</a></span></label>
+          </div>
+          <button type="submit" class="btn btn-primary" id="primary-btn"><span id="btn-text">Daftar Sekarang</span><span id="btn-loading" class="loading" style="display:none"></span></button>
+        </form>
+        <p class="toggle-link"><span id="toggle-text-container">Sudah punya akun? <span onclick="goToLogin()" id="toggle-link">Masuk</span></span></p>
+      </div>
+    </div>
+  </div>
+  <div id="popup">
+    <div class="popup-container">
+      <div id="popup-icon" class="popup-icon"><i id="icon-symbol"></i></div>
+      <h3 id="popup-title" class="popup-title"></h3>
+      <p id="popup-message" class="popup-message"></p>
+      <p id="popup-joke" class="popup-joke"></p>
+      <button onclick="closePopup()" class="popup-close-btn">OK</button>
+    </div>
+  </div>
+
+  <script type="module">
+    // Import semua modul Firebase yang diperlukan
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, sendEmailVerification, signOut } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+    // TAMBAHAN: Import modul Realtime Database
+    import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyD_-DI0MQIug3J8vciKcaFZ-knyYZC67K8",
+      authDomain: "sosmed-7d6ee.firebaseapp.com",
+      databaseURL: "https://sosmed-7d6ee-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "sosmed-7d6ee",
+      storageBucket: "sosmed-7d6ee.appspot.com",
+      messagingSenderId: "807759832196",
+      appId: "1:807759832196:web:d176775e2f51f1e1918ed1",
+    };
+
+    // Inisialisasi Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    // TAMBAHAN: Inisialisasi Realtime Database
+    const database = getDatabase(app);
+    const provider = new GoogleAuthProvider();
+
+    const LOGIN_URL = "login.html";
+
+    const jokes = {
+      'auth/invalid-email': 'Email ini kayak mantan: nggak valid.',
+      'auth/user-not-found': 'User hilang, kayak kaos kaki di mesin cuci.',
+      'auth/wrong-password': 'Password salah. Coba ingat-ingat, atau reset aja.',
+      'auth/weak-password': 'Password lemah. Tambahin angka, simbol, sama doa.',
+      'auth/email-already-in-use': 'Email ini udah dipakai. Coba yang lain!',
+      'empty-fields': 'Semua field harus diisi.',
+      'password-mismatch': 'Password dan konfirmasi password tidak cocok.',
+      'default': 'Ada yang error. Coba lagi, atau hubungi admin.'
+    };
+
+    const success = {
+      'register-success': { title: 'Pendaftaran Berhasil!', msg: 'Email verifikasi telah dikirim. Silakan periksa inbox Anda.', icon: '✅', color: '#10B981' },
+      'google-register-success': { title: 'Pendaftaran Berhasil!', msg: 'Akun Google Anda telah terdaftar. Halaman akan segera beralih ke Login.', icon: '🔥', color: '#EA4335' }
+    };
+
+    // FUNGSI BARU: Untuk menyimpan data pengguna ke Realtime Database
+    async function saveUserDataToDatabase(user, additionalData = {}) {
+      try {
+        const dbRef = ref(database, 'users/' + user.uid);
+        const userData = {
+          uid: user.uid,
+          fullname: user.displayName,
+          email: user.email,
+          emailVerified: user.emailVerified,
+          createdAt: new Date().toISOString(),
+          ...additionalData
+        };
+        await set(dbRef, userData);
+        console.log("Data pengguna berhasil disimpan ke Realtime Database:", userData);
+      } catch (error) {
+        console.error("Gagal menyimpan data pengguna ke database:", error);
+      }
+    }
+
+    function showPopup(type, key) {
+      const popup = document.getElementById('popup');
+      const icon = document.getElementById('icon-symbol');
+      const title = document.getElementById('popup-title');
+      const msg = document.getElementById('popup-message');
+      const joke = document.getElementById('popup-joke');
+      if (type === 'success' && success[key]) {
+        const data = success[key];
+        icon.textContent = data.icon;
+        document.getElementById('popup-icon').style.backgroundColor = data.color;
+        title.textContent = data.title;
+        msg.textContent = data.msg;
+        joke.textContent = '';
+      } else {
+        icon.textContent = '⚠️';
+        document.getElementById('popup-icon').style.backgroundColor = '#EF4444';
+        title.textContent = 'Oops!';
+        msg.textContent = jokes[key] || jokes['default'];
+        joke.textContent = '';
+      }
+      popup.classList.add('active');
+    }
+
+    window.closePopup = () => {
+      document.getElementById('popup').classList.remove('active');
+    };
+
+    function showLoading(show) {
+      document.getElementById('btn-text').style.display = show ? 'none' : 'inline';
+      document.getElementById('btn-loading').style.display = show ? 'inline-block' : 'none';
+    }
+
+    window.togglePassword = () => {
+      const input = document.getElementById('password');
+      const icon = document.getElementById('toggle-pass');
+      input.type = input.type === 'password' ? 'text' : 'password';
+      icon.classList.toggle('fa-eye');
+      icon.classList.toggle('fa-eye-slash');
+    };
+    window.goToLogin = () => { window.location.href = LOGIN_URL; };
+
+    window.handleRegister = async () => {
+      const fullname = document.getElementById('fullname').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+      
+      if (!fullname || !email || !password || !confirmPassword) return showPopup('error', 'empty-fields');
+      if (password !== confirmPassword) return showPopup('error', 'password-mismatch');
+      if (password.length < 6) return showPopup('error', 'auth/weak-password');
+
+      showLoading(true);
+      try {
+        // 1. Buat user dengan email dan password
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        
+        // 2. Update profil dengan nama lengkap
+        await updateProfile(userCredential.user, { displayName: fullname });
+        
+        // 3. Simpan data pengguna ke database
+        await saveUserDataToDatabase(userCredential.user);
+        
+        // 4. KIRIM EMAIL VERIFIKASI
+        const actionCodeSettings = {
+          url: window.location.origin + '/verification.html', // URL tujuan setelah verifikasi
+          handleCodeInApp: true,
+        };
+        await sendEmailVerification(userCredential.user, actionCodeSettings);
+        
+        // 5. LOGOUT user agar harus verifikasi email terlebih dahulu
+        await signOut(auth);
+
+        // 6. Tampilkan popup sukses
+        showPopup('success', 'register-success');
+        
+        // 7. Redirect ke halaman login setelah 4 detik
+        setTimeout(() => window.location.href = LOGIN_URL, 4000);
+      } catch (e) {
+        showLoading(false);
+        showPopup('error', e.code);
+      }
+    };
+
+    document.getElementById('google-signin-btn').onclick = async () => {
+      try {
+        const result = await signInWithPopup(auth, provider);
+        // Cek apakah pengguna sudah ada di database
+        const dbRef = ref(database, 'users/' + result.user.uid);
+        const snapshot = await get(dbRef);
+
+        if (!snapshot.exists()) {
+          // Jika belum ada, simpan data baru
+          await saveUserDataToDatabase(result.user);
+        } else {
+          console.log("Pengguna Google sudah ada di database.");
+        }
+        
+        showPopup('success', 'google-register-success');
+        setTimeout(() => window.location.href = LOGIN_URL, 4000);
+      } catch (e) {
+        if (e.code !== 'auth/popup-closed-by-user') showPopup('error', e.code);
+      }
+    };
+  </script>
+</body>
+</html>
