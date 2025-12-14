@@ -278,6 +278,7 @@
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
+            position: relative;
         }
         
         .ticket-card:hover {
@@ -425,6 +426,79 @@
             font-weight: 600;
         }
         
+        .admin-badge {
+            background: var(--danger);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+        }
+        
+        .owner-badge {
+            background: var(--secondary);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+        }
+        
+        .edit-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border-radius: 1rem;
+        }
+        
+        .ticket-card:hover .edit-overlay {
+            opacity: 1;
+        }
+        
+        .edit-overlay-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .edit-overlay-btn {
+            background: white;
+            border: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.2s;
+        }
+        
+        .edit-overlay-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .edit-overlay-btn.edit {
+            color: var(--primary);
+        }
+        
+        .edit-overlay-btn.delete {
+            color: var(--danger);
+        }
+        
         /* Modal Styles */
         .modal {
             position: fixed;
@@ -557,6 +631,21 @@
             border-color: var(--gray-400);
         }
         
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+        
         /* Favorite Section */
         .favorite-section {
             background: white;
@@ -655,6 +744,69 @@
             margin: 0 auto;
         }
         
+        /* Admin Panel */
+        .admin-panel {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .admin-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--gray-100);
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+        
+        .admin-toggle:hover {
+            background: var(--gray-200);
+        }
+        
+        .admin-content {
+            display: none;
+            padding: 1rem;
+            background: var(--gray-50);
+            border-radius: 0.5rem;
+        }
+        
+        .admin-content.show {
+            display: block;
+        }
+        
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .admin-stat-card {
+            background: white;
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .admin-stat-card h4 {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            margin-bottom: 0.5rem;
+        }
+        
+        .admin-stat-card .stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .header-content {
@@ -673,6 +825,11 @@
             
             .dynamic-nav-container {
                 justify-content: flex-start;
+            }
+            
+            .edit-overlay-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
             }
         }
         
@@ -773,6 +930,43 @@
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
+            <!-- Admin Panel (Hanya untuk Admin) -->
+            <div id="admin-panel" class="admin-panel hidden">
+                <button id="admin-toggle" class="admin-toggle">
+                    <i class="fas fa-cogs"></i>
+                    <span>Panel Admin</span>
+                    <i class="fas fa-chevron-down ml-auto"></i>
+                </button>
+                <div id="admin-content" class="admin-content">
+                    <div class="admin-stats">
+                        <div class="admin-stat-card">
+                            <h4>Total Tiket</h4>
+                            <div class="stat-value" id="total-tickets">0</div>
+                        </div>
+                        <div class="admin-stat-card">
+                            <h4>Total Pengguna</h4>
+                            <div class="stat-value" id="total-users">0</div>
+                        </div>
+                        <div class="admin-stat-card">
+                            <h4>Tiket Hari Ini</h4>
+                            <div class="stat-value" id="today-tickets">0</div>
+                        </div>
+                        <div class="admin-stat-card">
+                            <h4>Tiket Populer</h4>
+                            <div class="stat-value" id="popular-tickets">0</div>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button id="refresh-stats" class="btn-primary">
+                            <i class="fas fa-sync-alt mr-2"></i>Refresh Stats
+                        </button>
+                        <button id="delete-all-tickets" class="btn-danger">
+                            <i class="fas fa-trash-alt mr-2"></i>Hapus Semua Tiket
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
             <!-- Ticket Management Section (Tambah/Edit Tiket) -->
             <section id="ticket-management-section" class="ticket-management">
                 <h2 class="section-title">Manajemen Tiket</h2>
@@ -925,7 +1119,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Apakah Anda yakin ingin menghapus tiket ini? Tindakan ini tidak dapat dibatalkan.</p>
+                <p id="delete-message">Apakah Anda yakin ingin menghapus tiket ini? Tindakan ini tidak dapat dibatalkan.</p>
                 <div class="form-group mt-4">
                     <label for="password-confirmation" class="form-label">Konfirmasi Password</label>
                     <input type="password" id="password-confirmation" class="form-input" placeholder="Masukkan password Anda">
@@ -1067,6 +1261,7 @@
         const newLinkInput = document.getElementById('new-link-input');
         const addLinkButton = document.getElementById('add-link-button');
         const deleteModal = document.getElementById('delete-confirmation-modal');
+        const deleteMessage = document.getElementById('delete-message');
         const passwordInput = document.getElementById('password-confirmation');
         const errorMessage = document.getElementById('delete-error-message');
         const cancelButton = document.getElementById('cancel-delete-button');
@@ -1120,6 +1315,17 @@
         const myTicketsCount = document.getElementById('my-tickets-count');
         const myTicketsSection = document.getElementById('my-tickets-section');
         const ticketManagementSection = document.getElementById('ticket-management-section');
+        
+        // Admin Panel Elements
+        const adminPanel = document.getElementById('admin-panel');
+        const adminToggle = document.getElementById('admin-toggle');
+        const adminContent = document.getElementById('admin-content');
+        const totalTickets = document.getElementById('total-tickets');
+        const totalUsers = document.getElementById('total-users');
+        const todayTickets = document.getElementById('today-tickets');
+        const popularTickets = document.getElementById('popular-tickets');
+        const refreshStats = document.getElementById('refresh-stats');
+        const deleteAllTickets = document.getElementById('delete-all-tickets');
 
         // Global Variables
         let savedLinks = [];
@@ -1133,6 +1339,13 @@
         let favoriteTickets = [];
         let myTickets = [];
         let editingTicketId = null;
+        let editingTicketUserId = null;
+        let isAdmin = false;
+        let adminUsers = [
+            'admin@tiketku.com',
+            'arifanalfahri@gmail.com',
+            'developer@tiketku.com'
+        ]; // Daftar email admin
 
         // Auth State Observer
         onAuthStateChanged(auth, (user) => {
@@ -1150,12 +1363,20 @@
                 setupUserMenu(user);
                 myTicketsSection.style.display = 'block';
                 loadMyTickets(user.uid);
+                
+                // Check if user is admin
+                isAdmin = adminUsers.includes(user.email);
+                if (isAdmin) {
+                    adminPanel.classList.remove('hidden');
+                    loadAdminStats();
+                }
             } else {
                 guestHeader.classList.remove('hidden');
                 userInfoHeader.classList.add('hidden');
                 headerUserName.textContent = 'Selamat datang, Tamu!';
                 headerProfileImage.src = 'https://placehold.co/40x40/e2e8f0/adb5bd?text=G';
                 myTicketsSection.style.display = 'none';
+                adminPanel.classList.add('hidden');
                 setupGuestMenu();
             }
         });
@@ -1190,6 +1411,7 @@
                     <a href="riwayatpemesanan.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Semua Riwayat</a>
                     <a href="profil.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Edit Profil</a>
                     <a href="inputtiket.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Manajemen Tiket</a>
+                    ${isAdmin ? '<a href="#" id="admin-menu-toggle" class="block px-4 py-2 text-sm text-yellow-700 hover:bg-yellow-50"><i class="fas fa-crown mr-2"></i>Admin Panel</a>' : ''}
                     <div class="border-t border-gray-100 my-1"></div>
                     <a id="logout-button-menu" href="#" class="block px-4 py-2 text-sm text-red-700 hover:bg-red-50">Keluar</a>
                 </div>
@@ -1199,6 +1421,13 @@
                 e.preventDefault();
                 signOut(auth);
             });
+            
+            if (isAdmin) {
+                document.getElementById('admin-menu-toggle').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    adminContent.classList.toggle('show');
+                });
+            }
         }
 
         // Load User Profile
@@ -1228,6 +1457,83 @@
             const savedImage = localStorage.getItem(`profileImage_${userId}`);
             if (savedImage) {
                 headerProfileImage.src = savedImage;
+            }
+        }
+
+        // Load Admin Stats
+        async function loadAdminStats() {
+            try {
+                // Load total tickets
+                const ticketsRef = ref(db, 'tickets');
+                const ticketsSnapshot = await get(ticketsRef);
+                let totalTicketCount = 0;
+                let todayCount = 0;
+                let popularCount = 0;
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                
+                if (ticketsSnapshot.exists()) {
+                    ticketsSnapshot.forEach((userSnapshot) => {
+                        userSnapshot.forEach((ticketSnapshot) => {
+                            totalTicketCount++;
+                            const ticket = ticketSnapshot.val();
+                            const ticketDate = new Date(ticket.createdAt || 0);
+                            if (ticketDate >= today) {
+                                todayCount++;
+                            }
+                            if (ticket.viewCount > 100) {
+                                popularCount++;
+                            }
+                        });
+                    });
+                }
+                
+                totalTickets.textContent = totalTicketCount;
+                todayTickets.textContent = todayCount;
+                popularTickets.textContent = popularCount;
+                
+                // Load total users
+                const usersRef = ref(db, 'users');
+                const usersSnapshot = await get(usersRef);
+                const userCount = usersSnapshot.exists() ? Object.keys(usersSnapshot.val()).length : 0;
+                totalUsers.textContent = userCount;
+                
+            } catch (error) {
+                console.error('Error loading admin stats:', error);
+            }
+        }
+
+        // Delete All Tickets (Admin Only)
+        async function deleteAllTicketsFunction() {
+            if (!isAdmin) {
+                alert('Hanya admin yang dapat menghapus semua tiket.');
+                return;
+            }
+            
+            if (!confirm('PERINGATAN: Apakah Anda yakin ingin menghapus SEMUA tiket? Tindakan ini tidak dapat dibatalkan!')) {
+                return;
+            }
+            
+            const password = prompt('Masukkan password admin untuk konfirmasi:');
+            if (!password) return;
+            
+            try {
+                const credential = EmailAuthProvider.credential(currentUser.email, password);
+                await reauthenticateWithCredential(currentUser, credential);
+                
+                const ticketsRef = ref(db, 'tickets');
+                await remove(ticketsRef);
+                
+                alert('Semua tiket berhasil dihapus!');
+                loadAllMarketplaceTickets();
+                loadAdminStats();
+                
+            } catch (error) {
+                if (error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
+                    alert('Password salah!');
+                } else {
+                    alert('Terjadi kesalahan: ' + error.message);
+                }
             }
         }
 
@@ -1363,7 +1669,8 @@
                                 dislikes: ticket.dislikes || {},
                                 comments: ticket.comments || {},
                                 viewCount: ticket.viewCount || 0,
-                                ticketClass: ticket.ticketClass || 'Ekonomi'
+                                ticketClass: ticket.ticketClass || 'Ekonomi',
+                                isOwner: currentUser ? userId === currentUser.uid : false
                             };
                             allMarketplaceTickets.push(ticketWithId);
                             
@@ -1380,6 +1687,10 @@
                 
                 if (favoriteTickets.length > 0) {
                     renderFavoriteTickets();
+                }
+                
+                if (isAdmin) {
+                    loadAdminStats();
                 }
             });
         }
@@ -1516,12 +1827,17 @@
                 </span>
             ` : '';
             
+            // Tentukan apakah user bisa edit/hapus tiket ini
+            const canEdit = currentUser && (ticketData.userId === currentUser.uid || isAdmin);
+            
             cardDiv.innerHTML = `
                 <div class="relative">
                     <img src="${ticketData.imageUrl || 'https://placehold.co/400x300/e2e8f0/adb5bd?text=Gambar'}" 
                          alt="${ticketData.name}" class="ticket-image">
                     ${popularBadge}
                     ${classBadge}
+                    ${isAdmin ? '<span class="admin-badge">Admin</span>' : ''}
+                    ${ticketData.isOwner && !isAdmin ? '<span class="owner-badge">Milik Anda</span>' : ''}
                     <button class="save-button absolute top-2 right-2 bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md hover:bg-gray-100" 
                             data-ticket-id="${ticketData.id}" title="${isFavorite ? 'Hapus dari favorit' : 'Tambahkan ke favorit'}">
                         <i class="fas fa-star ${isFavorite ? 'text-yellow-500' : 'text-gray-400'}"></i>
@@ -1552,12 +1868,26 @@
                         <a href="home.html?id=${ticketData.id}" class="detail-button">Detail</a>
                     </div>
                 </div>
+                ${canEdit ? `
+                    <div class="edit-overlay">
+                        <div class="edit-overlay-buttons">
+                            <button class="edit-overlay-btn edit" data-ticket-id="${ticketData.id}" data-user-id="${ticketData.userId}">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="edit-overlay-btn delete" data-ticket-id="${ticketData.id}" data-user-id="${ticketData.userId}">
+                                <i class="fas fa-trash-alt"></i> Hapus
+                            </button>
+                        </div>
+                    </div>
+                ` : ''}
             `;
             
             const likeButton = cardDiv.querySelector('.like-button');
             const dislikeButton = cardDiv.querySelector('.dislike-button');
             const commentButton = cardDiv.querySelector('.comment-button');
             const saveButton = cardDiv.querySelector('.save-button');
+            const editButton = cardDiv.querySelector('.edit-overlay-btn.edit');
+            const deleteButton = cardDiv.querySelector('.edit-overlay-btn.delete');
             
             likeButton.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1583,9 +1913,25 @@
                 toggleFavorite(ticketData.id);
             });
             
+            if (editButton) {
+                editButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    editTicketFromMarketplace(ticketData);
+                });
+            }
+            
+            if (deleteButton) {
+                deleteButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showDeleteModal(ticketData.id, ticketData.userId);
+                });
+            }
+            
             cardDiv.addEventListener('click', (e) => {
                 if (!e.target.closest('button')) {
-                    incrementViewCount(ticketData.id);
+                    incrementViewCount(ticketData.id, ticketData.userId);
                 }
             });
             
@@ -1665,12 +2011,12 @@
         }
 
         // Increment View Count
-        async function incrementViewCount(ticketId) {
+        async function incrementViewCount(ticketId, ticketUserId) {
             const ticketIndex = allMarketplaceTickets.findIndex(t => t.id === ticketId);
             if (ticketIndex === -1) return;
             
             const ticket = allMarketplaceTickets[ticketIndex];
-            const ticketViewPath = `tickets/${ticket.userId}/${ticketId}/viewCount`;
+            const ticketViewPath = `tickets/${ticketUserId}/${ticketId}/viewCount`;
             const currentViews = ticket.viewCount || 0;
             
             await set(ref(db, ticketViewPath), currentViews + 1);
@@ -2023,6 +2369,7 @@
                         <span class="class-badge absolute top-2 left-2">
                             ${ticket.ticketClass || 'Ekonomi'}
                         </span>
+                        <span class="owner-badge">Milik Anda</span>
                     </div>
                     <div class="ticket-content">
                         <h3 class="ticket-title">${ticket.name || 'Tanpa Judul'}</h3>
@@ -2060,11 +2407,38 @@
                 deleteButton.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    showDeleteModal(ticket.id);
+                    showDeleteModal(ticket.id, currentUser.uid);
                 });
                 
                 myTicketsGrid.appendChild(ticketCard);
             });
+        }
+
+        // Edit Ticket from Marketplace
+        function editTicketFromMarketplace(ticket) {
+            // Scroll to form
+            scrollToTicketManagement();
+            
+            // Fill form with ticket data
+            ticketName.value = ticket.name || '';
+            ticketDescription.value = ticket.description || '';
+            ticketCategory.value = ticket.category || '';
+            ticketClass.value = ticket.ticketClass || 'Ekonomi';
+            routeFrom.value = ticket.route?.from || '';
+            routeTo.value = ticket.route?.to || '';
+            priceOriginal.value = ticket.price?.original || '';
+            pricePromo.value = ticket.price?.promo || '';
+            ticketImage.value = ticket.imageUrl || '';
+            
+            // Set editing mode
+            editingTicketId = ticket.id;
+            editingTicketUserId = ticket.userId;
+            cancelEdit.classList.remove('hidden');
+            submitTicket.textContent = 'Update Tiket';
+            
+            // Update form title
+            document.querySelector('#ticket-management-section .section-title').innerHTML = 
+                `Edit Tiket ${isAdmin && ticket.userId !== currentUser.uid ? '(Admin Mode)' : ''} <span class="text-sm font-normal text-gray-500">(ID: ${ticket.id})</span>`;
         }
 
         async function saveTicket(e) {
@@ -2098,28 +2472,39 @@
                         promo: pricePromo.value ? parseInt(pricePromo.value) : null
                     },
                     imageUrl: ticketImage.value.trim() || 'https://placehold.co/400x300/e2e8f0/adb5bd?text=Tiket',
-                    createdAt: Date.now(),
-                    sellerInfo: {
-                        userId: currentUser.uid,
-                        email: currentUser.email
-                    }
+                    updatedAt: Date.now()
                 };
                 
-                // Get user name for sellerInfo
-                const userRef = ref(db, `users/${currentUser.uid}`);
-                const userSnapshot = await get(userRef);
-                if (userSnapshot.exists()) {
-                    ticketData.sellerInfo.name = userSnapshot.val().name || currentUser.email;
+                // Jika sedang edit, tambahkan updatedAt
+                if (editingTicketId) {
+                    ticketData.updatedAt = Date.now();
                 } else {
-                    ticketData.sellerInfo.name = currentUser.email;
+                    // Jika buat baru, tambahkan createdAt dan sellerInfo
+                    ticketData.createdAt = Date.now();
+                    ticketData.sellerInfo = {
+                        userId: currentUser.uid,
+                        email: currentUser.email
+                    };
+                    
+                    // Get user name for sellerInfo
+                    const userRef = ref(db, `users/${currentUser.uid}`);
+                    const userSnapshot = await get(userRef);
+                    if (userSnapshot.exists()) {
+                        ticketData.sellerInfo.name = userSnapshot.val().name || currentUser.email;
+                    } else {
+                        ticketData.sellerInfo.name = currentUser.email;
+                    }
                 }
+                
+                const targetUserId = editingTicketId ? editingTicketUserId : currentUser.uid;
                 
                 if (editingTicketId) {
                     // Update existing ticket
-                    const ticketRef = ref(db, `tickets/${currentUser.uid}/${editingTicketId}`);
+                    const ticketRef = ref(db, `tickets/${targetUserId}/${editingTicketId}`);
                     await update(ticketRef, ticketData);
                     alert('Tiket berhasil diperbarui!');
                     editingTicketId = null;
+                    editingTicketUserId = null;
                     cancelEdit.classList.add('hidden');
                     submitTicket.textContent = 'Simpan Tiket';
                 } else {
@@ -2133,6 +2518,7 @@
                 // Reset form
                 ticketForm.reset();
                 loadMyTickets(currentUser.uid);
+                loadAllMarketplaceTickets();
                 
             } catch (error) {
                 console.error('Error saving ticket:', error);
@@ -2144,32 +2530,12 @@
         }
 
         function editTicket(ticket) {
-            // Scroll to form
-            scrollToTicketManagement();
-            
-            // Fill form with ticket data
-            ticketName.value = ticket.name || '';
-            ticketDescription.value = ticket.description || '';
-            ticketCategory.value = ticket.category || '';
-            ticketClass.value = ticket.ticketClass || 'Ekonomi';
-            routeFrom.value = ticket.route?.from || '';
-            routeTo.value = ticket.route?.to || '';
-            priceOriginal.value = ticket.price?.original || '';
-            pricePromo.value = ticket.price?.promo || '';
-            ticketImage.value = ticket.imageUrl || '';
-            
-            // Set editing mode
-            editingTicketId = ticket.id;
-            cancelEdit.classList.remove('hidden');
-            submitTicket.textContent = 'Update Tiket';
-            
-            // Update form title
-            document.querySelector('#ticket-management-section .section-title').innerHTML = 
-                'Edit Tiket <span class="text-sm font-normal text-gray-500">(ID: ' + ticket.id + ')</span>';
+            editTicketFromMarketplace(ticket);
         }
 
         function cancelEditMode() {
             editingTicketId = null;
+            editingTicketUserId = null;
             ticketForm.reset();
             cancelEdit.classList.add('hidden');
             submitTicket.textContent = 'Simpan Tiket';
@@ -2183,29 +2549,42 @@
         }
 
         // Show Delete Modal
-        function showDeleteModal(ticketId) {
+        function showDeleteModal(ticketId, ticketUserId) {
             deleteModal.dataset.ticketId = ticketId;
+            deleteModal.dataset.userId = ticketUserId;
+            
+            const isOwnTicket = currentUser && ticketUserId === currentUser.uid;
+            const message = isOwnTicket 
+                ? 'Apakah Anda yakin ingin menghapus tiket ini? Tindakan ini tidak dapat dibatalkan.'
+                : isAdmin 
+                    ? 'Anda akan menghapus tiket milik pengguna lain (Admin Mode). Apakah Anda yakin?'
+                    : 'Anda tidak memiliki izin untuk menghapus tiket ini.';
+            
+            deleteMessage.textContent = message;
             passwordInput.value = '';
             errorMessage.classList.add('hidden');
-            confirmButton.disabled = false;
-            confirmButton.textContent = 'Konfirmasi & Hapus';
+            confirmButton.disabled = !isOwnTicket && !isAdmin;
+            confirmButton.textContent = isOwnTicket || isAdmin ? 'Konfirmasi & Hapus' : 'Tidak Diizinkan';
             deleteModal.classList.remove('hidden');
         }
 
         // Delete Ticket
         async function deleteTicket() {
             const ticketId = deleteModal.dataset.ticketId;
+            const ticketUserId = deleteModal.dataset.userId;
             const password = passwordInput.value;
             const user = auth.currentUser;
+            
+            const isOwnTicket = user && ticketUserId === user.uid;
+            
+            if (!isOwnTicket && !isAdmin) {
+                alert('Anda tidak memiliki izin untuk menghapus tiket ini.');
+                return;
+            }
             
             if (!password) {
                 errorMessage.textContent = 'Kata sandi tidak boleh kosong.';
                 errorMessage.classList.remove('hidden');
-                return;
-            }
-            
-            if (!user || !ticketId) {
-                alert('Terjadi kesalahan.');
                 return;
             }
             
@@ -2217,12 +2596,17 @@
                 const credential = EmailAuthProvider.credential(user.email, password);
                 await reauthenticateWithCredential(user, credential);
                 
-                const ticketRef = ref(db, `tickets/${user.uid}/${ticketId}`);
+                const ticketRef = ref(db, `tickets/${ticketUserId}/${ticketId}`);
                 await remove(ticketRef);
                 
                 alert('Tiket berhasil dihapus.');
                 deleteModal.classList.add('hidden');
-                loadMyTickets(user.uid);
+                
+                // Refresh data
+                if (isOwnTicket) {
+                    loadMyTickets(user.uid);
+                }
+                loadAllMarketplaceTickets();
                 
             } catch (error) {
                 if (error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
@@ -2474,11 +2858,23 @@
         cancelEdit.addEventListener('click', cancelEditMode);
         clearForm.addEventListener('click', clearTicketForm);
 
+        // Admin Panel Event Listeners
+        adminToggle.addEventListener('click', () => {
+            adminContent.classList.toggle('show');
+        });
+
+        refreshStats.addEventListener('click', () => {
+            loadAdminStats();
+            alert('Statistik diperbarui!');
+        });
+
+        deleteAllTickets.addEventListener('click', deleteAllTicketsFunction);
+
         // Initialize Ad Creation Modal
         setupAdCreationModal();
 
         // Initialize Page
-        console.log('TiketKu Web Marketplace initialized');
+        console.log('TiketKu Web Marketplace dengan Edit/Hapus Semua Tiket initialized');
     </script>
 </body>
 </html>
